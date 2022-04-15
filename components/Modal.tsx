@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import { X, SignIn } from 'phosphor-react';
 import InputText from './InputText';
 import { motion, AnimatePresence } from 'framer-motion';
+import Button from './Button';
 
 const Modal: React.FC<{ show: boolean; onDismiss: () => void }> = ({
   show,
@@ -25,7 +26,7 @@ const Modal: React.FC<{ show: boolean; onDismiss: () => void }> = ({
             exit={{ y: 1000 }}
             transition={{ duration: 1 }}
             id="modal"
-            className="fixed flex -translate-x-1/2 transform flex-col items-center justify-center rounded bg-grey-50 pr-2 pt-2"
+            className="fixed flex -translate-x-1/2 transform flex-col items-center justify-between rounded bg-grey-50 pr-2 pt-2"
           >
             <button
               className="absolute top-2 right-2 self-end"
@@ -33,37 +34,43 @@ const Modal: React.FC<{ show: boolean; onDismiss: () => void }> = ({
             >
               <X weight="bold" className="text-grey-200" />
             </button>
+
             <div className="flex">
-              <h1 className="mt-4 self-center text-4xl text-orange-700">
+              <h1 className="mx-2 mt-4 -mb-4 font-display text-4xl text-orange-700">
                 Ingresá con tu usuario y contraseña
               </h1>
             </div>
-            <div className="flex">
-              <Image src={login} />
-              <form className="items-left flex flex-col justify-center p-8">
-                <InputText
-                  type="text"
-                  label="DNI"
-                  name="user"
-                  placeholder="30256544"
-                  helpText="Sin espacios ni caracteres especiales"
-                  errorText=""
-                />
-                <InputText
-                  type="password"
-                  label="Contraseña"
-                  name="pass"
-                  placeholder="••••••••"
-                  helpText="Si no tenes contraseña repetí tu DNI"
-                />
-                <div className="mt-6 flex justify-end gap-2">
-                  <button className=" w-fit rounded rounded-full border-2 border-orange-500 py-2 px-4 text-orange-600  transition hover:scale-105 hover:bg-white">
-                    Cancelar
-                  </button>
-                  <button className=" w-fit rounded rounded-full bg-orange-500 py-2 px-4 text-grey-50 transition hover:scale-105 hover:bg-orange-400">
-                    Ingresar
-                    <SignIn className="inline" weight="bold" size={20} />
-                  </button>
+            <div className="flex  w-full ">
+              <div className=" hidden md:contents">
+                <Image src={login} />
+              </div>
+              <form className="mt-10 flex w-full flex-col items-center justify-around px-2 md:w-9/12 md:px-0">
+                <div className="flex flex-col">
+                  <InputText
+                    type="text"
+                    label="DNI"
+                    name="user"
+                    placeholder="30256544"
+                    helpText="Sin espacios ni caracteres especiales"
+                    errorText=""
+                  />
+                  <InputText
+                    type="password"
+                    label="Contraseña"
+                    name="pass"
+                    placeholder="••••••••"
+                    helpText="Si no tenes contraseña repetí tu DNI"
+                  />
+                </div>
+                <div className="m-2 flex justify-end gap-2 place-self-end pt-6 ">
+                  <Button label="Cancelar" variant="outlined" />
+                  <Button
+                    label="Ingresar"
+                    variant="fill"
+                    icon={
+                      <SignIn className="ml-1 inline" weight="bold" size={20} />
+                    }
+                  />
                 </div>
               </form>
             </div>
