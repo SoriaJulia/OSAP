@@ -30,7 +30,7 @@ const InputText: React.FC<InputTextProps> = ({
         name={name}
         type={type}
       />
-      <span className="my-1 text-sm font-light">{helpText}</span>
+      <span className="my-1 text-left text-sm font-light">{helpText}</span>
     </>
   );
 };
