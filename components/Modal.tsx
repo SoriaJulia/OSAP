@@ -13,14 +13,11 @@ const Modal: React.FC<{ show: boolean; onDismiss: () => void }> = ({
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
 
-  // if (!show) return null;
-
   return (
-    <>
-      <Backdrop ref={divRef} onClickHandler={onDismiss} show={show} />
-
-      <AnimatePresence>
-        {show && (
+    <AnimatePresence>
+      {show && (
+        <>
+          <Backdrop ref={divRef} onClickHandler={onDismiss} show={show} />
           <motion.div
             key={'modal'}
             initial={{ opacity: 0, y: 300 }}
@@ -71,9 +68,9 @@ const Modal: React.FC<{ show: boolean; onDismiss: () => void }> = ({
               </form>
             </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        </>
+      )}
+    </AnimatePresence>
   );
 };
 
