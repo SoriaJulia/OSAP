@@ -2,12 +2,15 @@ import Image from 'next/image';
 import React from 'react';
 import logo from '../public/img/logo.svg';
 import logoSSS from '../public/img/logo-sss.png';
+import logoSSSsmall from '../public/img/logo-sss-small.png';
 import { MapPin, Phone, Envelope, Printer } from 'phosphor-react';
 import Link from 'next/link';
 export const Footer = () => {
   return (
-    <footer className="grid grid-cols-footer gap-9 bg-gradient-to-b from-blue-900 to-grey-700 px-9 py-4">
-      <Image src={logo}></Image>
+    <footer className="xs:grid xs:grid-cols-footer flex flex-col gap-9 bg-gradient-to-b from-blue-900 to-grey-700 px-9 py-4 sm:grid md:grid-cols-footer-md lg:grid-cols-footer-lg">
+      <div className="hidden md:flex">
+        <Image src={logo}></Image>
+      </div>
 
       <ul className="flex flex-col justify-center gap-2 text-blue-200">
         <li className="flex gap-3 align-middle transition hover:text-blue-100 hover:underline">
@@ -15,7 +18,7 @@ export const Footer = () => {
         </li>
         <li className="flex gap-3 align-middle transition hover:text-blue-100 hover:underline">
           <Phone size={24} />
-          0336-4425632/4429692/4450440/4450099
+          0336-4425632/ 4429692/ 4450440/ 4450099
         </li>
         <li className="flex gap-3 align-middle transition hover:text-blue-100 hover:underline">
           <Printer size={24} />
@@ -27,7 +30,7 @@ export const Footer = () => {
         </li>
       </ul>
 
-      <ul className="flex flex-col justify-center gap-2 text-blue-400">
+      <ul className="hidden flex-col justify-center gap-2 text-blue-400 lg:flex">
         <li className="transition hover:text-blue-300 hover:underline">
           <Link href={'#'}>Contactanos</Link>
         </li>
@@ -45,9 +48,12 @@ export const Footer = () => {
         </li>
       </ul>
 
-      <div className="flex flex-col gap-2 text-blue-200">
-        <div className="flex">
+      <div className="flex flex-col items-end gap-2 text-blue-200">
+        <div className="hidden sm:flex">
           <Image src={logoSSS} layout="fixed" />
+        </div>
+        <div className="flex sm:hidden">
+          <Image src={logoSSSsmall} />
         </div>
         <div className="flex gap-2 transition hover:text-blue-100 hover:underline">
           <MapPin size={24} className="shrink-0" /> Av. Pte. Roque Sáenz Peña

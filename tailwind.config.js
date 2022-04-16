@@ -59,7 +59,12 @@ module.exports = {
         },
       },
       gridTemplateColumns: {
-        'footer': '13% 1.3fr repeat(2, 1fr)',
+        'footer-lg': '13% 1.3fr repeat(2, 1fr)',
+        'footer-md': '18% repeat(2, 1fr)',
+        'footer': 'repeat(2, 1fr)',
+      },
+      screen: {
+        'xs': '380px',
       },
     },
   },

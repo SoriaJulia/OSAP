@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import React, { ReactNode } from 'react';
-
+import { CaretRight } from 'phosphor-react';
 type NavbarItemProps = {
   href: string;
   text: string;
   showDropdown?: boolean;
   icon?: ReactNode;
+  mdHidden?: boolean;
 };
 
 export const NavbarItem: React.FC<NavbarItemProps> = ({
@@ -13,14 +14,22 @@ export const NavbarItem: React.FC<NavbarItemProps> = ({
   showDropdown,
   icon,
   children,
+  mdHidden = false,
   ...props
 }) => {
   return (
-    <li className="group rounded-sm p-4 font-display text-xl text-orange-600 transition hover:bg-gray-50 hover:text-orange-400">
+    <li
+      className={`${
+        mdHidden ? 'md:hidden' : ''
+      } group rounded-sm p-2 font-display text-lg text-orange-600 transition hover:bg-gray-50 hover:text-orange-400 lg:p-4 lg:text-xl`}
+    >
       <Link {...props}>
-        <div className="flex items-center">
-          {icon}
-          {text}
+        <div className="flex items-center justify-between">
+          <div className="flex gap-2">
+            {icon}
+            {text}
+          </div>
+          <CaretRight className="md:hidden" />
         </div>
       </Link>
       {showDropdown && (
