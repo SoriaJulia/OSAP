@@ -15,7 +15,7 @@ const Button: React.FC<ButtonProps> = ({ label, variant, icon }) => {
   return (
     <div>
       <button
-        className={`w-fit rounded rounded-full py-2 px-4 transition hover:scale-105 ${getVatriantClasses(
+        className={`w-fit rounded-full py-2 px-4 transition hover:scale-105 ${getVatriantClasses(
           variant
         )} `}
       >
