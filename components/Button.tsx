@@ -1,10 +1,17 @@
-import React, { ReactNode } from 'react';
+import React, { ButtonHTMLAttributes, EventHandler, ReactNode } from 'react';
 type ButtonProps = {
   label: string;
   variant: string;
   icon?: ReactNode;
-};
-const Button: React.FC<ButtonProps> = ({ label, variant, icon }) => {
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+const Button: React.FC<ButtonProps> = ({
+  label,
+  variant,
+  icon,
+  onClick,
+  type = 'button',
+  ...props
+}) => {
   const getVatriantClasses = (variant: string) => {
     if (variant === 'outlined') {
       return 'ring-2 ring-inset ring-orange-500 text-orange-600 hover:bg-white';
@@ -18,6 +25,9 @@ const Button: React.FC<ButtonProps> = ({ label, variant, icon }) => {
         className={`w-fit rounded rounded-full py-2 px-4 transition hover:scale-105 ${getVatriantClasses(
           variant
         )} `}
+        onClick={onClick}
+        type={type}
+        {...props}
       >
         {label}
         {icon}

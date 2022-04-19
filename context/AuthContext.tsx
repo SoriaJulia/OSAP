@@ -1,11 +1,20 @@
 import { useState, useEffect, createContext, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { NEXT_URL, SOAP_API_URL } from '../config';
+import useLocalStorage from '../hooks/useLocalStorage';
+import { UserRoles } from '../types/enums';
+import { User } from 'phosphor-react';
 
+interface User {
+  name?: string;
+  role: UserRoles;
+}
 interface IAuthContext {
-  user: any;
+  user: User | null;
   error: any;
   login: (credentials: { user: string; password: string }) => void;
+  logout: () => void;
+  setUser: any;
 }
 
 export const AuthContext = createContext<IAuthContext | null>(null);
@@ -20,12 +29,15 @@ export const useAuth = () => {
 
 const AuthProvider: React.FC<any> = ({ children }) => {
   const [user, setUser] = useState(null);
+  // const [user, setUser] = useLocalStorage<User>('user', {
+  //   role: UserRoles.PUBLICO,
+  // });
   const [error, setError] = useState([]);
   const router = useRouter();
 
-  // useEffect(() => {
-  //   checkUserLoggedIn();
-  // }, []);
+  useEffect(() => {
+    checkUserLoggedIn();
+  }, []);
 
   // const register = async (user: any) => {
   //   const res = await fetch(`${SOAP_API_URL}/register`, {
@@ -40,6 +52,13 @@ const AuthProvider: React.FC<any> = ({ children }) => {
   //   }
   // };
 
+  const checkUserLoggedIn = () => {
+    const storagedUser = window.localStorage.getItem('user');
+    if (storagedUser) {
+      setUser(JSON.parse(storagedUser));
+    }
+  };
+
   const login = async (credentials: any) => {
     const res = await fetch(`${NEXT_URL}/login`, {
       method: 'POST',
@@ -48,17 +67,17 @@ const AuthProvider: React.FC<any> = ({ children }) => {
     });
     const result = await res.json();
     if (res.ok) {
-      setUser(result.user);
-      router.push('/account/dashboard');
+      // setLocalUser(result);
+      window.localStorage.setItem('user', JSON.stringify(result));
+      setUser(result);
+      router.push('/clientes/turnosonline');
     }
   };
-  // const logout = async () => {
-  //   const res = await fetch(`${SOAP_API_URL}/logout`, { method: 'POST' });
-  //   if (res.ok) {
-  //     setUser(null);
-  //     router.push('/');
-  //   }
-  // };
+  const logout = async () => {
+    window.localStorage.removeItem('user');
+    setUser(null);
+    router.replace('/');
+  };
   // const checkUserLoggedIn = async () => {
   //   const res = await fetch(`${SOAP_API_URL}/user`);
   //   const result = await res.json();
@@ -86,6 +105,8 @@ const AuthProvider: React.FC<any> = ({ children }) => {
         user,
         error,
         login,
+        logout,
+        setUser,
       }}
     >
       {children}

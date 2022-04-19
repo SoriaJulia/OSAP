@@ -2,12 +2,16 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
+import LoginModal from '../components/LoginModal';
 import Modal from '../components/Modal';
+import Portal from '../components/Portal';
 import { useAuth } from '../context/AuthContext';
+import useLocalStorage from '../hooks/useLocalStorage';
+import { UserRoles } from '../types/enums';
 
 const Home: NextPage = () => {
-  const { login } = useAuth();
   const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
@@ -17,18 +21,21 @@ const Home: NextPage = () => {
       </Head>
       <button
         onClick={() => {
-          // login({ user: '20016515', password: '20016515' });
           setShowModal(!showModal);
         }}
       >
         LOG IN
       </button>
-      <Modal
-        show={showModal}
-        onDismiss={() => {
-          setShowModal(false);
-        }}
-      />
+      <Portal>
+        <LoginModal
+          userRole={UserRoles.PUBLICO}
+          show={showModal}
+          onDismiss={() => {
+            setShowModal(false);
+          }}
+          title="Ingresá con tu usuario y contraseña"
+        />
+      </Portal>
     </div>
   );
 };

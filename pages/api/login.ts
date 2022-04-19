@@ -14,39 +14,40 @@ const consultarAfiliado = (user: string, password: string): string => {
     <soap12:Body>
       <ConsultarAfiliado xmlns="http://tempuri.org/">
         <pUsuario>${user}</pUsuario>
-        <pClave>${user}</pClave>
+        <pClave>${password}</pClave>
         <pXml>&lt;Afiliado&gt;&lt;TipoDoc&gt;2&lt;/TipoDoc&gt;&lt;NroDoc&gt;${user}&lt;/NroDoc&gt;&lt;NumeroAfiliado&gt;&lt;/NumeroAfiliado&gt;&lt;Fecha&gt;12/04/2022&lt;/Fecha&gt;&lt;/Afiliado&gt;</pXml>
       </ConsultarAfiliado>
     </soap12:Body>
   </soap12:Envelope>`;
 };
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  console.log('before axios');
-
-  axiosClient
-    .post('', consultarAfiliado(req.body.user, req.body.password), {
-      headers: { 'SOAPAction': 'ConsultarAfiliado' },
-    })
-    .then((res) => {
-      // console.log(res);
-      if (XMLValidator.validate(res.data)) {
+  try {
+    const resp = await axiosClient.post(
+      '',
+      consultarAfiliado(req.body.user, req.body.password),
+      {
+        headers: { 'SOAPAction': 'ConsultarAfiliado' },
+      }
+    );
+    if (resp.status === 200) {
+      if (XMLValidator.validate(resp.data)) {
         const parser = new XMLParser();
-        let jsonObj = parser.parse(res.data);
+        let jsonObj = parser.parse(resp.data);
         const result =
           jsonObj['soap:Envelope']['soap:Body'].ConsultarAfiliadoResponse
             .ConsultarAfiliadoResult;
         let resultObj = parser.parse(result);
         console.log(resultObj);
+        res.status(200).json(resultObj.DocumentElement.ConsultaAfiliado);
       }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  console.log('returing...');
-
-  res.status(200).json({ name: 'John Doe' });
+    }
+    return;
+  } catch (err) {
+    console.log(err);
+    res.status(500);
+  }
 }
