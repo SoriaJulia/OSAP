@@ -1,53 +1,62 @@
-import { useState } from 'react';
-import { UserRoles } from '../../types/enums';
 import { NavbarItem } from './NavbarItem';
-import NavbarMenu from './NavbarMenu';
-import { ArrowFatRight, UserCircle } from 'phosphor-react';
-import NavbarMenuItem from './NavbarMenuItem';
-import LoginModal from '../LoginModal';
-import Portal from '../Portal';
+import {
+  Question,
+  Newspaper,
+  UsersThree,
+  Envelope,
+  Phone,
+  House,
+  Buildings,
+  Suitcase,
+} from 'phosphor-react';
 
 const PublicNavbar = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [userRole, setUserRole] = useState(UserRoles.PUBLICO);
-
-  const handleClick = (role: UserRoles) => () => {
-    setShowModal(true);
-    setUserRole(role);
-  };
-
   return (
     <>
-      <NavbarItem href="/clientes/conoceosap" text="Conocé OSAP" />
-      <NavbarItem href="/clientes/cartillamedica" text="Cartilla médica" />
-      <NavbarItem href="/clientes/novedades" text="Novedades" />
-      <NavbarItem href="/clientes/faqs" text="Preguntas frecuentes" />
-      <NavbarMenu
-        text="Ingresar"
-        icon={<UserCircle weight="duotone" size={32} />}
-      >
-        <NavbarMenuItem
-          text="Soy Cliente"
-          icon={<ArrowFatRight weight="duotone" size={32} />}
-          onClick={handleClick(UserRoles.CLIENTE)}
-        />
-        <NavbarMenuItem
-          text="Soy Prestador"
-          icon={<ArrowFatRight weight="duotone" size={32} />}
-          onClick={handleClick(UserRoles.PRESTADOR)}
-        />
-      </NavbarMenu>
-      <Portal>
-        <LoginModal
-          show={showModal}
-          userRole={userRole}
-          onDismiss={() => {
-            setShowModal(false);
-            setUserRole(UserRoles.PUBLICO);
-          }}
-          title="Ingresá con tu usuario y contraseña"
-        />
-      </Portal>
+      <NavbarItem
+        href="/clientes/trabaja"
+        text="Trabaja con nosotros"
+        icon={<Suitcase />}
+        mdHidden
+      />
+      <NavbarItem
+        href="/clientes/contacto"
+        text="Contactanos"
+        mdHidden
+        icon={<Envelope />}
+      />
+      <NavbarItem
+        href="/clientes/conoceosap"
+        text="Conocé OSAP"
+        icon={<House />}
+      />
+      <NavbarItem
+        href="/clientes/novedades"
+        text="Novedades"
+        icon={<Newspaper />}
+      />
+      <NavbarItem
+        href="/clientes/cartillamedica"
+        text="Cartilla médica"
+        icon={<UsersThree />}
+      />
+      <NavbarItem
+        href="/clientes/faqs"
+        text="Preguntas frecuentes"
+        icon={<Question />}
+      />
+      <NavbarItem
+        href="/clientes/telefonos"
+        text="Telefonos Utiles"
+        mdHidden
+        icon={<Phone />}
+      />
+      <NavbarItem
+        href="/clientes/centrosatencion"
+        text="Centros de atencion"
+        icon={<Buildings />}
+        mdHidden
+      />
     </>
   );
 };
