@@ -1,25 +1,40 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import React, { Children, ReactNode, useState } from 'react';
-import logo from '../public/img/logo completo.svg';
+import React, { ReactNode, useState } from 'react';
 import { List } from 'phosphor-react';
 import Drawer from './Drawer';
+import Logo from './SVG/Logo';
+import Slogan from './SVG/Slogan';
 
-export const Header: React.FC<unknown> = ({ children }) => {
+type HeaderProps = {
+  menu: ReactNode;
+};
+
+export const Header: React.FC<HeaderProps> = ({ children, menu }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   return (
     <>
-      <nav className="flex items-center justify-between py-2 px-4 md:px-2 lg:px-9">
+      <nav className="flex items-center justify-between py-2 px-4 lg:px-9">
         <List
-          className="text-orange-700 md:hidden"
+          className="mr-3 text-orange-700 md:hidden"
           onClick={() => {
             setShowDrawer(true);
           }}
-          size={32}
+          size={36}
         />
-
-        <Image src={logo} />
-        <ul className="hidden justify-end md:flex">{children}</ul>
+        <Link href="/">
+          <div className="flex items-center gap-2">
+            <Logo width="90" height="42" className="fill-orange-500" />
+            <Slogan
+              width="120"
+              height="42"
+              className="hidden fill-grey-400  lg:block"
+            />
+          </div>
+        </Link>
+        <div className="flex items-center">
+          <ul className="hidden justify-end md:flex">{children}</ul>
+          {menu}
+        </div>
       </nav>
       <Drawer
         onDismiss={() => {

@@ -7,7 +7,7 @@ import { MapPin, Phone, Envelope, Printer } from 'phosphor-react';
 import Link from 'next/link';
 export const Footer = () => {
   return (
-    <footer className="xs:grid xs:grid-cols-footer flex flex-col gap-9 bg-gradient-to-b from-blue-900 to-grey-700 px-9 py-4 sm:grid md:grid-cols-footer-md lg:grid-cols-footer-lg">
+    <footer className=" flex flex-col gap-9 bg-gradient-to-b from-blue-900 to-grey-700 px-9 py-4 sm:grid md:grid-cols-footer-md lg:grid-cols-footer-lg">
       <div className="hidden md:flex">
         <Image src={logo}></Image>
       </div>

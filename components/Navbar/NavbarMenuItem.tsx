@@ -4,14 +4,9 @@ interface NavbarMenuItem {
   onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
-const NavbarMenuItem: React.FC<NavbarMenuItem> = ({
-  children,
-  text,
-  icon,
-  onClick,
-}) => {
+const NavbarMenuItem: React.FC<NavbarMenuItem> = ({ text, icon, onClick }) => {
   return (
-    <div className="flex" onClick={onClick}>
+    <div className="mb-1 flex gap-2" onClick={onClick}>
       {text}
       {icon}
     </div>

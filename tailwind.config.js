@@ -63,7 +63,7 @@ module.exports = {
         'footer-md': '18% repeat(2, 1fr)',
         'footer': 'repeat(2, 1fr)',
       },
-      screen: {
+      screens: {
         'xs': '380px',
       },
     },

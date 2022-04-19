@@ -6,6 +6,8 @@ import PublicNavbar from './Navbar/PublicNavbar';
 import { UserRoles } from '../types/enums';
 import ClientesNavbar from './Navbar/ClientesNavbar';
 import PrestadoresNavbar from './Navbar/PrestadoresNavbar';
+import LoginMenu from './Navbar/LoginMenu';
+import ProfileMenu from './Navbar/ProfileMenu';
 
 interface LayoutProps {
   userRole?: UserRoles;
@@ -17,12 +19,18 @@ const Navbars = {
   [UserRoles.PRESTADOR]: PrestadoresNavbar,
 };
 
+const Menus = {
+  [UserRoles.PUBLICO]: LoginMenu,
+  [UserRoles.CLIENTE]: ProfileMenu,
+  [UserRoles.PRESTADOR]: ProfileMenu,
+};
+
 const Layout: React.FC<LayoutProps> = ({
   children,
   userRole = UserRoles.PUBLICO,
 }) => {
   const Navbar = Navbars[userRole];
-
+  const Menu = Menus[userRole];
   return (
     <div className="flex min-h-screen flex-col justify-between">
       <Head>
@@ -30,7 +38,7 @@ const Layout: React.FC<LayoutProps> = ({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </Head>
-      <Header>
+      <Header menu={<Menu />}>
         <Navbar />
       </Header>
       <main className="flex w-full flex-auto flex-col items-center justify-center bg-grey-50 px-9 text-center">
