@@ -1,31 +1,26 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { NextPageContext } from 'next';
-import Content from '../components/Content';
+import Layout from '../components/Layout';
 import AuthProvider, { useAuth } from '../context/AuthContext';
 import React from 'react';
 import Home from '.';
 
-const authRoutes = ['/clientes'];
+const authRoutes = ['/clientes', '/clientes/turnosonline'];
+const publicRoutes = ['/', '/faq', '/conoceosap'];
 
-function MyApp({
-  Component: PageComponent,
-  pageProps,
-  router,
-  ...rest
-}: AppProps) {
+function MyApp({ Component: PageComponent, pageProps, router }: AppProps) {
   const { user } = useAuth();
 
   let Page = PageComponent;
 
-  if (!user && authRoutes.indexOf(router.route) >= -1) {
+  if (!user && authRoutes.includes(router.route)) {
     Page = Home;
   }
 
   return (
-    <Content>
+    <Layout userRole={user?.role}>
       <Page {...pageProps} user={user} />
-    </Content>
+    </Layout>
   );
 }
 

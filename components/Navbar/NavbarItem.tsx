@@ -4,14 +4,12 @@ import { CaretRight } from 'phosphor-react';
 type NavbarItemProps = {
   href: string;
   text: string;
-  showDropdown?: boolean;
   icon?: ReactNode;
   mdHidden?: boolean;
 };
 
 export const NavbarItem: React.FC<NavbarItemProps> = ({
   text,
-  showDropdown,
   icon,
   children,
   mdHidden = false,
@@ -32,15 +30,6 @@ export const NavbarItem: React.FC<NavbarItemProps> = ({
           <CaretRight className="md:hidden" />
         </div>
       </Link>
-      {showDropdown && (
-        <ul className="absolute right-5 hidden w-max pt-1 text-orange-700 group-hover:block">
-          {React.Children.map(children, (child) => (
-            <li className="block whitespace-nowrap rounded-t bg-white py-2 px-4 hover:bg-grey-50">
-              {child}
-            </li>
-          ))}
-        </ul>
-      )}
     </li>
   );
 };
