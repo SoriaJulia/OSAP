@@ -29,7 +29,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onDismiss, show, title }) => {
         <div className="hidden md:contents">
           <Image src={loginImg} />
         </div>
-        <form className="mt-10 flex w-full flex-col items-center justify-around px-2 md:w-9/12 md:px-0">
+        <form className="mt-10 mb-2 flex w-full flex-col items-center justify-around px-2 md:w-9/12 md:px-0">
           <div className="flex flex-col">
             <InputText
               type="text"
@@ -62,7 +62,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onDismiss, show, title }) => {
             <Button
               label="Ingresar"
               variant="fill"
-              icon={<SignIn className="ml-1 inline" weight="bold" size={20} />}
+              trailingIcon={<SignIn weight="bold" size={20} />}
               type="submit"
               onClick={(e) => {
                 e.preventDefault();

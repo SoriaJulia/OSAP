@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import Backdrop from './Backdrop';
-import ReactDOM from 'react-dom';
 import { X } from 'phosphor-react';
 import { motion, AnimatePresence } from 'framer-motion';
 

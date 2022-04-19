@@ -12,7 +12,7 @@ const NavbarMenu: React.FC<NavbarMenuProps> = ({ children, text, icon }) => {
         {text}
         {icon}
       </div>
-      <ul className="absolute right-5 mt-3 hidden w-max  text-orange-700 group-hover:block">
+      <ul className="absolute right-5 hidden w-max py-2  text-orange-700 group-hover:block">
         {React.Children.map(children, (child) => (
           <li className="block whitespace-nowrap rounded bg-white py-3 px-4 hover:bg-grey-50">
             {child}

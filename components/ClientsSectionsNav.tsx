@@ -9,7 +9,7 @@ import {
 import React from 'react';
 import SectionButton from './SectionButton';
 
-const Sections = () => {
+const ClientsSectionsNav = () => {
   return (
     <nav className="flex w-screen gap-4 overflow-x-scroll scroll-smooth p-4 md:p-8 lg:justify-center">
       <SectionButton
@@ -53,4 +53,4 @@ const Sections = () => {
   );
 };
 
-export default Sections;
+export default ClientsSectionsNav;

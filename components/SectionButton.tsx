@@ -18,7 +18,7 @@ const SectionButton: React.FC<SectionButtonProps> = ({
 }) => {
   const getVariantClasses = (variant: string) => {
     if (variant === 'blue') {
-      return 'from-blue-300/30 to-white/50 hover:to-white';
+      return 'from-blue-200/30 to-white/50 hover:to-white';
     } else return 'from-orange-50/40 to-yellow-100/40 hover:to-yellow-100/80';
   };
 
