@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import logo from '../public/img/logo.svg';
+import logo from '../public/img/Logo.svg';
 import logoSSS from '../public/img/logo-sss.png';
 import logoSSSsmall from '../public/img/logo-sss-small.png';
 import { MapPin, Phone, Envelope, Printer } from 'phosphor-react';

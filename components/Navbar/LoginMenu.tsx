@@ -39,7 +39,7 @@ const LoginMenu = () => {
             setShowModal(false);
             setUserRole(UserRoles.PUBLICO);
           }}
-          title="Ingresá con tu usuario y contraseña"
+          title="Ingresá con tu numero de DNI y contraseña"
         />
       </Portal>
     </>

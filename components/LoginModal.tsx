@@ -30,7 +30,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onDismiss, show, title }) => {
           <Image src={loginImg} />
         </div>
         <form className="mt-10 mb-2 flex w-full flex-col items-center justify-around px-2 md:w-9/12 md:px-0">
-          <div className="flex flex-col">
+          <div className="flex w-10/12 flex-col gap-6">
             <InputText
               type="text"
               label="DNI"
@@ -51,7 +51,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onDismiss, show, title }) => {
               onChange={changeFormValue(setPassword)}
             />
           </div>
-          <div className="m-2 flex justify-end gap-2 place-self-end pt-6 ">
+          <div className="m-2 flex justify-end gap-2 place-self-end pt-10 md:pt-6 ">
             <Button
               label="Cancelar"
               variant="outlined"
