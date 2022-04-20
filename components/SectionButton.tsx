@@ -33,9 +33,9 @@ const SectionButton: React.FC<SectionButtonProps> = ({
         href={href}
         className={`${hoverEffect} ${getVariantClasses(
           variant
-        )} flex h-40 w-44 shrink-0 flex-col items-center gap-2 rounded border-2 border-orange-600 bg-gradient-to-b p-4 text-xl text-orange-600 md:h-44 md:w-48`}
+        )} flex h-32 w-32 shrink-0 flex-col items-center gap-2 rounded-md border-2 border-orange-600 bg-gradient-to-b p-4 text-base text-orange-600 md:h-44 md:w-48 md:text-2xl`}
       >
-        <Icon size={72} weight="light" />
+        <Icon className="text-4xl md:text-7xl" size="1em" weight="light" />
         {label}
       </a>
     </Link>

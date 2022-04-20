@@ -32,11 +32,12 @@ const Layout: React.FC<LayoutProps> = ({
   const Navbar = Navbars[userRole];
   const Menu = Menus[userRole];
   return (
-    <div className="flex min-h-screen flex-col justify-between">
+    <div className="flex min-h-screen flex-col justify-between overflow-x-hidden">
       <Head>
         <title>Osap</title>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <meta lang="es" />
       </Head>
       <Header menu={<Menu />}>
         <Navbar />

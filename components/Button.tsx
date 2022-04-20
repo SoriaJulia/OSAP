@@ -26,19 +26,17 @@ const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   return (
-    <div>
-      <button
-        className={`${buttonVariants[variant]} 
-        flex w-fit items-center gap-2 rounded-full py-2 px-4 font-semibold tracking-wide transition hover:scale-105`}
-        onClick={onClick}
-        type={type}
-        {...props}
-      >
-        {leadingIcon}
-        {label}
-        {trailingIcon}
-      </button>
-    </div>
+    <button
+      className={`${buttonVariants[variant]} 
+        flex w-fit items-center justify-center gap-2 rounded-md px-2 py-2 font-semibold tracking-wide transition hover:scale-105`}
+      onClick={onClick}
+      type={type}
+      {...props}
+    >
+      <div className="hidden sm:block">{leadingIcon}</div>
+      {label}
+      <div className="hidden sm:block">{trailingIcon}</div>
+    </button>
   );
 };
 

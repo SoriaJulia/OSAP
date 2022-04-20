@@ -6,7 +6,10 @@ interface NavbarMenuItem {
 
 const NavbarMenuItem: React.FC<NavbarMenuItem> = ({ text, icon, onClick }) => {
   return (
-    <button className="mb-1 flex gap-2" onClick={onClick}>
+    <button
+      className="flex w-full gap-2 bg-white py-3 px-4 hover:bg-grey-50"
+      onClick={onClick}
+    >
       {text}
       {icon}
     </button>

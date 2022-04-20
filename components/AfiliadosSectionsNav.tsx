@@ -8,13 +8,9 @@ import {
 } from 'phosphor-react';
 import SectionButton from './SectionButton';
 
-<<<<<<<< HEAD:components/ClientsSectionsNav.tsx
-const ClientsSectionsNav = () => {
-========
 const AfiliadosSectionsNav = () => {
->>>>>>>> origin/main:components/AfiliadosSectionsNav.tsx
   return (
-    <nav className="flex w-screen gap-4 overflow-x-scroll scroll-smooth p-4 md:p-8 lg:justify-center">
+    <nav className="flex w-screen gap-4 overflow-x-scroll scroll-smooth p-4 md:p-8 xl:justify-center">
       <SectionButton
         label="Consulta a distancia"
         icon={ChatsCircle}
@@ -56,8 +52,4 @@ const AfiliadosSectionsNav = () => {
   );
 };
 
-<<<<<<<< HEAD:components/ClientsSectionsNav.tsx
-export default ClientsSectionsNav;
-========
 export default AfiliadosSectionsNav;
->>>>>>>> origin/main:components/AfiliadosSectionsNav.tsx

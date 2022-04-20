@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { X, ArrowRight } from 'phosphor-react';
+import { X, ArrowLeft } from 'phosphor-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Backdrop from './Backdrop';
 
@@ -33,19 +33,19 @@ const Modal: React.FC<ModalProps> = ({
           >
             {showX && (
               <button
-                className="absolute top-3 right-2 self-end md:top-2"
+                className="absolute top-3 left-2 self-end md:right-2 md:top-2"
                 onClick={onDismiss}
               >
-                <ArrowRight
+                <ArrowLeft
                   weight="bold"
                   className="text-grey-300 md:hidden"
-                  size={40}
+                  size={36}
                 />
                 <X weight="bold" className="hidden text-grey-200 md:block" />
               </button>
             )}
 
-            <h1 className="mx-6  mt-12 -mb-4 flex text-center font-display text-3xl text-orange-700 md:mx-2 md:mt-4 md:text-4xl">
+            <h1 className="mr-4 ml-12 mt-2 flex text-center font-display text-2xl text-orange-700 md:mx-2 md:-mb-4 md:mt-4 md:text-4xl">
               {title}
             </h1>
             {children}
