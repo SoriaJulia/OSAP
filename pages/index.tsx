@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useState } from 'react';
-import ClientsSectionsNav from '../components/ClientsSectionsNav';
 import Modal from '../components/Modal';
 
 const Home: NextPage = () => {
@@ -20,7 +19,7 @@ const Home: NextPage = () => {
         onDismiss={() => {
           setShowModal(false);
         }}
-        title={''}
+        title=""
       />
     </div>
   );

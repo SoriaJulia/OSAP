@@ -1,11 +1,11 @@
-import React, { forwardRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import * as React from 'react';
+import { motion } from 'framer-motion';
 
-const Backdrop: React.FC<any> = ({ children, onClickHandler, show }) => {
+const Backdrop: React.FC<any> = ({ onClickHandler, show }) => {
   return (
     <motion.div
       id="backdrop"
-      key={'backdrop'}
+      key="backdrop"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

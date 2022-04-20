@@ -1,9 +1,9 @@
 import { useState, useEffect, createContext, useContext } from 'react';
 import { useRouter } from 'next/router';
+import { User } from 'phosphor-react';
 import { NEXT_URL, SOAP_API_URL } from '../config';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { UserRoles } from '../types/enums';
-import { User } from 'phosphor-react';
 
 interface User {
   name?: string;
@@ -35,10 +35,6 @@ const AuthProvider: React.FC<any> = ({ children }) => {
   const [error, setError] = useState([]);
   const router = useRouter();
 
-  useEffect(() => {
-    checkUserLoggedIn();
-  }, []);
-
   // const register = async (user: any) => {
   //   const res = await fetch(`${SOAP_API_URL}/register`, {
   //     method: 'POST',
@@ -58,7 +54,9 @@ const AuthProvider: React.FC<any> = ({ children }) => {
       setUser(JSON.parse(storagedUser));
     }
   };
-
+  useEffect(() => {
+    checkUserLoggedIn();
+  }, []);
   const login = async (credentials: any) => {
     const res = await fetch(`${NEXT_URL}/login`, {
       method: 'POST',
@@ -70,7 +68,7 @@ const AuthProvider: React.FC<any> = ({ children }) => {
       // setLocalUser(result);
       window.localStorage.setItem('user', JSON.stringify(result));
       setUser(result);
-      router.push('/clientes/turnosonline');
+      router.push('/afiliados');
     }
   };
   const logout = async () => {
@@ -101,6 +99,7 @@ const AuthProvider: React.FC<any> = ({ children }) => {
 
   return (
     <AuthContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         user,
         error,

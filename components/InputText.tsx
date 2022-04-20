@@ -1,4 +1,6 @@
-import React, { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes } from 'react';
+import * as React from 'react';
+
 type InputTextProps = {
   label: string;
   helpText?: string;

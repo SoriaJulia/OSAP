@@ -1,15 +1,15 @@
 import Image from 'next/image';
-import React from 'react';
+import { MapPin, Phone, Envelope, Printer } from 'phosphor-react';
+import Link from 'next/link';
 import logo from '../public/img/Logo.svg';
 import logoSSS from '../public/img/logo-sss.png';
 import logoSSSsmall from '../public/img/logo-sss-small.png';
-import { MapPin, Phone, Envelope, Printer } from 'phosphor-react';
-import Link from 'next/link';
+
 export const Footer = () => {
   return (
     <footer className=" flex flex-col gap-9 bg-gradient-to-b from-blue-900 to-grey-700 px-9 py-4 sm:grid md:grid-cols-footer-md lg:grid-cols-footer-lg">
       <div className="hidden md:flex">
-        <Image src={logo}></Image>
+        <Image src={logo} />
       </div>
 
       <ul className="flex flex-col justify-center gap-2 text-blue-200">
@@ -32,19 +32,19 @@ export const Footer = () => {
 
       <ul className="hidden flex-col justify-center gap-2 text-blue-400 lg:flex">
         <li className="transition hover:text-blue-300 hover:underline">
-          <Link href={'#'}>Contactanos</Link>
+          <Link href="./contacto">Contactanos</Link>
         </li>
         <li className="transition hover:text-blue-300 hover:underline">
-          <Link href={'#'}>Trabajá con nosotros</Link>
+          <Link href="./trabaja">Trabajá con nosotros</Link>
         </li>
         <li className="transition hover:text-blue-300 hover:underline">
-          <Link href={'#'}>Preguntas frecuentes</Link>
+          <Link href="./faq">Preguntas frecuentes</Link>
         </li>
         <li className="transition hover:text-blue-300 hover:underline">
-          <Link href={'#'}>Telefonos útiles</Link>
+          <Link href="./telefonos">Telefonos útiles</Link>
         </li>
         <li className="transition hover:text-blue-300 hover:underline">
-          <Link href={'#'}>Centros de atención</Link>
+          <Link href="./centrosatencion">Centros de atención</Link>
         </li>
       </ul>
 

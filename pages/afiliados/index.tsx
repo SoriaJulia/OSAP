@@ -1,16 +1,16 @@
 import { NextPage } from 'next';
-import React from 'react';
-import Button from '../../components/Button';
-import ClientsSectionsNav from '../../components/ClientsSectionsNav';
 import { Bank, CreditCard, Receipt, Download } from 'phosphor-react';
-export const Clientes: NextPage<{ user: any }> = ({ user }) => {
+import Button from '../../components/Button';
+import AfiliadosSectionsNav from '../../components/AfiliadosSectionsNav';
+
+export const Afiliados: NextPage<{ user: any }> = ({ user }) => {
   return (
     <div>
       <div className="flex h-44 w-screen flex-col justify-center gap-4 bg-gradient-to-t from-blue-300/60 to-blue-100/80 text-blue-500">
         <h1 className="text-5xl">¡Hola! Te damos la bienvenida</h1>
         <h2 className="text-2xl">Realiza tus tramites y consultas online</h2>
       </div>
-      <ClientsSectionsNav />
+      <AfiliadosSectionsNav />
       <section className="flex flex-col items-center">
         <h3 className="text-3xl text-blue-800">Pagos y facturación</h3>
         <div className="flex justify-center gap-4 pb-4 pt-6">
@@ -40,7 +40,7 @@ export const Clientes: NextPage<{ user: any }> = ({ user }) => {
                 <th>Nro de factura</th>
                 <th>Estado</th>
                 <th>Importe</th>
-                <th className="w-20"></th>
+                <th className="w-20" />
               </tr>
             </thead>
             <tbody className="my-2">
@@ -74,4 +74,4 @@ export const Clientes: NextPage<{ user: any }> = ({ user }) => {
   );
 };
 
-export default Clientes;
+export default Afiliados;

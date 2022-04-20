@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
-import Backdrop from './Backdrop';
+import * as React from 'react';
 import { X, ArrowRight } from 'phosphor-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Backdrop from './Backdrop';
 
 export type ModalProps = {
   show: boolean;
@@ -23,7 +23,7 @@ const Modal: React.FC<ModalProps> = ({
         <>
           <Backdrop onClickHandler={onDismiss} show={show} />
           <motion.div
-            key={'modal'}
+            key="modal"
             initial={{ opacity: 0, y: '50%', x: '-50%' }}
             animate={{ opacity: 1, y: '-50%' }}
             exit={{ y: 1000 }}

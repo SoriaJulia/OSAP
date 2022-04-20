@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import React, { ReactNode } from 'react';
-import { CaretRight, Circle } from 'phosphor-react';
+import { ReactNode } from 'react';
+import * as React from 'react';
+import { CaretRight } from 'phosphor-react';
 import { motion } from 'framer-motion';
+
 type NavbarItemProps = {
   href: string;
   text: string;

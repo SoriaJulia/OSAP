@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import React, { ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
+import * as React from 'react';
 import { List } from 'phosphor-react';
 import Drawer from './Drawer';
 import Logo from './SVG/Logo';
@@ -41,7 +42,6 @@ export const Header: React.FC<HeaderProps> = ({ children, menu }) => {
           setShowDrawer(false);
         }}
         show={showDrawer}
-        className="md:hidden"
       >
         {children}
       </Drawer>

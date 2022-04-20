@@ -1,5 +1,4 @@
 import { UserCircle, User, SignOut } from 'phosphor-react';
-import React from 'react';
 import { useAuth } from '../../context/AuthContext';
 import NavbarMenu from './NavbarMenu';
 import NavbarMenuItem from './NavbarMenuItem';
@@ -13,9 +12,15 @@ function ProfileMenu() {
     >
       <NavbarMenuItem
         text="Mis Datos"
+        onClick={() => {
+          console.log('TODO: redirect to mis datos');
+        }}
         icon={<User weight="light" size={32} />}
       />
       <NavbarMenuItem
+        onClick={() => {
+          console.log('TODO cerrar sesion');
+        }}
         text="Cerrar sesion"
         icon={<SignOut weight="light" size={32} />}
       />

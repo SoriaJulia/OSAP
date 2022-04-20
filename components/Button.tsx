@@ -1,4 +1,5 @@
-import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
+import * as React from 'react';
 
 const buttonVariants = {
   fill: 'bg-orange-500 text-grey-50 hover:bg-orange-400',
@@ -14,6 +15,7 @@ type ButtonProps = {
   trailingIcon?: ReactNode;
   leadingIcon?: ReactNode;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
+
 const Button: React.FC<ButtonProps> = ({
   label,
   onClick,
@@ -26,7 +28,8 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <div>
       <button
-        className={`${buttonVariants[variant]} flex w-fit items-center gap-2 rounded-full py-2 px-4 font-semibold tracking-wide transition hover:scale-105  `}
+        className={`${buttonVariants[variant]} 
+        flex w-fit items-center gap-2 rounded-full py-2 px-4 font-semibold tracking-wide transition hover:scale-105`}
         onClick={onClick}
         type={type}
         {...props}

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { IconProps } from 'phosphor-react';
 import Link from 'next/link';
 
@@ -16,10 +16,11 @@ const SectionButton: React.FC<SectionButtonProps> = ({
   href,
   passHref,
 }) => {
-  const getVariantClasses = (variant: string) => {
-    if (variant === 'blue') {
+  const getVariantClasses = (selectedVariant: string) => {
+    if (selectedVariant === 'blue') {
       return 'from-blue-200/30 to-white/50 hover:to-white';
-    } else return 'from-orange-50/40 to-yellow-100/40 hover:to-yellow-100/80';
+    }
+    return 'from-orange-50/40 to-yellow-100/40 hover:to-yellow-100/80';
   };
 
   const hoverEffect =
@@ -34,7 +35,7 @@ const SectionButton: React.FC<SectionButtonProps> = ({
           variant
         )} flex h-40 w-44 shrink-0 flex-col items-center gap-2 rounded border-2 border-orange-600 bg-gradient-to-b p-4 text-xl text-orange-600 md:h-44 md:w-48`}
       >
-        <Icon size={72} weight="light"></Icon>
+        <Icon size={72} weight="light" />
         {label}
       </a>
     </Link>

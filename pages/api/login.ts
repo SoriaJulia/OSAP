@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
-import axiosClient from '../../axios';
 import { XMLBuilder, XMLParser, XMLValidator } from 'fast-xml-parser';
+import axiosClient from '../../axios';
 
 type Data = {
   name: string;
@@ -30,17 +30,17 @@ export default async function handler(
       '',
       consultarAfiliado(req.body.user, req.body.password),
       {
-        headers: { 'SOAPAction': 'ConsultarAfiliado' },
+        headers: { SOAPAction: 'ConsultarAfiliado' },
       }
     );
     if (resp.status === 200) {
       if (XMLValidator.validate(resp.data)) {
         const parser = new XMLParser();
-        let jsonObj = parser.parse(resp.data);
+        const jsonObj = parser.parse(resp.data);
         const result =
           jsonObj['soap:Envelope']['soap:Body'].ConsultarAfiliadoResponse
             .ConsultarAfiliadoResult;
-        let resultObj = parser.parse(result);
+        const resultObj = parser.parse(result);
         console.log(resultObj);
         res.status(200).json(resultObj.DocumentElement.ConsultaAfiliado);
       }

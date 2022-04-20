@@ -1,10 +1,9 @@
-import { AnimatePresence, motion, useCycle } from 'framer-motion';
-import React, { Children, useRef } from 'react';
-import Backdrop from './Backdrop';
+import { AnimatePresence, motion } from 'framer-motion';
+import * as React from 'react';
 import { X } from 'phosphor-react';
+import Backdrop from './Backdrop';
 
 type DrawerProps = {
-  className: string;
   show: boolean;
   onDismiss: () => void;
 };
