@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { Bank, CreditCard, Receipt, Download } from 'phosphor-react';
 import Head from 'next/head';
-import Button from '../../components/Button';
+import Button from '../../components/Base/Button';
 import AfiliadosSectionsNav from '../../components/AfiliadosSectionsNav';
 
 export const Afiliados: NextPage<{ user: any }> = ({ user }) => {

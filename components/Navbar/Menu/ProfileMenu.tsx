@@ -1,5 +1,5 @@
 import { UserCircle, User, SignOut } from 'phosphor-react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../../context/AuthContext';
 import NavbarMenu from './NavbarMenu';
 import NavbarMenuItem from './NavbarMenuItem';
 

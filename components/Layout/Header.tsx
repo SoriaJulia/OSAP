@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { ReactNode, useState } from 'react';
 import * as React from 'react';
 import { List } from 'phosphor-react';
-import Drawer from './Drawer';
-import Logo from './SVG/Logo';
-import Slogan from './SVG/Slogan';
+import Drawer from '../Navbar/Drawer';
+import Logo from '../SVG/Logo';
+import Slogan from '../SVG/Slogan';
 
 type HeaderProps = {
   menu: ReactNode;

@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import * as React from 'react';
 import { X } from 'phosphor-react';
-import Backdrop from './Backdrop';
+import Backdrop from '../Base/Backdrop';
 
 type DrawerProps = {
   show: boolean;

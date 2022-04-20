@@ -2,12 +2,12 @@ import Head from 'next/head';
 import * as React from 'react';
 import { Footer } from './Footer';
 import { Header } from './Header';
-import PublicNavbar from './Navbar/PublicNavbar';
-import { UserRoles } from '../types/enums';
-import AfiliadosNavbar from './Navbar/AfiliadosNavbar';
-import PrestadoresNavbar from './Navbar/PrestadoresNavbar';
-import LoginMenu from './Navbar/LoginMenu';
-import ProfileMenu from './Navbar/ProfileMenu';
+import PublicNavbar from '../Navbar/PublicNavbar';
+import { UserRoles } from '../../types/enums';
+import AfiliadosNavbar from '../Navbar/AfiliadosNavbar';
+import PrestadoresNavbar from '../Navbar/PrestadoresNavbar';
+import LoginMenu from '../Navbar/Menu/LoginMenu';
+import ProfileMenu from '../Navbar/Menu/ProfileMenu';
 
 interface LayoutProps {
   userRole?: UserRoles;

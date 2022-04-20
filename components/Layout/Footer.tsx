@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { MapPin, Phone, Envelope, Printer } from 'phosphor-react';
 import Link from 'next/link';
-import logo from '../public/img/Logo.svg';
-import logoSSS from '../public/img/logo-sss.png';
-import logoSSSsmall from '../public/img/logo-sss-small.png';
+import logo from '../../public/img/Logo.svg';
+import logoSSS from '../../public/img/logo-sss.png';
+import logoSSSsmall from '../../public/img/logo-sss-small.png';
 
 export const Footer = () => {
   return (

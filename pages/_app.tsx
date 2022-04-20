@@ -1,7 +1,7 @@
 import * as React from 'react';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import Layout from '../components/Layout';
+import Layout from '../components/Layout/Layout';
 import AuthProvider, { useAuth } from '../context/AuthContext';
 import Home from '.';
 

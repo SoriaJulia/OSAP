@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useState } from 'react';
-import Modal from '../components/Modal';
+import Modal from '../components/Base/Modal';
 
 const Home: NextPage = () => {
   const [showModal, setShowModal] = useState(false);

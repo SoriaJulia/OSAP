@@ -6,7 +6,7 @@ import {
   FirstAidKit,
   Phone,
 } from 'phosphor-react';
-import SectionButton from './SectionButton';
+import SectionButton from './Base/SectionButton';
 
 const AfiliadosSectionsNav = () => {
   return (
