@@ -5,7 +5,7 @@ import Layout from '../components/Layout';
 import AuthProvider, { useAuth } from '../context/AuthContext';
 import Home from '.';
 
-const authRoutes = ['/clientes', '/clientes/turnosonline'];
+const authRoutes = ['/afliados', '/afiliados/turnosonline'];
 const publicRoutes = ['/', '/faq', '/conoceosap'];
 
 function MyApp({ Component: PageComponent, pageProps, router }: AppProps) {

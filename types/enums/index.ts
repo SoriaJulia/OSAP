@@ -1,5 +1,5 @@
 export enum UserRoles {
   PUBLICO = 'PUBLICO',
-  CLIENTE = 'CLIENTE',
+  AFILIADO = 'AFILIADO',
   PRESTADOR = 'PRESTADOR',
 }

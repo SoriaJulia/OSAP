@@ -8,7 +8,7 @@ import {
 } from 'phosphor-react';
 import SectionButton from './SectionButton';
 
-const ClientsSectionsNav = () => {
+const AfiliadosSectionsNav = () => {
   return (
     <nav className="flex w-screen gap-4 overflow-x-scroll scroll-smooth p-4 md:p-8 lg:justify-center">
       <SectionButton
@@ -52,4 +52,4 @@ const ClientsSectionsNav = () => {
   );
 };
 
-export default ClientsSectionsNav;
+export default AfiliadosSectionsNav;

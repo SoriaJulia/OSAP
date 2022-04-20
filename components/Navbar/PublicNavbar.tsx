@@ -14,45 +14,37 @@ const PublicNavbar = () => {
   return (
     <>
       <NavbarItem
-        href="/clientes/trabaja"
+        href="/trabaja"
         text="Trabaja con nosotros"
         icon={<Suitcase />}
         mdHidden
       />
       <NavbarItem
-        href="/clientes/contacto"
+        href="/contacto"
         text="Contactanos"
         mdHidden
         icon={<Envelope />}
       />
+      <NavbarItem href="/conoceosap" text="Conocé OSAP" icon={<House />} />
+      <NavbarItem href="/novedades" text="Novedades" icon={<Newspaper />} />
       <NavbarItem
-        href="/clientes/conoceosap"
-        text="Conocé OSAP"
-        icon={<House />}
-      />
-      <NavbarItem
-        href="/clientes/novedades"
-        text="Novedades"
-        icon={<Newspaper />}
-      />
-      <NavbarItem
-        href="/clientes/cartillamedica"
+        href="/cartillamedica"
         text="Cartilla médica"
         icon={<UsersThree />}
       />
       <NavbarItem
-        href="/clientes/faqs"
+        href="/faqs"
         text="Preguntas frecuentes"
         icon={<Question />}
       />
       <NavbarItem
-        href="/clientes/telefonos"
+        href="/telefonos"
         text="Telefonos Utiles"
         mdHidden
         icon={<Phone />}
       />
       <NavbarItem
-        href="/clientes/centrosatencion"
+        href="/centrosatencion"
         text="Centros de atencion"
         icon={<Buildings />}
         mdHidden

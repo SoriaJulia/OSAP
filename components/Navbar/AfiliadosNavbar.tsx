@@ -10,50 +10,50 @@ import {
 } from 'phosphor-react';
 import { NavbarItem } from './NavbarItem';
 
-const ClientesNavbar = () => {
+const AfiliadosNavbar = () => {
   return (
     <>
       <NavbarItem
-        href="/clientes/trabaja"
+        href="/afiliados/trabaja"
         text="Trabaja con nosotros"
         icon={<Suitcase />}
         mdHidden
       />
       <NavbarItem
-        href="/clientes/contacto"
+        href="/afiliados/contacto"
         text="Contactanos"
         mdHidden
         icon={<Envelope />}
       />
       <NavbarItem
-        href="/clientes/faqs"
+        href="/afiliados/faqs"
         text="Preguntas frecuentes"
         icon={<Question />}
       />
       <NavbarItem
-        href="/clientes/telefonos"
+        href="/afiliados/telefonos"
         text="Telefonos Utiles"
         mdHidden
         icon={<Phone />}
       />
       <NavbarItem
-        href="/clientes/centrosatencion"
+        href="/afiliados/centrosatencion"
         text="Centros de atencion"
         icon={<Buildings />}
         mdHidden
       />
       <NavbarItem
-        href="/clientes/turnosonline"
+        href="/afiliados/turnosonline"
         text="Turnos online"
         icon={<Calendar />}
       />
       <NavbarItem
-        href="/clientes/cartillamedica"
+        href="/afiliados/cartillamedica"
         text="Cartilla médica"
         icon={<UsersThree />}
       />
       <NavbarItem
-        href="/clientes/pagosyfacturacion"
+        href="/afiliados/pagosyfacturacion"
         text="Pagos y facturación"
         icon={<CreditCard />}
       />
@@ -61,4 +61,4 @@ const ClientesNavbar = () => {
   );
 };
 
-export default ClientesNavbar;
+export default AfiliadosNavbar;

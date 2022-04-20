@@ -4,7 +4,7 @@ import { Footer } from './Footer';
 import { Header } from './Header';
 import PublicNavbar from './Navbar/PublicNavbar';
 import { UserRoles } from '../types/enums';
-import ClientesNavbar from './Navbar/ClientesNavbar';
+import AfiliadosNavbar from './Navbar/AfiliadosNavbar';
 import PrestadoresNavbar from './Navbar/PrestadoresNavbar';
 import LoginMenu from './Navbar/LoginMenu';
 import ProfileMenu from './Navbar/ProfileMenu';
@@ -15,13 +15,13 @@ interface LayoutProps {
 
 const Navbars = {
   [UserRoles.PUBLICO]: PublicNavbar,
-  [UserRoles.CLIENTE]: ClientesNavbar,
+  [UserRoles.AFILIADO]: AfiliadosNavbar,
   [UserRoles.PRESTADOR]: PrestadoresNavbar,
 };
 
 const Menus = {
   [UserRoles.PUBLICO]: LoginMenu,
-  [UserRoles.CLIENTE]: ProfileMenu,
+  [UserRoles.AFILIADO]: ProfileMenu,
   [UserRoles.PRESTADOR]: ProfileMenu,
 };
 

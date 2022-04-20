@@ -68,7 +68,7 @@ const AuthProvider: React.FC<any> = ({ children }) => {
       // setLocalUser(result);
       window.localStorage.setItem('user', JSON.stringify(result));
       setUser(result);
-      router.push('/clientes/turnosonline');
+      router.push('/afiliados');
     }
   };
   const logout = async () => {

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { SignIn } from 'phosphor-react';
 import { useState } from 'react';
 import * as React from 'react';
+import Router from 'next/router';
 import Button from './Button';
 import InputText from './InputText';
 import Modal, { ModalProps } from './Modal';
@@ -60,7 +61,8 @@ const LoginModal: React.FC<LoginModalProps> = ({
             <Button
               label="Cancelar"
               variant="outlined"
-              onClick={(e) => {
+              type="button"
+              onClick={() => {
                 onDismiss();
               }}
             />
@@ -73,6 +75,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
                 e.preventDefault();
                 // login({ user, password });
                 setUser({ name: 'admin cliente', role: userRole });
+                Router.push('/afiliados');
               }}
             />
           </div>

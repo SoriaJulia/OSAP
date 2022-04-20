@@ -21,8 +21,8 @@ const LoginMenu = () => {
         icon={<UserCircle weight="duotone" size={32} />}
       >
         <NavbarMenuItem
-          text="Como Cliente"
-          onClick={handleClick(UserRoles.CLIENTE)}
+          text="Como Afiliado"
+          onClick={handleClick(UserRoles.AFILIADO)}
           icon={<Person weight="light" size={32} />}
         />
         <NavbarMenuItem
