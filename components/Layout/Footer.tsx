@@ -4,6 +4,7 @@ import Link from 'next/link';
 import logo from '../../public/img/Logo.svg';
 import logoSSS from '../../public/img/logo-sss.png';
 import logoSSSsmall from '../../public/img/logo-sss-small.png';
+import ContactLink from '../Base/ContactLink';
 
 export const Footer = () => {
   return (
@@ -48,20 +49,34 @@ export const Footer = () => {
         </li>
       </ul>
 
-      <div className="flex flex-col items-end gap-2 text-blue-200">
-        <div className="hidden sm:flex">
-          <Image src={logoSSS} layout="fixed" />
+      <div className="flex flex-col items-end gap-2">
+        <div className="hidden md:flex">
+          <Image
+            alt="logo super intendencia de servicios de salud"
+            src={logoSSS}
+            layout="fixed"
+          />
         </div>
-        <div className="flex sm:hidden">
-          <Image src={logoSSSsmall} />
+        <div className="flex md:hidden">
+          <Image
+            alt="logo super intendencia de servicios de salud"
+            src={logoSSSsmall}
+          />
         </div>
-        <div className="flex gap-2 transition hover:text-blue-100 hover:underline">
-          <MapPin size={24} className="shrink-0" /> Av. Pte. Roque Sáenz Peña
-          530 - CABA
-        </div>
-        <div className="flex gap-2 transition hover:text-blue-100 hover:underline">
-          <Phone size={24} /> 0800-222-72583 (SALUD)
-        </div>
+        <ContactLink
+          href="https://goo.gl/maps/pi2u5qHXq1konicFA"
+          variant="lightBlue"
+          label="Av. Pte. Roque Sáenz Peña
+          530 - CABA"
+          target="_blank"
+          icon={<MapPin size={24} className="shrink-0" />}
+        />
+        <ContactLink
+          href="tel:080022272583"
+          label="0800-222-72583 (SALUD)"
+          variant="lightBlue"
+          icon={<Phone size={24} />}
+        />
       </div>
     </footer>
   );

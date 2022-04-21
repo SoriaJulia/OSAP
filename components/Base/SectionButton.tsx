@@ -20,11 +20,11 @@ const SectionButton: React.FC<SectionButtonProps> = ({
     if (selectedVariant === 'blue') {
       return 'from-blue-200/30 to-white/50 hover:to-white';
     }
-    return 'from-orange-50/40 to-yellow-100/40 hover:to-yellow-100/80';
+    return 'from-orange-25/70 to-yellow-50/50 hover:to-white/70 ';
   };
 
   const hoverEffect =
-    'transition-all duration-200 ease-in-out hover:-translate-y-2 hover:border-orange-500 hover:text-orange-500 hover:shadow';
+    'transition-all duration-200 ease-in-out hover:-translate-y-2  hover:border-orange-500 hover:text-orange-500 hover:shadow';
 
   return (
     <Link href={href} passHref={passHref}>
