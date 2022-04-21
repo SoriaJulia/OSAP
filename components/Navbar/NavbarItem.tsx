@@ -24,7 +24,7 @@ export const NavbarItem: React.FC<NavbarItemProps> = ({
       transition={{ delay: 0.4 }}
       className={`${
         mdHidden ? 'md:hidden' : ''
-      } group rounded-sm py-4 font-display text-xl text-blue-900 transition  hover:text-orange-400 md:p-4 md:text-lg md:text-orange-600 lg:text-xl`}
+      } group rounded-sm py-4 font-display text-xl text-blue-900 transition hover:bg-slate-50  hover:text-orange-400 md:p-4 md:text-lg md:text-orange-600 lg:text-xl`}
     >
       <Link {...props}>
         <div className="flex items-center justify-between">

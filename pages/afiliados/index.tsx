@@ -3,6 +3,8 @@ import { Bank, CreditCard, Receipt, Download } from 'phosphor-react';
 import Head from 'next/head';
 import Button from '../../components/Base/Button';
 import AfiliadosSectionsNav from '../../components/AfiliadosSectionsNav';
+import FacturasTable from '../../components/FacturasTable';
+import CosegurosTable from '../../components/CosegurosTable';
 
 export const Afiliados: NextPage<{ user: any }> = ({ user }) => {
   return (
@@ -19,7 +21,7 @@ export const Afiliados: NextPage<{ user: any }> = ({ user }) => {
         </h1>
       </div>
       <AfiliadosSectionsNav />
-      <section className="flex flex-col items-center">
+      <section className="mb-10 flex flex-col items-center">
         <h3 className="text-3xl text-blue-800">Pagos y facturación</h3>
         <div className="flex w-full justify-center gap-1 px-2 pb-4 pt-6 sm:gap-4 sm:px-6 xs:gap-2">
           <Button
@@ -48,42 +50,36 @@ export const Afiliados: NextPage<{ user: any }> = ({ user }) => {
               Ver todas
             </button>
           </div>
-          <table className="w-auto table-fixed ">
-            <thead className="border-b border-blue-300/60 text-blue-500">
-              <tr>
-                <th className="hidden px-8 pb-2 sm:inline xs:px-1">Periodo</th>
-                <th className="px-8 xs:px-1 ">Vencimiento</th>
-                <th className="hidden px-4 md:inline">Nro de factura</th>
-                <th className="px-8 xs:px-1">Estado</th>
-                <th className="px-8 xs:px-1">Importe</th>
-                <th className="w-12 sm:w-20" />
-              </tr>
-            </thead>
-            <tbody className="my-2">
-              <tr>
-                <td className="hidden  px-8 sm:inline xs:px-1">04/2022</td>
-                <td className="px-8 xs:px-1">15/05/2022</td>
-                <td className="hidden px-4 md:inline">2-5244125</td>
-                <td className="px-8 xs:px-1">Pendiente</td>
-                <td className="px-8 xs:px-1">$34344</td>
-                <td className="flex gap-2 py-2 text-blue-400">
-                  <Download size={24} />
-                  <Receipt size={24} />
-                </td>
-              </tr>
-              <tr className="my-2">
-                <td className="hidden  px-8 sm:inline xs:px-1">04/2022</td>
-                <td className="px-8 xs:px-1">15/05/2022</td>
-                <td className="hidden px-4 md:inline">2-5244125</td>
-                <td className="px-8 xs:px-1">Pendiente</td>
-                <td className="px-8 xs:px-1">$34344</td>
-                <td className="flex gap-2 py-2 text-blue-400">
-                  <Download size={24} />
-                  <Receipt size={24} />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <FacturasTable />
+        </article>
+        <article className="mt-6 flex w-screen flex-col overflow-x-scroll bg-white py-4 px-6 text-left md:m-2 lg:my-2 lg:w-3/4">
+          <div className="mb-4 flex  gap-4 sm:justify-between ">
+            <h4 className=" text-lg text-grey-400">
+              Ultimos coseguros y cargos
+            </h4>
+            <button
+              type="button"
+              className="text-left text-blue-400 decoration-blue-300 hover:underline "
+            >
+              Ver todos
+            </button>
+          </div>
+          <CosegurosTable />
+        </article>
+        <article className="mt-2 w-full px-4 text-left md:px-8 lg:w-3/4 lg:px-0">
+          <a
+            href="/formulario"
+            className="flex items-center gap-2 py-2 text-blue-700 transition-all hover:text-blue-500 hover:underline hover:decoration-blue-500 md:text-lg"
+          >
+            <Download /> Formulario de acreditación automática de reintegros
+          </a>
+          <a
+            href="/formulario2"
+            className="flex items-center gap-2 py-2 text-blue-700 decoration-blue-300 hover:text-blue-500 hover:underline hover:decoration-blue-500 md:text-lg"
+          >
+            <Download /> Formulario de autorización débito automático de cuenta
+            bancaria
+          </a>
         </article>
       </section>
     </div>

@@ -7,10 +7,7 @@ interface NavbarMenuProps {
 
 const NavbarMenu: React.FC<NavbarMenuProps> = ({ children, text, icon }) => {
   return (
-    <div
-      className="group rounded-sm pl-5 font-display text-xl
-     text-orange-600 transition hover:bg-gray-50 hover:text-orange-400"
-    >
+    <div className="group rounded-sm p-4 font-display text-xl text-orange-600 transition hover:bg-slate-50 hover:text-orange-400">
       <div className="flex items-center">
         {text}
         {icon}

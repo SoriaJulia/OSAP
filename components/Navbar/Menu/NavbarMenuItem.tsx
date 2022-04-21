@@ -7,7 +7,7 @@ interface NavbarMenuItem {
 const NavbarMenuItem: React.FC<NavbarMenuItem> = ({ text, icon, onClick }) => {
   return (
     <button
-      className="flex w-full gap-2 bg-white py-3 px-4 hover:bg-grey-50"
+      className="flex w-full gap-2 bg-white py-3 px-4 hover:bg-slate-50"
       onClick={onClick}
     >
       {text}
