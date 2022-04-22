@@ -32,7 +32,7 @@ const Layout: React.FC<LayoutProps> = ({
   const Navbar = Navbars[userRole];
   const Menu = Menus[userRole];
   return (
-    <div className="flex min-h-screen flex-col justify-between overflow-x-hidden text-blue-900">
+    <div className="flex min-h-screen flex-col justify-between overflow-x-hidden bg-grey-50 text-blue-900">
       <Head>
         <title>Osap</title>
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -42,7 +42,7 @@ const Layout: React.FC<LayoutProps> = ({
       <Header menu={<Menu />}>
         <Navbar />
       </Header>
-      <main className="flex w-full flex-auto flex-col items-center justify-center bg-grey-50 px-9 text-center">
+      <main className="flex w-full flex-auto flex-col items-center justify-center  px-9 text-center">
         {children}
       </main>
       <Footer />

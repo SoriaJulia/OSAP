@@ -23,16 +23,18 @@ const Home: NextPage = () => {
       <TerniumBanner />
       <div className="h-60 w-screen bg-slate-50">Novedades</div>
       <PublicSectionsNav />
-      <section className="mb-6 flex gap-6">
+      <section className="mx-2 mb-6 flex flex-col gap-6 md:flex-row">
         <TelefonosEmergencias />
         <TelefonosAtencion />
       </section>
-      <section className="w-10/12 py-4">
+      <section className="mb-4 w-10/12 py-4">
         <div className="flex justify-between">
           <h3 className="font-display text-4xl text-grey-500/80">Novedades</h3>
           <Button label="Ver todas las novedades" variant="outlined" />
         </div>
-        <div className="mt-4 flex gap-3">
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <CardNovedad />
+          <CardNovedad />
           <CardNovedad />
           <CardNovedad />
         </div>

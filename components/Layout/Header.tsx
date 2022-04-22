@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ children, menu }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   return (
     <>
-      <nav className="flex items-center justify-between py-2 px-4 lg:px-9">
+      <nav className="flex items-center justify-between bg-white py-2 px-4 lg:px-9">
         <List
           className="mr-3 text-orange-700 md:hidden"
           onClick={() => {

@@ -93,7 +93,7 @@ const TelefonosEmergencias = () => {
       </h2>
       {places.map((place) => {
         return (
-          <div className="flex items-center gap-2 px-4 py-2">
+          <div className="flex flex-wrap items-center gap-2 px-4 py-2">
             {place.name}
             <Phone className="text-orange-500" weight="duotone" size={24} />
             {place.phones.map((phone) => {

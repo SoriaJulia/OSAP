@@ -8,7 +8,7 @@ import ContactLink from '../Base/ContactLink';
 
 export const Footer = () => {
   return (
-    <footer className=" flex flex-col gap-9 bg-gradient-to-b from-blue-900 to-grey-700 px-9 py-4 sm:grid md:grid-cols-footer-md lg:grid-cols-footer-lg">
+    <footer className=" mt-12 flex flex-col gap-9 bg-gradient-to-b from-blue-900 to-grey-700 px-9 py-4 sm:grid md:grid-cols-footer-md lg:grid-cols-footer-lg">
       <div className="hidden md:flex">
         <Image src={logo} />
       </div>

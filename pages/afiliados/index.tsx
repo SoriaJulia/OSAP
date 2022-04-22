@@ -21,7 +21,7 @@ export const Afiliados: NextPage<{ user: any }> = ({ user }) => {
         </h1>
       </div>
       <AfiliadosSectionsNav />
-      <section className="mb-10 flex flex-col items-center">
+      <section className="flex flex-col items-center">
         <h3 className="text-3xl text-blue-800">Pagos y facturación</h3>
         <div className="flex w-full justify-center gap-1 px-2 pb-4 pt-6 sm:gap-4 sm:px-6 xs:gap-2">
           <Button

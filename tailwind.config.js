@@ -67,6 +67,9 @@ module.exports = {
       screens: {
         xs: '380px',
       },
+      backgroundImage: {
+        '404img': "url('/img/404.svg')",
+      },
     },
   },
   plugins: [],

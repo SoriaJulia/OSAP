@@ -98,12 +98,21 @@ const TelefonosAtencion = () => {
       </h2>
       {places.map((place) => {
         return (
-          <div className="flex items-center gap-2 px-4 py-2">
+          <div
+            className="flex flex-wrap items-center gap-2 px-4 py-2"
+            key={place.name}
+          >
             {place.name}
-            <Phone className="text-yellow-500" weight="duotone" size={24} />
+            <Phone
+              className="text-yellow-500"
+              key={place.name}
+              weight="duotone"
+              size={24}
+            />
             {place.phones.map((phone) => {
               return (
                 <ContactLink
+                  key={phone.href}
                   href={phone.href}
                   variant="blue"
                   label={phone.label}

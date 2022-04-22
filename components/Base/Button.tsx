@@ -23,11 +23,12 @@ const Button: React.FC<ButtonProps> = ({
   variant = 'fill',
   trailingIcon,
   leadingIcon,
+  className,
   ...props
 }) => {
   return (
     <button
-      className={`${buttonVariants[variant]} 
+      className={`${className} ${buttonVariants[variant]} 
         flex w-fit items-center justify-center gap-2 rounded-md px-2 py-2 font-semibold tracking-wide transition hover:scale-105`}
       onClick={onClick}
       type={type}

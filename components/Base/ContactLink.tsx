@@ -22,7 +22,7 @@ const ContactLink: React.FC<ContactLinkType> = ({
 }) => {
   return (
     <a
-      className={`flex gap-2 underline underline-offset-2 transition ${variants[variant]}`}
+      className={`flex flex-nowrap gap-2 underline underline-offset-2 transition ${variants[variant]}`}
       href={href}
       {...props}
     >
