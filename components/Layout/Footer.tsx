@@ -33,19 +33,19 @@ export const Footer = () => {
 
       <ul className="hidden flex-col justify-center gap-2 text-blue-400 lg:flex">
         <li className="transition hover:text-blue-300 hover:underline">
-          <Link href="./contacto">Contactanos</Link>
+          <Link href="/contacto">Contactanos</Link>
         </li>
         <li className="transition hover:text-blue-300 hover:underline">
-          <Link href="./trabaja">Trabajá con nosotros</Link>
+          <Link href="/trabaja">Trabajá con nosotros</Link>
         </li>
         <li className="transition hover:text-blue-300 hover:underline">
-          <Link href="./faq">Preguntas frecuentes</Link>
+          <Link href="/faq">Preguntas frecuentes</Link>
         </li>
         <li className="transition hover:text-blue-300 hover:underline">
-          <Link href="./telefonos">Telefonos útiles</Link>
+          <Link href="/telefonos">Telefonos útiles</Link>
         </li>
         <li className="transition hover:text-blue-300 hover:underline">
-          <Link href="./centrosatencion">Centros de atención</Link>
+          <Link href="/centrosatencion">Centros de atención</Link>
         </li>
       </ul>
 

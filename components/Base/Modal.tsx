@@ -29,7 +29,7 @@ const Modal: React.FC<ModalProps> = ({
             exit={{ y: 1000 }}
             transition={{ ease: 'anticipate', duration: 1 }}
             id="modal"
-            className="fixed top-1/2 left-1/2 flex h-screen w-screen transform flex-col items-center justify-start rounded bg-grey-50 pr-2 pt-2 md:h-fit md:w-fit md:justify-between"
+            className="fixed top-1/2 left-1/2 z-30 flex h-screen w-screen transform flex-col items-center justify-start rounded bg-grey-50  md:h-fit md:max-h-screen md:w-auto md:justify-between"
           >
             {showX && (
               <>

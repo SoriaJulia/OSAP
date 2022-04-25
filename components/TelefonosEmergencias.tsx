@@ -93,7 +93,10 @@ const TelefonosEmergencias = () => {
       </h2>
       {places.map((place) => {
         return (
-          <div className="flex flex-wrap items-center gap-2 px-4 py-2">
+          <div
+            key={place.name}
+            className="flex flex-wrap items-center gap-2 px-4 py-2"
+          >
             {place.name}
             <Phone className="text-orange-500" weight="duotone" size={24} />
             {place.phones.map((phone) => {
@@ -102,6 +105,7 @@ const TelefonosEmergencias = () => {
                   href={phone.href}
                   variant="blue"
                   label={phone.label}
+                  key={phone.href}
                 />
               );
             })}

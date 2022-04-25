@@ -14,30 +14,30 @@ const AfiliadosNavbar = () => {
   return (
     <>
       <NavbarItem
-        href="/afiliados/trabaja"
+        href="/trabaja"
         text="Trabaja con nosotros"
         icon={<Suitcase />}
         mdHidden
       />
       <NavbarItem
-        href="/afiliados/contacto"
+        href="/contacto"
         text="Contactanos"
         mdHidden
         icon={<Envelope />}
       />
       <NavbarItem
-        href="/afiliados/faqs"
+        href="/faqs"
         text="Preguntas frecuentes"
         icon={<Question />}
       />
       <NavbarItem
-        href="/afiliados/telefonos"
+        href="/telefonos"
         text="Telefonos Utiles"
         mdHidden
         icon={<Phone />}
       />
       <NavbarItem
-        href="/afiliados/centrosatencion"
+        href="/centrosatencion"
         text="Centros de atencion"
         icon={<Buildings />}
         mdHidden
@@ -48,7 +48,7 @@ const AfiliadosNavbar = () => {
         icon={<Calendar />}
       />
       <NavbarItem
-        href="/afiliados/cartillamedica"
+        href="/cartillamedica"
         text="Cartilla médica"
         icon={<UsersThree />}
       />

@@ -21,7 +21,7 @@ const Drawer: React.FC<DrawerProps> = ({ show, onDismiss, children }) => {
             animate={{ x: 0, width: '75%' }}
             exit={{ x: -400 }}
             transition={{ ease: 'anticipate', duration: 1 }}
-            className="fixed z-10 flex h-full rounded-r-xl bg-grey-50 px-8 pt-14 "
+            className="fixed z-30 flex h-full rounded-r-xl bg-grey-50 px-8 pt-14 "
           >
             <button
               className="absolute top-2 right-2 self-end p-3"
