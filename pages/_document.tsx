@@ -9,7 +9,12 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <meta name="author" content="Julia Soria & Gaspar Arimany" />
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+          <meta lang="es" />
+        </Head>
         <body>
           <Main />
           <NextScript />

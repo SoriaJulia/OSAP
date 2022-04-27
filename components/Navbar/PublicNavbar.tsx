@@ -25,7 +25,7 @@ const PublicNavbar = () => {
         mdHidden
         icon={<Envelope />}
       />
-      <NavbarItem href="/conoceosap" text="Conocé OSAP" icon={<House />} />
+      <NavbarItem href="/conoceOsap" text="Conocé OSAP" icon={<House />} />
       <NavbarItem href="/novedades" text="Novedades" icon={<Newspaper />} />
       <NavbarItem
         href="/cartillamedica"

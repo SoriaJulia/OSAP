@@ -33,12 +33,6 @@ const Layout: React.FC<LayoutProps> = ({
   const Menu = Menus[userRole];
   return (
     <div className="flex min-h-screen flex-col justify-between overflow-x-hidden bg-grey-50 text-blue-900">
-      <Head>
-        <title>Osap</title>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <meta lang="es" />
-      </Head>
       <Header menu={<Menu />}>
         <Navbar />
       </Header>

@@ -1,8 +1,8 @@
 @import url('https://use.typekit.net/fjq7zjb.css');
+@import '@splidejs/react-splide/css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 /* scrollbar */
 ::-webkit-scrollbar {
   width: 0px;

@@ -6,7 +6,7 @@ import AuthProvider, { useAuth } from '../context/AuthContext';
 import Home from '.';
 
 const authRoutes = ['/afliados', '/afiliados/turnosonline'];
-const publicRoutes = ['/', '/faq', '/conoceosap'];
+const publicRoutes = ['/', '/faq', '/conoceOsap'];
 
 function MyApp({ Component: PageComponent, pageProps, router }: AppProps) {
   const { user } = useAuth();

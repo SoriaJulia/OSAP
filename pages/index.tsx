@@ -2,9 +2,9 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useState } from 'react';
 import Button from '../components/Base/Button';
-
 import Modal from '../components/Base/Modal';
-import CardNovedad from '../components/CardNovedad';
+import CardNovedad from '../components/Novedades/Card';
+import SliderNovedades from '../components/Novedades/Slider';
 import PublicSectionsNav from '../components/PublicSectionsNav';
 import TelefonosAtencion from '../components/TelefonosAtencion';
 import TelefonosEmergencias from '../components/TelefonosEmergencias';
@@ -16,13 +16,15 @@ const Home: NextPage = () => {
   return (
     <div className="flex min-h-screen flex-col items-center pb-2">
       <Head>
-        <title>Osap</title>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <title>OSAP - Obra Social Aceros Paraná</title>
+        <meta
+          name="description"
+          content="Obra social de los empleados de Ternium Argentina"
+        />
       </Head>
       <TerniumBanner />
       <div className=" mb-4 hidden w-screen bg-slate-50 lg:flex">
-        <CardNovedad display="extended" />
+        <SliderNovedades />
       </div>
       <PublicSectionsNav />
       <section className="mx-2 mb-6 flex flex-col gap-6 md:flex-row">

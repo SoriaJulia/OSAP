@@ -1,15 +1,14 @@
-import Image, { StaticImageData } from 'next/image';
 import { Download, ShareNetwork } from 'phosphor-react';
 import React, { ReactNode } from 'react';
-import Modal, { ModalProps } from './Base/Modal';
+import Modal, { ModalProps } from '../Base/Modal';
 
-type NovedadModalProps = {
+type ModalNovedadProps = {
   text: ReactNode;
   image?: string;
   alt?: string;
 } & ModalProps;
 
-const NovedadModal: React.FC<NovedadModalProps> = ({
+const ModalNovedad: React.FC<ModalNovedadProps> = ({
   onDismiss,
   show,
   title,
@@ -44,4 +43,4 @@ const NovedadModal: React.FC<NovedadModalProps> = ({
   );
 };
 
-export default NovedadModal;
+export default ModalNovedad;

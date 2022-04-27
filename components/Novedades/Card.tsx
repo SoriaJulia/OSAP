@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { ArrowsOutSimple, ShareNetwork } from 'phosphor-react';
-import imagen from '../public/img/Novedad.jpg';
-import Button from './Base/Button';
-import NovedadModal from './NovedadModal';
-import Portal from './Layout/Portal';
+import imagen from '../../public/img/Novedad.jpg';
+import Button from '../Base/Button';
+import ModalNovedad from './Modal';
+import Portal from '../Layout/Portal';
 
 type CardNovedadType = {
   display: string;
@@ -65,7 +65,7 @@ const CardNovedad: React.FC<CardNovedadType> = ({ display }) => {
         </div>
       )}
       <Portal>
-        <NovedadModal
+        <ModalNovedad
           show={showModal}
           onDismiss={() => {
             setShowModal(false);
