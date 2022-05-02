@@ -9,7 +9,7 @@ function useMediaQuery(query: string): boolean {
     return false;
   };
 
-  const [matches, setMatches] = useState<boolean>(getMatches());
+  const [matches, setMatches] = useState<boolean>(false);
 
   function handleChange() {
     setMatches(getMatches());

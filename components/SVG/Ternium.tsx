@@ -7,7 +7,12 @@ type TerniumProps = {
   full: boolean;
 };
 
-const TerniumSVG: React.FC<TerniumProps> = ({ width = '124', height = '39', className = 'fill-white', full }) => {
+const TerniumSVG: React.FC<TerniumProps> = ({
+  width = '124',
+  height = '39',
+  className = 'fill-white',
+  full = true,
+}) => {
   return (
     <svg width={width} height={height} className={className} xmlns="http://www.w3.org/2000/svg">
       <path d="M25.2682 15.9883L0 23.5914V38.2553H34.9977V28.0728L25.2682 15.9883Z" />

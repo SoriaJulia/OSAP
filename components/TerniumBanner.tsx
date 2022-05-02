@@ -5,6 +5,7 @@ import { Breakpoints } from '../types/enums/breakpoints';
 
 const TerniumBanner = () => {
   const matches = useMediaQuery(Breakpoints.MD);
+
   return (
     <div className="flex w-screen items-center justify-center gap-4 bg-gradient-to-br from-orange-500 to-yellow-600 p-2 text-xl text-white lg:text-2xl">
       El plan de Salud de los Empleados de Ternium Argentina
