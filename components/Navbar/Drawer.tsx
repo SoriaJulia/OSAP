@@ -2,6 +2,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import * as React from 'react';
 import { X } from 'phosphor-react';
 import Backdrop from '../Base/Backdrop';
+import useMediaQuery from '../../hooks/useMediaQuery';
+import { Breakpoints } from '../../types/enums/breakpoints';
 
 type DrawerProps = {
   show: boolean;
@@ -9,7 +11,15 @@ type DrawerProps = {
 };
 
 const Drawer: React.FC<DrawerProps> = ({ show, onDismiss, children }) => {
-  // TODO: useMediaQuery to set width 100% in <380
+  const matchesSm = useMediaQuery(Breakpoints.SM);
+  const matchesXs = useMediaQuery(Breakpoints.XS);
+  let width = '100%';
+  if (matchesSm) {
+    width = '55%';
+  } else if (matchesXs) {
+    width = '75%';
+  }
+
   return (
     <AnimatePresence>
       {show && (
@@ -18,9 +28,9 @@ const Drawer: React.FC<DrawerProps> = ({ show, onDismiss, children }) => {
           <motion.nav
             key="drawer"
             initial={{ x: -400, width: '40%' }}
-            animate={{ x: 0, width: '75%' }}
+            animate={{ x: 0, width }}
             exit={{ x: -400 }}
-            transition={{ ease: 'anticipate', duration: 1 }}
+            transition={{ ease: 'easeInOut', duration: 1 }}
             className="fixed top-0 z-30 flex h-full overflow-y-scroll rounded-r-xl bg-grey-50 px-8 pt-14 "
             onClick={onDismiss}
           >
