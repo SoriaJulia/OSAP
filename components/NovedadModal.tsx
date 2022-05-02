@@ -1,4 +1,3 @@
-import Image, { StaticImageData } from 'next/image';
 import { Download, ShareNetwork } from 'phosphor-react';
 import React, { ReactNode } from 'react';
 import Modal, { ModalProps } from './Base/Modal';
@@ -9,14 +8,7 @@ type NovedadModalProps = {
   alt?: string;
 } & ModalProps;
 
-const NovedadModal: React.FC<NovedadModalProps> = ({
-  onDismiss,
-  show,
-  title,
-  text,
-  image,
-  alt,
-}) => {
+const NovedadModal: React.FC<NovedadModalProps> = ({ onDismiss, show, title, text, image, alt }) => {
   return (
     <Modal onDismiss={onDismiss} show={show} title={title}>
       <div className="flex max-h-[90vh] flex-col justify-between md:w-[70vw] xl:w-auto 2xl:max-h-[80vh]">

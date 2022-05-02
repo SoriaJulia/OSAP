@@ -50,15 +50,12 @@ export const Footer = () => {
           <Link href="/centrosatencion">Centros de atención</Link>
         </li>
       </ul>
-
-
       <div className="col-span-2 flex flex-col items-end gap-2 md:col-auto">
         <div className="hidden lg:flex">
           <Image alt="logo super intendencia de servicios de salud" src={logoSSS} layout="fixed" />
         </div>
         <div className="flex self-center sm:self-auto lg:hidden">
           <Image alt="logo super intendencia de servicios de salud" src={logoSSSsmall} />
-
         </div>
         <ContactLink
           href="https://goo.gl/maps/pi2u5qHXq1konicFA"
