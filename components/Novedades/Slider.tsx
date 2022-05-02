@@ -13,7 +13,7 @@ const SliderNovedades = () => {
     speed: 1000,
   };
   return (
-    <Splide options={options}>
+    <Splide className="w-full" options={options}>
       <SplideSlide>
         <CardNovedad display="extended" />
       </SplideSlide>

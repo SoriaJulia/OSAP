@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ children, menu }) => {
   const [showDrawer, setShowDrawer] = useState(false);
   return (
     <>
-      <nav className="flex items-center justify-between bg-white py-2 px-4 lg:px-9">
+      <nav className="sticky top-0 z-10 flex items-center justify-between bg-white py-2 px-4 lg:px-9">
         <List
           className="mr-3 text-orange-700 md:hidden"
           onClick={() => {
@@ -25,11 +25,7 @@ export const Header: React.FC<HeaderProps> = ({ children, menu }) => {
         <Link href="/">
           <div className="flex items-center gap-2">
             <Logo width="90" height="42" className="fill-orange-500" />
-            <Slogan
-              width="120"
-              height="42"
-              className="hidden fill-grey-400  lg:block"
-            />
+            <Slogan width="120" height="42" className="hidden fill-grey-400  lg:block" />
           </div>
         </Link>
         <div className="flex items-center">

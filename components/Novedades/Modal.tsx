@@ -8,17 +8,10 @@ type ModalNovedadProps = {
   alt?: string;
 } & ModalProps;
 
-const ModalNovedad: React.FC<ModalNovedadProps> = ({
-  onDismiss,
-  show,
-  title,
-  text,
-  image,
-  alt,
-}) => {
+const ModalNovedad: React.FC<ModalNovedadProps> = ({ onDismiss, show, title, text, image, alt }) => {
   return (
     <Modal onDismiss={onDismiss} show={show} title={title}>
-      <div className="flex max-h-[90vh] flex-col justify-between md:w-[70vw] xl:w-auto 2xl:max-h-[80vh]">
+      <div className="flex max-h-[90vh] flex-col justify-between md:w-[70vw]  2xl:max-h-[80vh]">
         <div className="mt-6 h-5/6 overflow-y-scroll p-6 text-lg">
           {image && (
             <img

@@ -50,7 +50,13 @@
       {
         "ignoreStrings": true,
         "ignoreTemplateLiterals": true,
-        "code": 80
+        "code": 120
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 120
       }
     ],
     "react-hooks/rules-of-hooks": "error",

@@ -20,28 +20,17 @@ const CardNovedad: React.FC<CardNovedadType> = ({ display }) => {
     <div
       className={`${
         display === 'extended' ? 'flex-row-reverse' : 'flex-col'
-      }  flex rounded bg-white shadow-grey-300 drop-shadow`}
+      }  z-0 flex rounded bg-white shadow-grey-300 drop-shadow`}
     >
-      <Image
-        className="rounded object-cover"
-        src={imagen}
-        height={800}
-        width={2300}
-      />
+      <Image className="rounded object-cover" src={imagen} height={800} width={2300} />
       <div className={`${display === 'extended' ? 'px-14 py-10' : 'p-4'} `}>
-        <h3
-          className={`${
-            display === 'extended' ? 'mb-6 text-4xl' : 'mb-3 text-2xl'
-          } font-display  text-blue-700`}
-        >
+        <h3 className={`${display === 'extended' ? 'mb-6 text-4xl' : 'mb-3 text-2xl'} font-display  text-blue-700`}>
           Plan Adherentes aumento de cuota
         </h3>
         <p className="text-left">
-          Con base en la resolución 2022-459-APN-MS del Ministerio de Salud,
-          publicada el 26 de Febrero de 2022 en el boletín Oficial de la
-          República Argentina, OSAP informa un incremento de SEIS POR CIENTO
-          (6%) a partir del 1º de Marzo de 2022, y SEIS POR CIENTO (6%) a partir
-          del 1º de Abril de 2022.
+          Con base en la resolución 2022-459-APN-MS del Ministerio de Salud, publicada el 26 de Febrero de 2022 en el
+          boletín Oficial de la República Argentina, OSAP informa un incremento de SEIS POR CIENTO (6%) a partir del 1º
+          de Marzo de 2022, y SEIS POR CIENTO (6%) a partir del 1º de Abril de 2022.
         </p>
       </div>
       {display === 'extended' ? (
@@ -50,16 +39,10 @@ const CardNovedad: React.FC<CardNovedadType> = ({ display }) => {
         </div>
       ) : (
         <div className="flex justify-end gap-2 border-t border-gray-100 pr-2 text-orange-500">
-          <button
-            onClick={handleClick()}
-            className="py-4 px-2 hover:text-yellow-600"
-          >
+          <button onClick={handleClick()} className="py-4 px-2 hover:text-yellow-600">
             <ArrowsOutSimple size={24} />
           </button>
-          <button
-            onClick={handleClick()}
-            className="px-2 py-4 hover:text-yellow-600"
-          >
+          <button onClick={handleClick()} className="px-2 py-4 hover:text-yellow-600">
             <ShareNetwork size={24} />
           </button>
         </div>
@@ -79,19 +62,17 @@ const CardNovedad: React.FC<CardNovedadType> = ({ display }) => {
                 <strong>Planes Adherentes OSAP:</strong>
               </p>
               <p>
-                Con base en la resolución 2022-459-APN-MS del Ministerio de
-                Salud, publicada el 26 de Febrero &nbsp;de 2022 en el boletín
-                Oficial de la República Argentina, OSAP informa un incremento de{' '}
+                Con base en la resolución 2022-459-APN-MS del Ministerio de Salud, publicada el 26 de Febrero &nbsp;de
+                2022 en el boletín Oficial de la República Argentina, OSAP informa un incremento de{' '}
                 <strong>SEIS POR CIENTO</strong>{' '}
                 <strong>
-                  &nbsp;(6%) a partir del 1º de Marzo de 2022, y SEIS POR CIENTO
-                  (6%) a partir del 1º de Abril de 2022
+                  &nbsp;(6%) a partir del 1º de Marzo de 2022, y SEIS POR CIENTO (6%) a partir del 1º de Abril de 2022
                 </strong>
                 .
               </p>
               <p>
-                Para su información, adjuntamos el Artículo 1° de la Resolución,
-                publicada en el Boletín Oficial del 26/2/2022.
+                Para su información, adjuntamos el Artículo 1° de la Resolución, publicada en el Boletín Oficial del
+                26/2/2022.
               </p>
               <p>
                 <strong>LA MINISTRA DE SALUD</strong>
@@ -101,26 +82,26 @@ const CardNovedad: React.FC<CardNovedadType> = ({ display }) => {
               </p>
               <p>
                 <em>
-                  ARTÍCULO 1°.- Autorízanse a todas las Entidades de Medicina
-                  Prepaga inscriptas en el Registro Nacional de
+                  ARTÍCULO 1°.- Autorízanse a todas las Entidades de Medicina Prepaga inscriptas en el Registro Nacional
+                  de
                 </em>
               </p>
               <p>
                 <em>
-                  Entidades de Medicina Prepaga (RNEMP) aumentos generales,
-                  complementarios y acumulativos de aquel que ha
+                  Entidades de Medicina Prepaga (RNEMP) aumentos generales, complementarios y acumulativos de aquel que
+                  ha
                 </em>
               </p>
               <p>
                 <em>
-                  sido aprobado para el mes de enero de 2022 mediante la
-                  Resolución Nº 2125/21 del MINISTERIO DE SALUD, de
+                  sido aprobado para el mes de enero de 2022 mediante la Resolución Nº 2125/21 del MINISTERIO DE SALUD,
+                  de
                 </em>
               </p>
               <p>
                 <em>
-                  hasta un SEIS POR CIENTO (6%) a partir del 1º de marzo de 2022
-                  y de hasta un SEIS POR CIENTO (6%) a partir
+                  hasta un SEIS POR CIENTO (6%) a partir del 1º de marzo de 2022 y de hasta un SEIS POR CIENTO (6%) a
+                  partir
                 </em>
               </p>
               <p>

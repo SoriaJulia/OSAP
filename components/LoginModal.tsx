@@ -14,12 +14,7 @@ type LoginModalProps = {
   userRole: UserRoles;
 } & ModalProps;
 
-const LoginModal: React.FC<LoginModalProps> = ({
-  onDismiss,
-  show,
-  title,
-  userRole,
-}) => {
+const LoginModal: React.FC<LoginModalProps> = ({ onDismiss, show, title, userRole }) => {
   const { login, setUser } = useAuth();
   const [user, setUsername] = useState('');
   const [password, setPassword] = useState('');

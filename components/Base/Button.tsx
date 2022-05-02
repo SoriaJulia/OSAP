@@ -4,9 +4,10 @@ import * as React from 'react';
 const buttonVariants = {
   fill: 'bg-orange-500 text-grey-50 hover:bg-orange-400',
   outlined: 'ring-2 ring-inset ring-orange-500 text-orange-600 hover:bg-white',
-  yellowFill: 'bg-yellow-500 font-semibold text-white hover:bg-yellow-400',
-  yellowOutlined:
-    'ring-2 ring-inset font-semibold ring-yellow-500 text-yellow-700 bg-white/50 hover:bg-white',
+  yellowFill: 'bg-yellow-500 text-white hover:bg-yellow-400',
+  yellowOutlined: 'ring-2 ring-inset  ring-yellow-500 text-yellow-700 bg-white/50 hover:bg-white',
+  text: 'underline decoration-orange-300/80 font-light text-orange-500 hover:bg-white underline-offset-1',
+  blueText: 'underline decoration-blue-400/80 font-normal text-blue-600 hover:bg-white underline-offset-1',
 };
 type Variants = keyof typeof buttonVariants;
 type ButtonProps = {
