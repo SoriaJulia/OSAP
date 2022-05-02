@@ -96,6 +96,7 @@ const TelefonosEmergencias = () => {
             <Phone className="text-orange-500" weight="duotone" size={24} />
             {place.phones.map((phone) => {
               return <ContactLink href={phone.href} variant="blue" label={phone.label} key={phone.href} />;
+
             })}
           </div>
         );
