@@ -17,10 +17,7 @@ const Home: NextPage = () => {
     <div className="flex min-h-screen flex-col items-center pb-2">
       <Head>
         <title>OSAP - Obra Social Aceros Paraná</title>
-        <meta
-          name="description"
-          content="Obra social de los empleados de Ternium Argentina"
-        />
+        <meta name="description" content="Obra social de los empleados de Ternium Argentina" />
       </Head>
       <TerniumBanner />
       <div className=" mb-4 hidden w-screen bg-slate-50 lg:flex">
@@ -33,9 +30,7 @@ const Home: NextPage = () => {
       </section>
       <section className="mb-4 w-10/12 py-4">
         <div className="flex justify-between">
-          <h3 className="font-display text-4xl text-grey-500/80">
-            Nuestras últimas novedades
-          </h3>
+          <h3 className="font-display text-4xl text-grey-500/80">Nuestras últimas novedades</h3>
           <Button label="Ver todas" variant="outlined" />
         </div>
         <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

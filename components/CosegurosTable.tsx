@@ -16,18 +16,14 @@ const CosegurosTable = () => {
         <tr>
           <td className="hidden  px-8 sm:table-cell md:px-1">03/2022</td>
           <td className="px-8 md:px-1">15/03/2022</td>
-          <td className="w-80 px-4">
-            ORITI TIZIO MARIANELLA / SANAT. D/L/MUJER
-          </td>
+          <td className="w-80 px-4">ORITI TIZIO MARIANELLA / SANAT. D/L/MUJER</td>
           <td className="hidden px-8 md:table-cell md:px-1">CONSULTA MEDICA</td>
           <td className="px-8 md:px-1">$500</td>
         </tr>
         <tr>
           <td className="hidden  px-8 sm:table-cell md:px-1">03/2022</td>
           <td className="px-8 md:px-1">15/03/2022</td>
-          <td className=" w-80 px-4">
-            ORITI TIZIO MARIANELLA / SANAT. D/L/MUJER
-          </td>
+          <td className=" w-80 px-4">ORITI TIZIO MARIANELLA / SANAT. D/L/MUJER</td>
           <td className="hidden px-8 md:table-cell md:px-1">CONSULTA MEDICA</td>
           <td className="px-8 md:px-1">$500</td>
         </tr>

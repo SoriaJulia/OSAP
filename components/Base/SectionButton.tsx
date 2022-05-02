@@ -9,13 +9,7 @@ type SectionButtonProps = {
   href: string;
   passHref?: boolean;
 };
-const SectionButton: React.FC<SectionButtonProps> = ({
-  label,
-  variant,
-  icon: Icon,
-  href,
-  passHref,
-}) => {
+const SectionButton: React.FC<SectionButtonProps> = ({ label, variant, icon: Icon, href, passHref }) => {
   const getVariantClasses = (selectedVariant: string) => {
     if (selectedVariant === 'blue') {
       return 'from-blue-200/30 to-white/50 hover:to-white';

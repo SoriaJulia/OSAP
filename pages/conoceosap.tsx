@@ -12,16 +12,14 @@ const Conoceosap: NextPage = () => {
         <PageTitle title="Conocé OSAP" />
 
         <p className="text-xl">
-          En OSAP administramos los fondos del personal de TERNIUM ARGENTINA
-          para el cuidado de la salud, proyectándonos hacia una atención rápida
-          y con un mínimo de trámites administrativos para nuestros más de
-          23.000 beneficiarios.
+          En OSAP administramos los fondos del personal de TERNIUM ARGENTINA para el cuidado de la salud, proyectándonos
+          hacia una atención rápida y con un mínimo de trámites administrativos para nuestros más de 23.000
+          beneficiarios.
         </p>
         <p className="mt-4 text-xl">
-          Proveemos la mejor atención a través de nuestra red de servicios
-          médicos asistenciales, con profesionales en todas las especialidades
-          médicas, diagnósticos y servicios complementarios y servicios de
-          emergencia las 24hs todos los días del año.
+          Proveemos la mejor atención a través de nuestra red de servicios médicos asistenciales, con profesionales en
+          todas las especialidades médicas, diagnósticos y servicios complementarios y servicios de emergencia las 24hs
+          todos los días del año.
         </p>
       </article>
       <img

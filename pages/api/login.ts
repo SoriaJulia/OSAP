@@ -21,25 +21,16 @@ const consultarAfiliado = (user: string, password: string): string => {
   </soap12:Envelope>`;
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   try {
-    const resp = await axiosClient.post(
-      '',
-      consultarAfiliado(req.body.user, req.body.password),
-      {
-        headers: { SOAPAction: 'ConsultarAfiliado' },
-      }
-    );
+    const resp = await axiosClient.post('', consultarAfiliado(req.body.user, req.body.password), {
+      headers: { SOAPAction: 'ConsultarAfiliado' },
+    });
     if (resp.status === 200) {
       if (XMLValidator.validate(resp.data)) {
         const parser = new XMLParser();
         const jsonObj = parser.parse(resp.data);
-        const result =
-          jsonObj['soap:Envelope']['soap:Body'].ConsultarAfiliadoResponse
-            .ConsultarAfiliadoResult;
+        const result = jsonObj['soap:Envelope']['soap:Body'].ConsultarAfiliadoResponse.ConsultarAfiliadoResult;
         const resultObj = parser.parse(result);
         console.log(resultObj);
         res.status(200).json(resultObj.DocumentElement.ConsultaAfiliado);

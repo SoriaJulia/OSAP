@@ -16,10 +16,7 @@ const LoginMenu = () => {
   };
   return (
     <>
-      <NavbarMenu
-        text="Ingresar"
-        icon={<UserCircle weight="duotone" size={32} />}
-      >
+      <NavbarMenu text="Ingresar" icon={<UserCircle weight="duotone" size={32} />}>
         <NavbarMenuItem
           text="Como Afiliado"
           onClick={handleClick(UserRoles.AFILIADO)}

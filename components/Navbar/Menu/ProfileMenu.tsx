@@ -6,10 +6,7 @@ import NavbarMenuItem from './NavbarMenuItem';
 function ProfileMenu() {
   const { user } = useAuth();
   return (
-    <NavbarMenu
-      text={user?.name || ''}
-      icon={<UserCircle weight="duotone" size={32} />}
-    >
+    <NavbarMenu text={user?.name || ''} icon={<UserCircle weight="duotone" size={32} />}>
       <NavbarMenuItem
         text="Mis Datos"
         onClick={() => {

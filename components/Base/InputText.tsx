@@ -7,14 +7,7 @@ type InputTextProps = {
   error?: any;
   errorText?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
-const InputText: React.FC<InputTextProps> = ({
-  label,
-  name,
-  helpText,
-  error,
-  errorText,
-  ...props
-}) => {
+const InputText: React.FC<InputTextProps> = ({ label, name, helpText, error, errorText, ...props }) => {
   return (
     <div className="flex flex-col">
       <label className="text-left text-xl text-blue-700" htmlFor={name}>

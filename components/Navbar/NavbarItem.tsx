@@ -11,12 +11,7 @@ type NavbarItemProps = {
   mdHidden?: boolean;
 };
 
-export const NavbarItem: React.FC<NavbarItemProps> = ({
-  text,
-  icon,
-  mdHidden = false,
-  ...props
-}) => {
+export const NavbarItem: React.FC<NavbarItemProps> = ({ text, icon, mdHidden = false, ...props }) => {
   return (
     <motion.li
       initial={{ opacity: 0 }}

@@ -88,26 +88,14 @@ const places = [
 const TelefonosEmergencias = () => {
   return (
     <article className="flex flex-col rounded bg-white p-4">
-      <h2 className="mb-4 font-display text-5xl text-orange-600">
-        Emergencias
-      </h2>
+      <h2 className="mb-4 font-display text-5xl text-orange-600">Emergencias</h2>
       {places.map((place) => {
         return (
-          <div
-            key={place.name}
-            className="flex flex-wrap items-center gap-2 px-4 py-2"
-          >
+          <div key={place.name} className="flex flex-wrap items-center gap-2 px-4 py-2">
             {place.name}
             <Phone className="text-orange-500" weight="duotone" size={24} />
             {place.phones.map((phone) => {
-              return (
-                <ContactLink
-                  href={phone.href}
-                  variant="blue"
-                  label={phone.label}
-                  key={phone.href}
-                />
-              );
+              return <ContactLink href={phone.href} variant="blue" label={phone.label} key={phone.href} />;
             })}
           </div>
         );
