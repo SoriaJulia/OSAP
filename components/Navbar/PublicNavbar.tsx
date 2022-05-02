@@ -6,7 +6,7 @@ const PublicNavbar = () => {
     <>
       <NavbarItem href="/trabaja" text="Trabaja con nosotros" icon={<Suitcase />} mdHidden />
       <NavbarItem href="/contacto" text="Contactanos" mdHidden icon={<Envelope />} />
-      <NavbarItem href="/conoceOsap" text="Conocé OSAP" icon={<House />} />
+      <NavbarItem href="/conoceOSAP" text="Conocé OSAP" icon={<House />} />
       <NavbarItem href="/novedades" text="Novedades" icon={<Newspaper />} />
       <NavbarItem href="/cartillamedica" text="Cartilla médica" icon={<UsersThree />} />
       <NavbarItem href="/faqs" text="Preguntas frecuentes" icon={<Question />} />

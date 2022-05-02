@@ -32,7 +32,7 @@ const Layout: React.FC<LayoutProps> = ({ children, userRole = UserRoles.PUBLICO 
       <Header menu={<Menu />}>
         <Navbar />
       </Header>
-      <main className="flex min-h-[70vh] w-full flex-auto flex-col items-center justify-center  px-9 text-center">
+      <main className="flex min-h-[66vh] w-full flex-auto flex-col items-center justify-center  px-9 text-center">
         {children}
       </main>
       <Footer />
