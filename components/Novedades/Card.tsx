@@ -17,7 +17,7 @@ const CardNovedad: React.FC<CardNovedadType> = ({ display }) => {
   };
 
   return (
-    <div
+    <article
       className={`${
         display === 'extended' ? 'flex-row-reverse' : 'flex-col'
       }  z-0 flex rounded bg-white shadow-grey-300 drop-shadow`}
@@ -116,7 +116,7 @@ const CardNovedad: React.FC<CardNovedadType> = ({ display }) => {
           alt="Periodicos"
         />
       </Portal>
-    </div>
+    </article>
   );
 };
 

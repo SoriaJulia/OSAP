@@ -2,7 +2,7 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import PageTitle from '../components/Base/PageTitle';
 
-const Conoceosap: NextPage = () => {
+const ConoceOsap: NextPage = () => {
   return (
     <section className="container-md flex">
       <Head>
@@ -31,4 +31,4 @@ const Conoceosap: NextPage = () => {
   );
 };
 
-export default Conoceosap;
+export default ConoceOsap;
