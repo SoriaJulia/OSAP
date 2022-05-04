@@ -4,11 +4,11 @@ import PageTitle from '../components/Base/PageTitle';
 
 const ConoceOsap: NextPage = () => {
   return (
-    <section className="container-md flex">
+    <section className="flex">
       <Head>
         <title>Conocé OSAP</title>
       </Head>
-      <article className="flex flex-col p-9 text-left md:w-3/5 xl:pl-20 xl:pr-40">
+      <article className="flex flex-col p-9 text-left md:w-3/5  ">
         <PageTitle title="Conocé OSAP" />
 
         <p className="text-xl">
@@ -23,7 +23,7 @@ const ConoceOsap: NextPage = () => {
         </p>
       </article>
       <img
-        className="hidden w-2/5 p-4 pr-8 md:block"
+        className="hidden w-2/5 p-4 pt-16 pr-8 md:block"
         src="./img/undraw_qa_engineers.svg"
         alt="Ilustración de ingeniero mirando una libreta"
       />

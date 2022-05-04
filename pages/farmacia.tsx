@@ -1,4 +1,5 @@
 import { NextPage } from 'next';
+import Head from 'next/head';
 import { Clock, Phone, Question, ShoppingCart, WhatsappLogo, MapPin, DownloadSimple, Bicycle } from 'phosphor-react';
 import React from 'react';
 import Button from '../components/Base/Button';
@@ -7,9 +8,12 @@ import PageTitle from '../components/Base/PageTitle';
 
 const Farmacia: NextPage = () => {
   return (
-    <section className="flex lg:px-16">
+    <section className="mt-2 flex">
+      <Head>
+        <title>Farmacia Don Bosco - OSAP</title>
+      </Head>
       <div className="flex flex-col justify-around text-left xl:w-3/5">
-        <div className="flex flex-wrap items-center justify-between lg:mr-12">
+        <div className="flex flex-wrap items-center justify-between">
           <PageTitle title="Farmacia Don Bosco" />
           <div className="mb-8 flex items-end gap-2 md:mb-0">
             <Button
@@ -28,14 +32,14 @@ const Farmacia: NextPage = () => {
               trailingIcon={<ShoppingCart weight="bold" />}
               onClick={() => window.open('http://190.228.161.158/farma2', '_blank')}
             />
-            <Question
-              className="rounded-full bg-blue-400 text-blue-100"
-              size={24}
-              alt="Ver instrucciones"
-              onClick={() =>
-                window.open('http://www.osapsalud.com.ar/wordpress/wp-content/uploads/2020/04/PedidosWEB.jpg', '_blank')
-              }
-            />
+            <a
+              href="http://www.osapsalud.com.ar/wordpress/wp-content/uploads/2020/04/PedidosWEB.jpg"
+              className="text-xs text-blue-700 underline hover:text-blue-500"
+              target="_blank"
+            >
+              <Question className="rounded-full bg-blue-400 text-blue-100" size={24} alt="Ver instrucciones" />
+              Instrucciones
+            </a>
           </div>
         </div>
         <article className="mb-6  text-left text-lg">

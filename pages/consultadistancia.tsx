@@ -1,12 +1,16 @@
 import { NextPage } from 'next';
 import React from 'react';
 import { CalendarCheck, Clock, UserSquare, WhatsappLogo, Envelope, Asterisk } from 'phosphor-react';
+import Head from 'next/head';
 import PageTitle from '../components/Base/PageTitle';
 import ContactLink from '../components/Base/ContactLink';
 
 const ConsultaDistancia: NextPage = () => {
   return (
-    <section className="container-md flex justify-between">
+    <section className="flex justify-between">
+      <Head>
+        <title>Consulta a distancia - OSAP</title>
+      </Head>
       <article className="flex flex-col justify-around text-left lg:w-3/5">
         <PageTitle title="Consulta clinica de orientación a distancia" />
         <div className="gap-3 pl-8 md:columns-2">
@@ -54,7 +58,7 @@ const ConsultaDistancia: NextPage = () => {
       <img
         src="./img/undraw_chatting.svg"
         alt="Ilustración de personas chateando"
-        className="hidden w-2/5 p-4 pr-8 lg:block"
+        className="mt-8 hidden w-2/5 p-4 pr-8 lg:block"
       />
     </section>
   );
