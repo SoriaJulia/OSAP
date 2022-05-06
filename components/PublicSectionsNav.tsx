@@ -8,7 +8,7 @@ const PublicSectionsNav = () => {
       <SectionButton label="Consulta a distancia" icon={ChatsCircle} variant="" href="/consultaDistancia" />
       <SectionButton href="/farmacia" label="Farmacia Don Bosco" icon={FirstAid} variant="" />
       <SectionButton href="/centrosatencion" label="Centros de atención" icon={Buildings} variant="" />
-      <SectionButton href="/asistencia" label="Asistencia al viajero" icon={Car} variant="" />
+      <SectionButton href="/asistenciaAlViajero" label="Asistencia al viajero" icon={Car} variant="" />
       <SectionButton href="/faqs" label="Preguntas frecuentes" icon={Question} variant="" />
     </nav>
   );
