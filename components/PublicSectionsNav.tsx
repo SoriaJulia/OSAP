@@ -3,7 +3,7 @@ import SectionButton from './Base/SectionButton';
 
 const PublicSectionsNav = () => {
   return (
-    <nav className="my-4 flex w-screen gap-4 overflow-x-scroll scroll-smooth p-2 md:p-4 xl:justify-center">
+    <nav className="horizontalScrollbar my-4 flex w-screen gap-4 overflow-x-auto scroll-smooth p-2 md:p-4 xl:justify-center">
       <SectionButton href="cartilla" label="Cartilla médica" icon={UserList} variant="" />
       <SectionButton label="Consulta a distancia" icon={ChatsCircle} variant="" href="/consultaDistancia" />
       <SectionButton href="/Emergencias" label="Atencion de Emergencias" icon={FirstAid} variant="" />
