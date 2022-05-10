@@ -20,9 +20,6 @@ const Home: NextPage = () => {
         <meta name="description" content="Obra social de los empleados de Ternium Argentina" />
       </Head>
       <TerniumBanner />
-      <div className=" mb-4 hidden w-screen bg-slate-50 lg:flex">
-        <SliderNovedades />
-      </div>
       <PublicSectionsNav />
       <section className="mx-2 mb-6 flex flex-col gap-6 md:flex-row">
         <TelefonosEmergencias />

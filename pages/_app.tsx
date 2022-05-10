@@ -3,7 +3,7 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Layout from '../components/Layout/Layout';
 import AuthProvider, { useAuth } from '../context/AuthContext';
-import Home from '.';
+import Home from './index';
 
 const authRoutes = ['/afliados', '/afiliados/turnosonline'];
 const publicRoutes = ['/', '/faq', '/conoceOSAP'];
