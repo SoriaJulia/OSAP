@@ -5,19 +5,22 @@ import Button from '../../components/Base/Button';
 import AfiliadosSectionsNav from '../../components/AfiliadosSectionsNav';
 import FacturasTable from '../../components/FacturasTable';
 import CosegurosTable from '../../components/CosegurosTable';
+import GradientBanner from '../../components/Base/GradientBanner';
 
 export const Afiliados: NextPage<{ user: any }> = ({ user }) => {
   return (
-    <div>
+    <main className="flex flex-col items-center">
       <Head>
         <title>OSAP - Tramites y consultas online</title>
       </Head>
-      <div className="flex h-32 w-screen flex-col justify-center gap-4 bg-gradient-to-t from-blue-300/60 to-blue-100/80 p-2 text-blue-500 md:h-44">
-        <p className="xd:text-2xl text-xl md:text-5xl">¡Hola! Te damos la bienvenida</p>
-        <h1 className="text-lg xs:text-xl">Realiza tus tramites y consultas online</h1>
-      </div>
+
+      <GradientBanner
+        title="¡Hola! Te damos la bienvenida"
+        subtitle="Realiza tus tramites y consultas online"
+        variant="blue"
+      />
       <AfiliadosSectionsNav />
-      <section className="flex flex-col items-center">
+      <section className="flex w-full flex-col items-center">
         <h3 className="text-3xl text-blue-800">Pagos y facturación</h3>
         <div className="flex w-full justify-center gap-1 px-2 pb-4 pt-6 sm:gap-4 sm:px-6 xs:gap-2">
           <Button label="Medios de pago" variant="yellowOutlined" leadingIcon={<Bank size={24} />} />
@@ -57,7 +60,7 @@ export const Afiliados: NextPage<{ user: any }> = ({ user }) => {
           </a>
         </article>
       </section>
-    </div>
+    </main>
   );
 };
 
