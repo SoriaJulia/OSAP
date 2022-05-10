@@ -26,10 +26,10 @@ const Menus = {
 
 const Layout: React.FC<LayoutProps> = ({ children, userRole = UserRoles.PUBLICO }) => {
   const Navbar = Navbars[userRole];
-  const Menu = Menus[userRole];
+  const UserMenu = Menus[userRole];
   return (
     <div className="bg-grey-50 text-blue-900">
-      <Header menu={<Menu />}>
+      <Header menu={<UserMenu />}>
         <Navbar />
       </Header>
       <main className="flex min-h-[66vh] w-full flex-auto flex-col px-9 text-center lg:px-16 xl:px-20 2xl:px-32">

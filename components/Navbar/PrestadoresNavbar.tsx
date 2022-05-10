@@ -3,10 +3,10 @@ import { NavbarItem } from './NavbarItem';
 const PrestadoresNavbar = () => {
   return (
     <>
-      <NavbarItem href="/conoceOSAP" text="Conocé OSAP" />
-      <NavbarItem href="/prestadores/cartillamedica" text="Cartilla médica" />
-      <NavbarItem href="/prestadores/novedades" text="Novedades" />
-      <NavbarItem href="/prestadores/faqs" text="Preguntas frecuentes" />
+      <NavbarItem href="/conoceOSAP" title="Conocé OSAP" />
+      <NavbarItem href="/prestadores/cartillamedica" title="Cartilla médica" />
+      <NavbarItem href="/prestadores/novedades" title="Novedades" />
+      <NavbarItem href="/prestadores/faqs" title="Preguntas frecuentes" />
     </>
   );
 };

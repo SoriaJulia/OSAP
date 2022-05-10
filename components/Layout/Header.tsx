@@ -21,12 +21,16 @@ export const Header: React.FC<HeaderProps> = ({ children, menu }) => {
             setShowDrawer(true);
           }}
           size={36}
+          tabIndex={0}
+          onKeyPress={() => {
+            setShowDrawer(true);
+          }}
         />
-        <Link href="/">
-          <div className="flex items-center gap-2">
+        <Link passHref href="/">
+          <button className="flex items-center gap-2">
             <Logo width="90" height="42" className="fill-orange-500" />
             <Slogan width="120" height="42" className="hidden fill-grey-400  lg:block" />
-          </div>
+          </button>
         </Link>
         <div className="flex items-center">
           <ul className="hidden justify-end md:flex">{children}</ul>

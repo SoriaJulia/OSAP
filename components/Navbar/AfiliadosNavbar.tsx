@@ -1,17 +1,20 @@
-import { Envelope, Suitcase, Calendar, UsersThree, CreditCard, Question, Phone, Buildings } from 'phosphor-react';
+import { Envelope, Calendar, UsersThree, CreditCard, Question, Phone, Buildings, FirstAidKit } from 'phosphor-react';
 import { NavbarItem } from './NavbarItem';
 
 const AfiliadosNavbar = () => {
   return (
     <>
-      <NavbarItem href="/trabaja" text="Trabaja con nosotros" icon={<Suitcase />} mdHidden />
-      <NavbarItem href="/contacto" text="Contactanos" mdHidden icon={<Envelope />} />
-      <NavbarItem href="/faqs" text="Preguntas frecuentes" icon={<Question />} />
-      <NavbarItem href="/telefonos" text="Telefonos Utiles" mdHidden icon={<Phone />} />
-      <NavbarItem href="/centrosatencion" text="Centros de atencion" icon={<Buildings />} mdHidden />
-      <NavbarItem href="/afiliados/turnosonline" text="Turnos online" icon={<Calendar />} />
-      <NavbarItem href="/cartillamedica" text="Cartilla médica" icon={<UsersThree />} />
-      <NavbarItem href="/afiliados/pagosyfacturacion" text="Pagos y facturación" icon={<CreditCard />} />
+      <NavbarItem href="/contacto" title="Contactanos" icon={<Envelope />} />
+      <NavbarItem href="/faqs" title="Preguntas frecuentes" icon={<Question />} />
+      <NavbarItem href="/telefonos" title="Telefonos Utiles" icon={<Phone />} />
+      <NavbarItem onNavbar title="Farmacias" list icon={<FirstAidKit />}>
+        <NavbarItem onNavbar title="Don Bosco" href="/farmacia" />
+        <NavbarItem onNavbar title="Planta Savio" href="/farmacia" />
+      </NavbarItem>
+      <NavbarItem onNavbar href="/centrosatencion" title="Centros de atencion" icon={<Buildings />} />
+      <NavbarItem onNavbar href="/afiliados/turnosonline" title="Turnos online" icon={<Calendar />} />
+      <NavbarItem onNavbar href="/cartillamedica" title="Cartilla médica" icon={<UsersThree />} />
+      <NavbarItem onNavbar href="/afiliados/pagosyfacturacion" title="Pagos y facturación" icon={<CreditCard />} />
     </>
   );
 };

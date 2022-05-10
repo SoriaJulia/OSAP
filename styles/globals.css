@@ -31,3 +31,7 @@
 }
 
 /* scrollbar */
+
+*:focus-visible {
+  outline-color: theme('colors.gray.100');
+}

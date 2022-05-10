@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Button from '../components/Base/Button';
 import Modal from '../components/Base/Modal';
 import CardNovedad from '../components/Novedades/Card';
-import SliderNovedades from '../components/Novedades/Slider';
 import PublicSectionsNav from '../components/PublicSectionsNav';
 import TelefonosAtencion from '../components/TelefonosAtencion';
 import TelefonosEmergencias from '../components/TelefonosEmergencias';
