@@ -6,7 +6,7 @@ const variants = {
   black: 'decoration-blue-800/10 hover:text-blue-800',
 };
 type Variants = keyof typeof variants;
-type ContactLinkType = {
+export type ContactLinkType = {
   href: string;
   label: string;
   icon?: ReactNode;
@@ -16,7 +16,7 @@ type ContactLinkType = {
 const ContactLink: React.FC<ContactLinkType> = ({ href, label, icon, variant, ...props }) => {
   return (
     <a
-      className={`flex flex-nowrap gap-2 underline underline-offset-2 transition ${variants[variant]}`}
+      className={`flex flex-nowrap items-center gap-1 underline underline-offset-2 transition ${variants[variant]}`}
       href={href}
       {...props}
     >
