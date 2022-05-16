@@ -21,7 +21,7 @@ const PublicNavbar = () => {
       <NavbarItem onNavbar href="/cartillamedica" title="Cartilla médica" icon={<UsersThree />} />
       <NavbarItem onNavbar title="Farmacias" list icon={<FirstAidKit />}>
         <NavbarItem onNavbar title="Don Bosco" href="/farmacia" />
-        <NavbarItem onNavbar title="Planta Savio" href="/farmacia" />
+        <NavbarItem onNavbar title="Planta Savio" href="/farmaciaSavio" />
       </NavbarItem>
       <NavbarItem onNavbar href="/faqs" title="Preguntas frecuentes" icon={<Question />} />
       <NavbarItem href="/telefonos" title="Telefonos Utiles" icon={<Phone />} />

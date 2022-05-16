@@ -9,7 +9,7 @@ const AfiliadosNavbar = () => {
       <NavbarItem href="/telefonos" title="Telefonos Utiles" icon={<Phone />} />
       <NavbarItem onNavbar title="Farmacias" list icon={<FirstAidKit />}>
         <NavbarItem onNavbar title="Don Bosco" href="/farmacia" />
-        <NavbarItem onNavbar title="Planta Savio" href="/farmacia" />
+        <NavbarItem onNavbar title="Planta Savio" href="/farmaciaSavio" />
       </NavbarItem>
       <NavbarItem onNavbar href="/centrosAtencion" title="Centros de atencion" icon={<Buildings />} />
       <NavbarItem onNavbar href="/afiliados/turnosonline" title="Turnos online" icon={<Calendar />} />

@@ -1,8 +1,6 @@
 import { NextPage } from 'next';
 import React from 'react';
-import { MapPin, Phone, WhatsappLogo } from 'phosphor-react';
 import Head from 'next/head';
-import ContactLink from '../components/Base/ContactLink';
 import PageTitle from '../components/Base/PageTitle';
 import CentroAtencion from '../components/CentroAtencion';
 // {
@@ -19,7 +17,7 @@ const listCentros = [
     title: 'Sede Central',
     address: { href: 'https://goo.gl/maps/q5kNyRQML5KfYiam8', label: 'Moreno 187 (San Nicolás)' },
     phones: [
-      { href: 'tel:03364425632', label: '0336)4425632' },
+      { href: 'tel:03364425632', label: '(0336)4425632' },
       { href: 'tel:03364429692', label: '4429692' },
       { href: 'tel:03364450440', label: '4450440' },
       { href: 'tel:03364450099', label: '4450099' },
@@ -36,8 +34,8 @@ const listCentros = [
   },
   {
     title: 'Centro Atención Planta Haedo',
-    address: { href: 'https://goo.gl/maps/LrrUmnVVeUFtdrFcA', label: 'Valentín Gómez 210 (Haedo)' },
-    phones: [{ href: 'tel:01144896910', label: '011-4489-6910' }],
+    address: { href: 'https://goo.gl/maps/jhRZyoZkrfxEWmbE9', label: 'Valentín Gómez 210' },
+    phones: [{ href: 'tel:01144896910', label: '(011)44896910' }],
   },
   {
     title: 'Centro Atención Planta Gral. Savio',
@@ -45,43 +43,40 @@ const listCentros = [
       href: 'https://goo.gl/maps/srfAarX1GcSGHU4p9',
       label: 'Administración SIDERAR PTA. Gral. Savio (Ramallo)',
     },
-    phones: [{ href: 'tel:0336-4438960', label: '0336-4438960' }],
+    phones: [{ href: 'tel:0336-4438960', label: '(336)4438960' }],
   },
   {
     title: 'Centro Atención Rosario',
-    address: { href: '', label: 'Córdoba 1147 Piso 4 Of. 10 (Rosario)' },
+    address: { href: 'https://goo.gl/maps/meMD2Wi3NUvSvGTh7', label: 'Córdoba 1147 Piso 4 Of. 10' },
     phones: [
-      { href: '', label: '0341-4112698' },
-      { href: '', label: '4110482 ' },
+      { href: 'tel:3414112698', label: '(341)4112698' },
+      { href: 'tel:3414110482', label: '4110482 ' },
     ],
-    wsp: [{ href: '', label: '+54 9 11 4998-3336' }],
+    wsp: [{ href: 'wa-me:+5491149983336', label: '+54 9 11 49983336' }],
   },
   {
     title: 'Centro Atención Buenos Aires',
-    address: { href: '', label: 'Santa Fe 1780. Piso 9 Of. 904 (CABA)' },
-    phones: [
-      { href: 'tel:01148158477', label: '(011)48158477' },
-      { href: '', label: '' },
-    ],
+    address: { href: 'https://goo.gl/maps/zrQLqgqWWjCWpMF58', label: 'Santa Fe 1780. Piso 9 Of. 904 (CABA)' },
+    phones: [{ href: 'tel:01148158477', label: '(011)48158477' }],
   },
   {
     title: 'Centro Atención Ensenada',
-    address: { href: '', label: 'Administración-SIDERAR PTA. (Ensenada)' },
+    address: { href: 'https://goo.gl/maps/EYpxLrRSRvTbyzMT7', label: 'Administración-SIDERAR PTA.' },
     phones: [{ href: 'tel:02214296187', label: '(0221)4296187' }],
   },
   {
     title: 'Centro Atención Florencio Varela',
-    address: { href: '', label: 'Administración-SIDERAR PTA. (Fcio. Varela)' },
+    address: { href: 'https://goo.gl/maps/7sxTGeTQXyef7BvM8', label: 'Cno. Gral. Manuel Belgrano 31500' },
     phones: [{ href: 'tel:01142296502', label: '(011)42296502' }],
   },
   {
     title: 'Farmacia Don Bosco OSAP',
-    address: { href: '', label: 'Savio y San José (San Nicolás)' },
+    address: { href: 'https://goo.gl/maps/AouyNt9fCuRXk4x1A', label: 'Savio y San José (San Nicolás)' },
     phones: [
       { href: 'tel:03364427042', label: '(0336)4427042' },
       { href: 'tel:03334420700', label: '4420700' },
     ],
-    wsp: [{ href: 'wa-me:+5493364008162', label: '(336)4008162' }],
+    wsp: [{ href: 'wa-me:+5493364008162', label: '+54 9 336 4008162' }],
   },
   {
     title: 'Farmacia Planta Savio',
@@ -90,7 +85,7 @@ const listCentros = [
       { href: 'tel:0336438930', label: '(0336)438930' },
       { href: 'tel:38930', label: '38930 (Interno Planta)' },
     ],
-    wsp: [{ href: 'wa-me:+549336102003', label: '(336)102003' }],
+    wsp: [{ href: 'wa-me:+549336102003', label: '+54 9 336 102003' }],
   },
 ];
 
