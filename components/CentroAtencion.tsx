@@ -13,17 +13,18 @@ const CentroAtencion: React.FC<CentroAtencionProps> = ({ title, address, phones,
   return (
     <>
       <h2 className="mb-4 text-2xl text-grey-500">{title}</h2>
-      <div className="mb-8 flex items-center gap-3">
+      <div className="mb-8 flex flex-wrap items-center gap-3">
         <ContactLink
           href={address.href}
           icon={<MapPin className="text-xl text-orange-200" weight="duotone" />}
           label={address.label}
           variant="blue"
         />
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
           {phones.map((phone, index) => {
             return (
               <ContactLink
+                key={phone.label}
                 href={phone.href}
                 label={phone.label}
                 variant="blue"
@@ -37,6 +38,7 @@ const CentroAtencion: React.FC<CentroAtencionProps> = ({ title, address, phones,
             wsps.map((wsp, index) => {
               return (
                 <ContactLink
+                  key={wsp.label}
                   href={wsp.href}
                   label={wsp.label}
                   variant="blue"

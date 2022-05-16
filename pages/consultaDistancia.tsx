@@ -13,14 +13,14 @@ const ConsultaDistancia: NextPage = () => {
       </Head>
       <article className="flex flex-col justify-around text-left lg:w-3/5">
         <PageTitle title="Consulta clinica de orientación a distancia" />
-        <div className="gap-3 pl-8 md:columns-2">
-          <span className="flex items-center gap-2 p-4 text-xl">
+        <div className="gap-3 md:columns-2 md:pl-8">
+          <span className="flex items-center gap-2 p-4 text-lg md:text-xl">
             <CalendarCheck weight="duotone" size="1.3em" className="text-orange-500" /> Lunes a viernes
           </span>
-          <span className="flex items-center gap-2 p-4 text-xl">
+          <span className="flex items-center gap-2 p-4 text-lg md:text-xl">
             <Clock weight="duotone" size="1.3em" className="text-orange-500" /> 8:00hs a 16:00hs
           </span>
-          <span className="flex items-center gap-2 p-4 text-xl">
+          <span className="flex items-center gap-2 p-4 text-lg md:text-xl">
             <ContactLink
               href="mailto:consultasmedicas@osap.org.ar"
               label="consultasmedicas@osap.org.ar"
@@ -28,13 +28,13 @@ const ConsultaDistancia: NextPage = () => {
               icon={<Envelope weight="duotone" size="1.3em" />}
             />
           </span>
-          <span className="flex items-center gap-2 p-4 text-xl">
+          <span className="flex items-center gap-2 p-4 text-lg md:text-xl">
             <UserSquare weight="duotone" size="1.3em" className="text-orange-500" /> Dr. Juan Brogliatti
           </span>
-          <span className="flex items-center gap-2 p-4 text-xl">
+          <span className="flex items-center gap-2 p-4 text-lg md:text-xl">
             <UserSquare weight="duotone" size="1.3em" className="text-orange-500" /> Dr.Mauro Saucedo
           </span>
-          <span className="flex items-center gap-2 p-4 text-xl">
+          <span className="flex items-center gap-2 p-4 text-lg md:text-xl">
             <ContactLink
               href="wa-me:336418667"
               label="(336)4418667"
@@ -43,13 +43,14 @@ const ConsultaDistancia: NextPage = () => {
             />
           </span>
         </div>
-        <div className="mt-8">
+        <div className="mt-8 mr-2">
           <p className="flex items-center gap-2 py-1">
             <Asterisk /> Los coseguros serán los habituales para esta prestación.
           </p>
           <p className="flex items-center gap-2 py-1">
             <Asterisk /> Al ser a distancia esta disponible para todos los afiliados.
           </p>
+          {/* TODO agregar link a centros de emergencia */}
           <p className="flex items-center gap-2 py-1">
             <Asterisk /> Sabados y Domingos, ante una eventual urgencia, dirigirse a la guardia de la clinica de la UOM.
           </p>

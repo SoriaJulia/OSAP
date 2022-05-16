@@ -69,7 +69,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ onDismiss, show, title, userRol
               onClick={(e) => {
                 e.preventDefault();
                 // login({ user, password });
-                setUser({ name: 'admin cliente', role: userRole });
+                setUser({ name: 'Julia', role: userRole });
                 Router.push('/afiliados');
               }}
             />

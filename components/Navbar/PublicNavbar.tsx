@@ -25,7 +25,7 @@ const PublicNavbar = () => {
       </NavbarItem>
       <NavbarItem onNavbar href="/faqs" title="Preguntas frecuentes" icon={<Question />} />
       <NavbarItem href="/telefonos" title="Telefonos Utiles" icon={<Phone />} />
-      <NavbarItem href="/centrosatencion" title="Centros de atencion" icon={<Buildings />} />
+      <NavbarItem href="/centrosAtencion" title="Centros de atencion" icon={<Buildings />} />
     </>
   );
 };

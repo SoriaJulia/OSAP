@@ -11,7 +11,7 @@ const AfiliadosNavbar = () => {
         <NavbarItem onNavbar title="Don Bosco" href="/farmacia" />
         <NavbarItem onNavbar title="Planta Savio" href="/farmacia" />
       </NavbarItem>
-      <NavbarItem onNavbar href="/centrosatencion" title="Centros de atencion" icon={<Buildings />} />
+      <NavbarItem onNavbar href="/centrosAtencion" title="Centros de atencion" icon={<Buildings />} />
       <NavbarItem onNavbar href="/afiliados/turnosonline" title="Turnos online" icon={<Calendar />} />
       <NavbarItem onNavbar href="/cartillamedica" title="Cartilla médica" icon={<UsersThree />} />
       <NavbarItem onNavbar href="/afiliados/pagosyfacturacion" title="Pagos y facturación" icon={<CreditCard />} />

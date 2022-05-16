@@ -8,7 +8,7 @@ import Logo from '../SVG/Logo';
 
 export const Footer = () => {
   return (
-    <footer className=" mt-12 flex flex-col items-center gap-9 bg-gradient-to-b from-blue-900 to-grey-700 px-9 py-4 sm:grid sm:grid-cols-footer-md  lg:grid-cols-footer-lg">
+    <footer className="mt-10 flex flex-col items-center gap-9 bg-gradient-to-b from-blue-900 to-grey-700 px-9 py-4 sm:grid sm:grid-cols-footer-md  lg:grid-cols-footer-lg">
       <Logo className="h-16 fill-blue-100 " />
       <div className="flex flex-col justify-center gap-2">
         <ContactLink

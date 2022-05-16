@@ -9,7 +9,7 @@ import GradientBanner from '../../components/Base/GradientBanner';
 
 export const Afiliados: NextPage<{ user: any }> = ({ user }) => {
   return (
-    <main className="flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <Head>
         <title>OSAP - Tramites y consultas online</title>
       </Head>
@@ -60,7 +60,7 @@ export const Afiliados: NextPage<{ user: any }> = ({ user }) => {
           </a>
         </article>
       </section>
-    </main>
+    </div>
   );
 };
 

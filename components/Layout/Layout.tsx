@@ -28,13 +28,11 @@ const Layout: React.FC<LayoutProps> = ({ children, userRole = UserRoles.PUBLICO 
   const Navbar = Navbars[userRole];
   const UserMenu = Menus[userRole];
   return (
-    <div className="bg-grey-50 text-blue-900">
+    <div className="flex min-h-screen flex-col justify-between bg-grey-50 text-blue-900">
       <Header menu={<UserMenu />}>
         <Navbar />
       </Header>
-      <main className="flex min-h-[66vh] w-full flex-auto flex-col px-9 text-center lg:px-16 xl:px-20 2xl:px-32">
-        {children}
-      </main>
+      <main className="flex w-full flex-col px-9 text-center lg:px-16 xl:px-20 2xl:px-32">{children}</main>
       <Footer />
     </div>
   );
