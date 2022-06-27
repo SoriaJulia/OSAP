@@ -1,107 +1,50 @@
-import { UserRoles } from '@appTypes/enums';
-import { changeTextInput } from '@lib/utils';
-import Button from 'components/Base/Button';
-import Field from 'components/Base/Field';
-import { NextPage } from 'next';
-import { RedirectableProviderType } from 'next-auth/providers';
-import { signIn, useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
-import { WarningCircle, SignIn } from 'phosphor-react';
+import type { NextPage } from 'next';
 import Head from 'next/head';
-import React, { useState } from 'react';
-import Logo from 'components/SVG/Logo';
-import Slogan from 'components/SVG/Slogan';
-import Link from 'next/link';
+import { useState } from 'react';
+import Button from '../components/Base/Button';
+import Modal from '../components/Base/Modal';
+import CardNovedad from '../components/Novedades/Card';
+import PublicSectionsNav from '../components/PublicSectionsNav';
+import TelefonosAtencion from '../components/TelefonosAtencion';
+import TelefonosEmergencias from '../components/TelefonosEmergencias';
+import TerniumBanner from '../components/TerniumBanner';
 
-const Login: NextPage = () => {
-  const router = useRouter();
-  const session = useSession();
-  if (session.data?.user) router.replace('/afiliados');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
+const Home: NextPage = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <div className="flex h-screen w-full flex-col">
+    <div className="flex min-h-screen flex-col items-center pb-2">
       <Head>
-        <title>Iniciar Sesion - OSAP </title>
+        <title>OSAP - Obra Social Aceros Paraná</title>
+        <meta name="description" content="Obra social de los empleados de Ternium Argentina" />
       </Head>
-
-      <div className="flex h-full flex-col items-center justify-evenly bg-gradient-to-br from-orange-600/60 to-yellow-500/50">
-        <form className="my-6 flex max-w-md flex-col items-center justify-around rounded-xl bg-slate-50 py-6 px-6 drop-shadow-2xl lg:w-2/6 ">
-          <Link passHref href="http://www.osapsalud.com.ar/">
-            <button className=" mt-4 flex items-center gap-2 md:mr-0">
-              <Logo width="120" height="52" className="fill-orange-500" />
-              <Slogan width="180" height="52" className=" fill-grey-400 " />
-            </button>
-          </Link>
-          <div className="mt-20 flex flex-col gap-6 ">
-            <h1 className=" text-3xl text-orange-600">Ingresá </h1>
-            <Field
-              type="text"
-              label="DNI"
-              name="user"
-              placeholder="30256544"
-              helpText="Sin espacios ni caracteres especiales"
-              value={username}
-              onChange={changeTextInput(setUsername)}
-              inputWidth="w-auto"
-            />
-            <Field
-              type="password"
-              label="Contraseña"
-              name="pass"
-              placeholder="••••••••"
-              helpText="Si no tenes contraseña repetí tu DNI"
-              value={password}
-              onChange={changeTextInput(setPassword)}
-              inputWidth="w-auto"
-            />
-            <div className="h-12 w-80 overflow-hidden text-rose-500">
-              {error ? (
-                <>
-                  <WarningCircle className="mr-1 mb-1 inline" size={18} weight="bold" />
-                  {error}
-                </>
-              ) : (
-                ''
-              )}
-            </div>
-          </div>
-          <div className="flex gap-2 pt-10 md:pt-0 ">
-            <Button
-              label="Cancelar"
-              variant="outlined"
-              type="button"
-              onClick={() => {
-                setError(null);
-                window.open('http://www.osapsalud.com.ar/', '_self');
-              }}
-            />
-            <Button
-              label="Ingresar"
-              variant="fill"
-              trailingIcon={<SignIn weight="bold" size={20} />}
-              type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-                signIn<RedirectableProviderType>('credentials', {
-                  username,
-                  password,
-                  role: UserRoles.AFILIADO,
-                  redirect: false,
-                }).then((value) => {
-                  if (value?.error) {
-                    setError(value.error);
-                  } else {
-                    router.push('/afiliados');
-                  }
-                });
-              }}
-            />
-          </div>
-        </form>
-      </div>
+      <TerniumBanner />
+      <PublicSectionsNav />
+      <section className="mb-6 flex flex-col gap-6 md:flex-row">
+        <TelefonosEmergencias />
+        <TelefonosAtencion />
+      </section>
+      <section className="mb-4 w-10/12 py-4">
+        <div className="flex justify-between">
+          <h3 className="font-display text-4xl text-grey-500/80">Nuestras últimas novedades</h3>
+          <Button label="Ver todas" variant="outlined" />
+        </div>
+        <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <CardNovedad display="card" />
+          <CardNovedad display="card" />
+          <CardNovedad display="card" />
+          <CardNovedad display="card" />
+        </div>
+      </section>
+      <Modal
+        show={showModal}
+        onDismiss={() => {
+          setShowModal(false);
+        }}
+        title=""
+      />
     </div>
   );
 };
-export default Login;
+
+export default Home;
