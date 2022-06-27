@@ -1,15 +1,19 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { PropsWithChildren, ReactElement, useState } from 'react';
 import * as React from 'react';
 import { List } from 'phosphor-react';
 import PublicNavbar from 'components/Navbar/PublicNavbar';
 import UserNavbar from 'components/Navbar/UserNavbar';
+import NavbarItem, { NavbarItemProps } from 'components/Navbar/NavbarItem';
 import Drawer from '../Navbar/Drawer';
 import Logo from '../SVG/Logo';
 import Slogan from '../SVG/Slogan';
 
 export const Header: React.FC = ({ children }) => {
   const [showDrawer, setShowDrawer] = useState(false);
+  const closeDrawer = () => {
+    setShowDrawer(false);
+  };
   return (
     <div className="sticky top-0 z-10">
       <nav className="flex items-center justify-between bg-white py-2 px-4 lg:px-9">
@@ -32,7 +36,7 @@ export const Header: React.FC = ({ children }) => {
         </Link>
         <div className="flex items-center">
           <ul className="hidden justify-end md:flex">
-            <PublicNavbar />
+            <PublicNavbar closeDrawer={closeDrawer} />
           </ul>
         </div>
       </nav>
@@ -43,8 +47,13 @@ export const Header: React.FC = ({ children }) => {
         }}
         show={showDrawer}
       >
-        <PublicNavbar />
-        {children}
+        <PublicNavbar closeDrawer={closeDrawer} />
+        {React.Children.map(children, (child) => {
+          const element = React.cloneElement(child as ReactElement<PropsWithChildren<NavbarItemProps>>, {
+            closeDrawer,
+          });
+          return element;
+        })}
       </Drawer>
     </div>
   );

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { House, SignOut, User } from 'phosphor-react';
 import React from 'react';
 import LoginMenu from './Menu/LoginMenu';
-import { NavbarItem } from './NavbarItem';
+import NavbarItem from './NavbarItem';
 
 const UserNavbar: React.FC = ({ children }) => {
   const session = useSession();
@@ -53,7 +53,7 @@ const UserNavbar: React.FC = ({ children }) => {
               /> */}
               <NavbarItem
                 onClick={() => {
-                  router.push('/');
+                  // router.push('/');
                   signOut();
                 }}
                 onNavbar

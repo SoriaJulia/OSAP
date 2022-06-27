@@ -1,7 +1,7 @@
 import { Calendar, CreditCard, Buildings } from 'phosphor-react';
-import { NavbarItem } from './NavbarItem';
+import NavbarItem from './NavbarItem';
 
-const AfiliadosNavbar = () => {
+const AfiliadosNavbar: React.FC<{ closeDrawer?: () => void }> = ({ closeDrawer }) => {
   return (
     <>
       <NavbarItem
@@ -10,6 +10,7 @@ const AfiliadosNavbar = () => {
         title="Pagos y facturación"
         variant="secondary"
         icon={<CreditCard />}
+        closeDrawer={closeDrawer}
       />
       {/* <NavbarItem
         onNavbar

@@ -8,7 +8,7 @@ import { getSession } from 'next-auth/react';
 import { Factura } from '@appTypes/factura';
 import AutorizacionesTab from 'components/Facturacion/AutorizacionesTab';
 import { Autorizacion } from '@appTypes/autorizacion';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Button from '../../components/Base/Button';
 import PageTitle from '../../components/Base/PageTitle';
 import Tabs, { TabsType } from '../../components/Base/Tabs';
@@ -49,6 +49,7 @@ type FacturacionProps = {
 const Facturacion: NextPage<FacturacionProps> = (props) => {
   const [selectedTab, setSelectedTab] = useState<number>(tabs[0].index);
   const tab = tabs[selectedTab];
+  const router = useRouter();
 
   return (
     <div>
@@ -58,9 +59,15 @@ const Facturacion: NextPage<FacturacionProps> = (props) => {
       <div className="flex flex-wrap items-center justify-between">
         <PageTitle title="Pagos y facturación" />
         <div className="flex gap-3">
-          <Link href="/afiliados/mediosPago">
-            <Button label="Medios de pago" trailingIcon={<Bank weight="fill" />} variant="fill" />
-          </Link>
+          <Button
+            label="Medios de pago"
+            trailingIcon={<Bank weight="fill" />}
+            variant="fill"
+            onClick={() => {
+              router.push('/afiliados/mediosPago');
+            }}
+          />
+
           <Button
             label="Pago Online"
             trailingIcon={<CreditCard weight="fill" />}

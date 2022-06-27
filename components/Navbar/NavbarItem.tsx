@@ -17,7 +17,7 @@ const selected = {
 
 type Variants = keyof typeof variants;
 
-type NavbarItemProps = {
+export type NavbarItemProps = {
   href?: string;
   title: string;
   icon?: ReactNode;
@@ -28,9 +28,10 @@ type NavbarItemProps = {
   showIcon?: boolean;
   iconEnd?: boolean;
   hideFromDrawer?: boolean;
+  closeDrawer?: () => void;
 };
 
-export const NavbarItem: React.FC<NavbarItemProps> = ({
+const NavbarItem: React.FC<NavbarItemProps> = ({
   title,
   icon,
   onNavbar,
@@ -42,14 +43,11 @@ export const NavbarItem: React.FC<NavbarItemProps> = ({
   showIcon,
   iconEnd,
   hideFromDrawer,
+  closeDrawer,
 }) => {
   const router = useRouter();
   const currentPage = router.pathname;
   const [isListOpen, setIsListOpen] = useState(false);
-  const handleList = () => {
-    return isListOpen ? setIsListOpen(false) : setIsListOpen(true);
-  };
-
   const caret = list ? (
     <>
       <Plus className="group-hover:hidden md:hidden" />
@@ -59,8 +57,17 @@ export const NavbarItem: React.FC<NavbarItemProps> = ({
     <CaretRight className="md:hidden" />
   );
 
+  const handleClick = () => {
+    if (list) {
+      setIsListOpen(!isListOpen);
+    } else {
+      closeDrawer?.();
+      onClick?.();
+    }
+  };
+
   const label = (
-    <button onClick={list ? handleList : onClick} className="flex w-full items-center justify-between p-4 ">
+    <button onClick={handleClick} className="flex w-full items-center justify-between p-4 ">
       <div className="flex items-center gap-3">
         <div className={`${showIcon && !iconEnd ? '' : 'md:hidden'}`}>{icon}</div>
         {title}
@@ -99,3 +106,5 @@ export const NavbarItem: React.FC<NavbarItemProps> = ({
     </motion.li>
   );
 };
+
+export default NavbarItem;
