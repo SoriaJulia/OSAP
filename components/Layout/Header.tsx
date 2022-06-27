@@ -28,7 +28,7 @@ export const Header: React.FC = ({ children }) => {
             setShowDrawer(true);
           }}
         />
-        <Link passHref href="http://www.osapsalud.com.ar/">
+        <Link passHref href="/">
           <button className="mr-10 flex items-center gap-2 md:mr-0">
             <Logo width="90" height="42" className="fill-orange-500" />
             <Slogan width="120" height="42" className="hidden fill-grey-400  lg:block" />
