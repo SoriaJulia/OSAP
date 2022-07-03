@@ -1,7 +1,8 @@
 import { InputChangeHandler } from '@appTypes/reactCommon';
 import { NEXT_URL } from 'config';
-import { XMLParser, XMLValidator } from 'fast-xml-parser';
+import { XMLParser } from 'fast-xml-parser';
 import _ from 'lodash';
+import { GCROSSBaseResponse } from '@appTypes/grcoss';
 import { NETWORK_ERROR } from './constants';
 
 export function jsonResponse(status: number, data: any, init?: ResponseInit) {
@@ -14,29 +15,35 @@ export function jsonResponse(status: number, data: any, init?: ResponseInit) {
     },
   });
 }
-export type ParseSOAPOptions = {
-  actionName: string;
-  resultName: string;
-  rootResultName?: string;
-};
-export const parseSOAPResponse = (xml: string, options: ParseSOAPOptions) => {
-  const { actionName, resultName, rootResultName } = options;
-  if (XMLValidator.validate(xml)) {
-    const parser = new XMLParser();
-    const jsonObj = parser.parse(xml);
-    const result = jsonObj['soap:Envelope']['soap:Body'][`${actionName}Response`][`${actionName}Result`];
-    const resultObj = parser.parse(result);
-    return resultObj[rootResultName || 'DocumentElement'][resultName];
+
+export const parseSOAPResponse = <T extends GCROSSBaseResponse>(
+  actionName: string,
+  resultName: string,
+  xml: string
+): T => {
+  // TODO better types for xml parser
+  const parser = new XMLParser();
+  const jsonObj = parser.parse(xml);
+  const result = jsonObj?.['soap:Envelope']?.['soap:Body']?.[`${actionName}Response`]?.[`${actionName}Result`];
+  if (!result) {
+    throw new Error(`Malformed XML for ${actionName}\n ${xml}`);
   }
+  const resultObj = parser.parse(result);
+  const finalObj = resultObj?.DocumentElement?.[resultName];
+  if (!finalObj) {
+    throw new Error(`Malformed XML for ${resultName}\n ${xml}`);
+  }
+  return finalObj;
 };
 
 export const parseJSONResponse = (actionName: string, xml: string) => {
-  if (XMLValidator.validate(xml)) {
-    const parser = new XMLParser();
-    const jsonObj = parser.parse(xml);
-    const result = jsonObj['s:Envelope']['s:Body'][`${actionName}Response`][`${actionName}Result`];
-    return JSON.parse(result);
+  const parser = new XMLParser();
+  const jsonObj = parser.parse(xml);
+  const result = jsonObj?.['s:Envelope']?.['s:Body']?.[`${actionName}Response`]?.[`${actionName}Result`];
+  if (!result) {
+    throw new Error(`Malformed XML for ${actionName}\n ${xml}`);
   }
+  return JSON.parse(result);
 };
 
 export const nextFetch = async (url: string, options?: RequestInit) => {

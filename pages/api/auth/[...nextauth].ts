@@ -1,9 +1,13 @@
+/* eslint-disable no-param-reassign */
+import { AuthUserRoles } from 'types/enums';
 import OSAPUser from '@appTypes/user';
 import { JWT_SECRET_KEY, SERVER_ERROR } from '@lib/constants';
 import { getAfiliado } from '@services/user';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { AuthUserRoles } from 'types/enums';
+import { GCROSSService } from '@services/gcross';
+
+export type Credentials = { username: string; password: string; role: AuthUserRoles };
 
 export default NextAuth({
   // Configure one or more authentication providers
@@ -15,31 +19,18 @@ export default NextAuth({
         password: { label: 'Password', type: 'password' },
         role: { label: 'role', type: 'text' },
       },
-      async authorize(credentials, req): Promise<OSAPUser | null> {
-        // Add logic here to look up the user from the credentials supplied
+      async authorize(credentials): Promise<OSAPUser | null> {
         if (!credentials) {
           return null;
         }
 
-        try {
-          const afiliado = await getAfiliado({
-            username: credentials.username,
-            password: credentials.password,
-            role: credentials.role as AuthUserRoles,
-          });
-          if (afiliado.message) {
-            // Any object returned will be saved in `user` property of the JWT
-            throw afiliado.message;
-            // return null;
-          }
-          return afiliado;
-        } catch (err) {
-          if (typeof err === 'string') {
-            throw new Error(err);
-          }
-          throw new Error(SERVER_ERROR);
+        const loginResult = await GCROSSService.login(credentials as Credentials);
+
+        if (loginResult.message) {
+          throw new Error(loginResult.message);
         }
-        // If you return null then an error will be displayed advising the user to check their details.
+
+        return loginResult.data;
       },
     }),
   ],
@@ -50,10 +41,11 @@ export default NextAuth({
       session.user = token.user;
       return session;
     },
-    async jwt(params) {
-      const { token, user } = params;
+    async jwt({ user, token }) {
       if (user) {
-        token.user = user;
+        // TODO - try to fix this. user coming from jwt callback params should be of type OSAPUser.
+        // the type has been extended but for some reason TS still looks for type on next-auth type declarations
+        token.user = user as unknown as OSAPUser;
       }
       return token;
     },
