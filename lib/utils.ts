@@ -59,6 +59,13 @@ export const changeNumberInput =
     setterFn(parseInt(e.target.value, 10));
   };
 
+export const changeFileInput =
+  (setterFn: React.Dispatch<React.SetStateAction<Array<File>>>): InputChangeHandler =>
+  (e) => {
+    const files = e.target.files && Array.from(e.target.files);
+    setterFn(files || []);
+  };
+
 export const downloadBase64File = (contentType: string, base64Data: string, fileName: string) => {
   const linkSource = `data:${contentType};base64,${base64Data}`;
   const downloadLink = document.createElement('a');
