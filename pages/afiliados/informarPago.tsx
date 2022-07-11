@@ -1,17 +1,16 @@
 import Button from 'components/Base/Button';
 import Field from 'components/Base/Field';
 import PageTitle from 'components/Base/PageTitle';
-import { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import { changeFileInput, changeNumberInput, changeTextInput, nextFetch } from '@lib/utils';
 import React, { useRef, useState } from 'react';
-import { InputChangeHandler } from '@appTypes/reactCommon';
 import { getSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
-import { CurrencyCircleDollar, PaperPlaneRight, Receipt, Spinner, SpinnerGap, Upload } from 'phosphor-react';
+import { CurrencyCircleDollar, PaperPlaneRight, SpinnerGap } from 'phosphor-react';
 import { SERVER_ERROR } from '@lib/constants';
 
-const InformarPago: NextPage = () => {
+const InformarPago: NextPage<{ agentId: string }> = ({ agentId }) => {
   const [facturas, setFacturas] = useState('');
   const [importe, setImporte] = useState<number | ''>('');
   const [comprobante, setComprobante] = useState<File[]>([]);
@@ -21,12 +20,11 @@ const InformarPago: NextPage = () => {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setIsSending(true);
     e.preventDefault();
-    const session = await getSession();
     const formdata = new FormData();
     if (comprobante) formdata.append('comprobante', comprobante[0]);
     formdata.append('facturas', facturas);
     if (importe) formdata.append('importe', importe.toString());
-    nextFetch(`afiliado/${session?.user?.agentId}/factura/informarPago`, {
+    nextFetch(`afiliado/${agentId}/factura/informarPago`, {
       method: 'POST',
       body: formdata,
     })
@@ -120,6 +118,24 @@ const InformarPago: NextPage = () => {
       </form>
     </div>
   );
+};
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const session = await getSession({ req });
+
+  if (!session || session.status === 'unauthenicated') {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  const agentId = session.user?.agentId;
+
+  return {
+    props: { agentId },
+  };
 };
 
 export default InformarPago;
