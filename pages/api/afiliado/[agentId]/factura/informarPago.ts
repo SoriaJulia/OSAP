@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const fileContent = readFileSync(file.filepath);
   const mailData = {
     from: 'contacto@osap.com.ar',
-    to: 'soriajulias@gmail.com',
+    to: process.env.MAIL_INFORMAR_PAGO,
     subject: `Informe de pago - ${session?.user?.name} `,
     html: `
     <p>Agente: ${session?.user?.agentId}, DNI: ${session?.user?.dni}</p>

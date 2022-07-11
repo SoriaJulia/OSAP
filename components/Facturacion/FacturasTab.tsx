@@ -8,7 +8,7 @@ import FacturasList from './FacturasList';
 import { State } from '../../types/enums/facturas';
 
 const FacturasTab = ({ payload }: { payload: Factura[] }) => {
-  const [selectedYear, setSelectedYear] = useState(currentYear);
+  const [selectedYear, setSelectedYear] = useState<number | ''>(currentYear);
   const [selectedState, setSelectedState] = useState('');
   const facturasPorPeriodo = getFilteredFacturasXPeriodo(payload, selectedYear, selectedState);
   return (

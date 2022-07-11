@@ -8,7 +8,7 @@ import Field from '../Base/Field';
 import CosegurosXPeriodoCard from './CosegurosXPeriodoCard';
 
 const CosegurosTab: React.FC<{ payload: Array<Coseguro> }> = ({ payload }) => {
-  const [selectedYear, setSelectedYear] = useState(currentYear);
+  const [selectedYear, setSelectedYear] = useState<number | ''>(currentYear);
   const cosegurosXPeriodo = getFilteredCosegurosXPeriodo(payload, selectedYear);
   return (
     <div>
