@@ -2,7 +2,7 @@
 import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import React, { useState } from 'react';
-import { Bank, CreditCard, Download, Note, Receipt, Scroll } from 'phosphor-react';
+import { Bank, CreditCard, CurrencyCircleDollar, Download, Note, Receipt, Scroll } from 'phosphor-react';
 import { nextFetch } from '@lib/utils';
 import { getSession } from 'next-auth/react';
 import { Factura } from '@appTypes/factura';
@@ -64,18 +64,23 @@ const Facturacion: NextPage<FacturacionProps> = (props) => {
         <div className="flex gap-3">
           <Button
             label="Medios de pago"
-            trailingIcon={<Bank weight="fill" />}
+            trailingIcon={<Bank size={22} />}
             variant="fill"
             onClick={() => {
               router.push('/afiliados/mediosPago');
             }}
           />
-
           <Button
             label="Pago Online"
-            trailingIcon={<CreditCard weight="fill" />}
+            trailingIcon={<CreditCard size={22} />}
             variant="fill"
             onClick={() => window.open(linkPago, '_blank')}
+          />
+          <Button
+            label="Informar pago"
+            variant="fill"
+            trailingIcon={<CurrencyCircleDollar size={22} />}
+            onClick={() => router.push('/afiliados/informarPago')}
           />
         </div>
       </div>
@@ -120,31 +125,37 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 
   try {
     facturas =
-      (await nextFetch(`afiliado/${agentId}/factura`, {
-        headers: { Cookie: req.headers.cookie || '' },
-      })) || [];
+      (
+        await nextFetch(`afiliado/${agentId}/factura`, {
+          headers: { Cookie: req.headers.cookie || '' },
+        })
+      ).data || [];
   } catch (err) {
     console.error(err);
   }
   try {
     autorizaciones =
-      (await nextFetch(`afiliado/${agentId}/autorizacion`, {
-        headers: { Cookie: req.headers.cookie || '' },
-      })) || [];
+      (
+        await nextFetch(`afiliado/${agentId}/autorizacion`, {
+          headers: { Cookie: req.headers.cookie || '' },
+        })
+      ).data || [];
   } catch (err) {
     console.error(err);
   }
   try {
     coseguros =
-      (await nextFetch(`afiliado/${agentId}/coseguro`, {
-        headers: { Cookie: req.headers.cookie || '' },
-      })) || [];
+      (
+        await nextFetch(`afiliado/${agentId}/coseguro`, {
+          headers: { Cookie: req.headers.cookie || '' },
+        })
+      ).data || [];
   } catch (err) {
     console.error(err);
   }
 
   try {
-    agente = (await nextFetch('afiliado', { headers: { Cookie: req.headers.cookie || '' } })) || {};
+    agente = (await nextFetch('afiliado', { headers: { Cookie: req.headers.cookie || '' } })).data || {};
   } catch (err) {
     console.error(err);
   }

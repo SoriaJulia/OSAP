@@ -58,7 +58,19 @@
 *:focus-visible {
   outline-color: theme('colors.gray.100');
 }
-
+::-webkit-file-upload-button {
+  color: theme('colors.orange.600');
+  background-color: theme('colors.white');
+  border: solid 1px theme('colors.orange.500');
+  border-radius: 4px;
+}
+::-ms-browse {
+  color: theme('colors.orange.600');
+  background-color: theme('colors.white');
+  border: 2px white;
+  border-radius: 4px;
+  box-shadow: 1px 1px 16px -8px theme('colors.orange.600');
+}
 /* TODO fix with postcss url plugin */
 /*select {
    -webkit-appearance: none;

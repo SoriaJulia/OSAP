@@ -93,6 +93,7 @@ const Login: NextPage = () => {
                   }
                 });
               }}
+              showIconOnMobile
             />
             <Button
               label="Cancelar"
