@@ -8,14 +8,14 @@ import React, { useState } from 'react';
 import AutorizacionesList from './AutorizacionesList';
 
 const AutorizacionesTab = ({ payload }: { payload: Autorizacion[] }) => {
-  const [selectedYear, setSelectedYear] = useState(currentYear);
+  const [selectedYear, setSelectedYear] = useState<number | ''>(currentYear);
   const [selectedState, setSelectedState] = useState('');
   const [selectedAfiliado, setSelectedAfiliado] = useState('');
   const autorizacionesPorPeriodo = getFilteredAutorizacionesXPeriodo(
     payload,
     selectedYear,
-    selectedState,
-    selectedAfiliado
+    selectedAfiliado,
+    selectedState
   );
   const afiliados = getAfiliados(payload);
   return (

@@ -9,6 +9,7 @@ import { AnimatePresence } from 'framer-motion';
 import Portal from 'components/Layout/Portal';
 import Script from 'next/script';
 import Backdrop from 'components/Base/Backdrop';
+import { Toaster } from 'react-hot-toast';
 import PageLoader from '../components/Base/PageLoader';
 import Layout from '../components/Layout/Layout';
 
@@ -34,6 +35,7 @@ function MyApp({ Component: PageComponent, pageProps: { session, ...pageProps } 
 
   return (
     <SessionProvider session={session}>
+      <Toaster />
       <Script
         strategy="lazyOnload"
         async

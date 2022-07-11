@@ -86,12 +86,14 @@ const Login: NextPage = () => {
                   redirect: false,
                 }).then((value) => {
                   if (value?.error) {
+                    setLoginIn(false);
                     setError(value.error);
                   } else {
                     router.push('/afiliados');
                   }
                 });
               }}
+              showIconOnMobile
             />
             <Button
               label="Cancelar"

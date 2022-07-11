@@ -18,6 +18,7 @@ type ButtonProps = {
   variant?: Variants;
   trailingIcon?: ReactNode;
   leadingIcon?: ReactNode;
+  showIconOnMobile?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button: React.FC<ButtonProps> = ({
@@ -28,6 +29,7 @@ const Button: React.FC<ButtonProps> = ({
   trailingIcon,
   leadingIcon,
   className,
+  showIconOnMobile,
   ...props
 }) => {
   return (
@@ -38,9 +40,9 @@ const Button: React.FC<ButtonProps> = ({
       type={type}
       {...props}
     >
-      <div className="hidden pl-1 sm:block">{leadingIcon}</div>
+      <div className={` ${showIconOnMobile ? '' : 'hidden'} pl-1 sm:block`}>{leadingIcon}</div>
       {label}
-      <div className="hidden pr-1 sm:block">{trailingIcon}</div>
+      <div className={` ${showIconOnMobile ? '' : 'hidden'} pr-1 sm:block`}>{trailingIcon}</div>
     </button>
   );
 };

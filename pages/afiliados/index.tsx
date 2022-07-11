@@ -1,5 +1,5 @@
 import { GetServerSideProps, NextPage } from 'next';
-import { Bank, CreditCard, Download } from 'phosphor-react';
+import { Bank, CreditCard, CurrencyCircleDollar, Download } from 'phosphor-react';
 import { getSession } from 'next-auth/react';
 import Head from 'next/head';
 import { Factura } from '@appTypes/factura';
@@ -51,12 +51,17 @@ export const Afiliados: NextPage<AfiliadosPageProps> = ({
             leadingIcon={<Bank size={24} />}
             onClick={() => router.push('/afiliados/mediosPago')}
           />
-
           <Button
             label="Pago online"
             variant="yellowOutlined"
             leadingIcon={<CreditCard size={24} />}
             onClick={() => window.open(linkPago, '_blank')}
+          />
+          <Button
+            label="Informar pago"
+            variant="yellowOutlined"
+            leadingIcon={<CurrencyCircleDollar size={24} />}
+            onClick={() => router.push('/afiliados/informarPago')}
           />
         </div>
         <UltimasFacturas facturas={facturas} />
@@ -105,39 +110,47 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 
   try {
     coseguros =
-      (await nextFetch(`afiliado/${agentId}/coseguro`, {
-        headers: { Cookie: req.headers.cookie || '' },
-      })) || [];
+      (
+        await nextFetch(`afiliado/${agentId}/coseguro`, {
+          headers: { Cookie: req.headers.cookie || '' },
+        })
+      ).data || [];
   } catch (err) {
     console.error(err);
   }
   try {
     facturas =
-      (await nextFetch(`afiliado/${agentId}/factura`, {
-        headers: { Cookie: req.headers.cookie || '' },
-      })) || [];
+      (
+        await nextFetch(`afiliado/${agentId}/factura`, {
+          headers: { Cookie: req.headers.cookie || '' },
+        })
+      ).data || [];
   } catch (err) {
     console.error(err);
   }
   try {
     credenciales =
-      (await nextFetch(`afiliado/${agentId}/credencial`, {
-        headers: { Cookie: req.headers.cookie || '' },
-      })) || [];
+      (
+        await nextFetch(`afiliado/${agentId}/credencial`, {
+          headers: { Cookie: req.headers.cookie || '' },
+        })
+      ).data || [];
   } catch (err) {
     console.error(err);
   }
   try {
     autorizaciones =
-      (await nextFetch(`afiliado/${agentId}/autorizacion`, {
-        headers: { Cookie: req.headers.cookie || '' },
-      })) || [];
+      (
+        await nextFetch(`afiliado/${agentId}/autorizacion`, {
+          headers: { Cookie: req.headers.cookie || '' },
+        })
+      ).data || [];
   } catch (err) {
     console.error(err);
   }
 
   try {
-    agente = (await nextFetch('afiliado', { headers: { Cookie: req.headers.cookie || '' } })) || {};
+    agente = (await nextFetch('afiliado', { headers: { Cookie: req.headers.cookie || '' } })).data || {};
   } catch (err) {
     console.error(err);
   }
