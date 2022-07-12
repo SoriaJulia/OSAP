@@ -1,5 +1,3 @@
-// export type UserRoles = 'PUBLICO' | 'AFILIADO' | 'PRESTADOR';
-
 export const UserRoles = {
   PUBLICO: 'PUBLICO',
   AFILIADO: 'AFILIADO',

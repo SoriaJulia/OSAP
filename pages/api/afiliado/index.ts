@@ -7,7 +7,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
 
   if (session?.user) {
     // call GECROS service
-    const { data, message } = await getAgente(session.user.agentId);
+    const { data, message } = await getAgente(session.user.dni);
     if (message) {
       return res.status(200).send(message);
     }

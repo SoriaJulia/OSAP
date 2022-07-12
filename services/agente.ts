@@ -26,9 +26,9 @@ const getAgenteCta = (dni: string) => {
 const AGENT_RESULT_NAME = 'GetAgenteCta';
 const NO_AGENT_MESSAGE = 'No se encontro ningun agente con este codigo';
 
-export const getAgente = async (agectaId: string): Promise<ServiceResponse<AgenteCta>> => {
+export const getAgente = async (dni: string): Promise<ServiceResponse<AgenteCta>> => {
   try {
-    const resp = await axiosClient.post(OSAP_API_URL, getAgenteCta(agectaId), {
+    const resp = await axiosClient.post(OSAP_API_URL, getAgenteCta(dni), {
       headers: { 'Content-Type': 'text/xml;charset=UTF-8', 'SOAPAction': 'http://tempuri.org/IService1/GetAgenteCta' },
     });
     const parsedResp = parseJSONResponse<AgenteCta>(resp.data, { actionName: AGENT_RESULT_NAME });
@@ -59,7 +59,7 @@ const getAutorizaciones = (agectaId: string) => {
 const AUTORIZACIONES_RESULT_NAME = 'GetAutorizaciones';
 const NO_AUTORIZACIONES_MESSAGE = 'No se encontro ninguna autorizacion con este codigo';
 
-export const getAutorizacionesAfiliado = async (agectaId: string): Promise<ServiceResponse<Autorizacion>> => {
+export const getAutorizacionesAfiliado = async (agectaId: string): Promise<ServiceResponse<Autorizacion[]>> => {
   try {
     const resp = await axiosClient.post(OSAP_API_URL, getAutorizaciones(agectaId), {
       headers: {
@@ -75,7 +75,7 @@ export const getAutorizacionesAfiliado = async (agectaId: string): Promise<Servi
       return { data: null, message: NO_AUTORIZACIONES_MESSAGE };
     }
 
-    return { data: parsedResp.Autorizaciones[0], message: '' };
+    return { data: parsedResp.Autorizaciones, message: '' };
   } catch (err) {
     console.error(err);
     return { data: null, message: SERVER_ERROR };
@@ -98,7 +98,7 @@ const getGrupo = (agectaId: string) => {
 const GRUPO_RESULT_NAME = 'GetGrupo';
 const NO_GRUPO_MESSAGE = 'No se encontro ninguna credencial con este codigo';
 
-export const getCredencialesGrupo = async (agectaId: string): Promise<ServiceResponse<Credencial>> => {
+export const getCredencialesGrupo = async (agectaId: string): Promise<ServiceResponse<Credencial[]>> => {
   try {
     const resp = await axiosClient.post(OSAP_API_URL, getGrupo(agectaId), {
       headers: { 'Content-Type': 'text/xml;charset=UTF-8', 'SOAPAction': 'http://tempuri.org/IService1/GetGrupo' },
@@ -109,7 +109,7 @@ export const getCredencialesGrupo = async (agectaId: string): Promise<ServiceRes
       return { data: null, message: NO_GRUPO_MESSAGE };
     }
 
-    return { data: parsedResp.Grupo[0], message: '' };
+    return { data: parsedResp.Grupo, message: '' };
   } catch (err) {
     console.error(err);
     return { data: null, message: SERVER_ERROR };
@@ -131,7 +131,7 @@ const getFacturas = (agectaId: string) => {
 const FACTURA_RESULT_NAME = 'GetFacturas';
 const NO_FACTURA_MESSAGE = 'No se encontro ninguna factura con este codigo';
 
-export const getFacturasAfiliado = async (agectaId: string): Promise<ServiceResponse<Factura>> => {
+export const getFacturasAfiliado = async (agectaId: string): Promise<ServiceResponse<Factura[]>> => {
   try {
     const resp = await axiosClient.post(OSAP_API_URL, getFacturas(agectaId), {
       headers: { 'Content-Type': 'text/xml;charset=UTF-8', 'SOAPAction': 'http://tempuri.org/IService1/GetFacturas' },
@@ -141,7 +141,7 @@ export const getFacturasAfiliado = async (agectaId: string): Promise<ServiceResp
     if (isEmpty(parsedResp.Facturas)) {
       return { data: null, message: NO_FACTURA_MESSAGE };
     }
-    return { data: parsedResp.Facturas[0], message: '' };
+    return { data: parsedResp.Facturas, message: '' };
   } catch (err) {
     console.error(err);
     return { data: null, message: SERVER_ERROR };
@@ -163,7 +163,7 @@ const getCoseguros = (agectaId: string) => {
 const COSEGUROS_RESULT_NAME = 'GetCoseguros';
 const NO_COSEGURO_MESSAGE = 'No se encontro ningun coseguro con este codigo';
 
-export const getCosegurosAfiliado = async (agectaId: string): Promise<ServiceResponse<Coseguro>> => {
+export const getCosegurosAfiliado = async (agectaId: string): Promise<ServiceResponse<Coseguro[]>> => {
   try {
     const resp = await axiosClient.post(OSAP_API_URL, getCoseguros(agectaId), {
       headers: {
@@ -176,7 +176,7 @@ export const getCosegurosAfiliado = async (agectaId: string): Promise<ServiceRes
     if (isEmpty(parsedResp.Coseguros)) {
       return { data: null, message: NO_COSEGURO_MESSAGE };
     }
-    return { data: parsedResp.Coseguros[0], message: '' };
+    return { data: parsedResp.Coseguros, message: '' };
   } catch (err) {
     console.error(err);
     return { data: null, message: SERVER_ERROR };
