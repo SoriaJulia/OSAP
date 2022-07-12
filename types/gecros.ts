@@ -1,12 +1,12 @@
-export type GCROSSBaseResponse = {
+export type GECROSBaseResponse = {
   Mensaje: string;
 };
 
-export type GCROSSResponse<T extends GCROSSBaseResponse = GCROSSBaseResponse> = {
+export type GECROSResponse<T extends GECROSBaseResponse = GECROSBaseResponse> = {
   [Property in keyof T]: T[Property];
 };
 
-export type GCROSSBasePayload = {
+export type GECROSBasePayload = {
   username: string;
   password: string;
 };

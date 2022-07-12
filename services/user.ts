@@ -1,8 +1,7 @@
 import { parseSOAPResponse } from '@lib/utils';
 import axiosClient from '@lib/axios';
-import { AuthUserRoles } from 'types/enums';
 import { GECROS_API_URL } from 'config';
-import { GCROSSBaseResponse, GCROSSBasePayload, ServiceResponse } from '@appTypes/grcoss';
+import { GECROSBaseResponse, GECROSBasePayload, ServiceResponse } from '@appTypes/gecros';
 
 const consultarUsuario = (username: string, password: string): string => {
   return `<?xml version="1.0" encoding="utf-8"?>
@@ -20,10 +19,7 @@ const consultarUsuario = (username: string, password: string): string => {
 const ACTION_NAME = 'ConsultarUsuario';
 const RESULT_NAME = 'ConsultarUsuario';
 
-interface ConsultarAfiliadoResponse extends GCROSSBaseResponse {
-  Convenio: string;
-}
-interface ConsultarUsuarioResponse extends GCROSSBaseResponse {
+interface ConsultarUsuarioResponse extends GECROSBaseResponse {
   Nombre: string;
   agecta_id: string;
 }
@@ -31,12 +27,15 @@ interface ConsultarUsuarioResponse extends GCROSSBaseResponse {
 export const getUser = async ({
   username,
   password,
-}: GCROSSBasePayload): Promise<ServiceResponse<ConsultarUsuarioResponse>> => {
+}: GECROSBasePayload): Promise<ServiceResponse<ConsultarUsuarioResponse>> => {
   try {
     const resp = await axiosClient.post(GECROS_API_URL, consultarUsuario(username, password), {
       headers: { SOAPAction: ACTION_NAME },
     });
-    const parsedResp = parseSOAPResponse<ConsultarUsuarioResponse>(ACTION_NAME, RESULT_NAME, resp.data);
+    const parsedResp = parseSOAPResponse<ConsultarUsuarioResponse>(resp.data, {
+      actionName: ACTION_NAME,
+      resultName: RESULT_NAME,
+    });
 
     if (parsedResp.Mensaje) {
       return { data: null, message: parsedResp.Mensaje };
@@ -50,19 +49,3 @@ export const getUser = async ({
 };
 
 // TODO move to afiliado service
-export const getAfiliado = async ({
-  username,
-  password,
-}: GCROSSBasePayload): Promise<ServiceResponse<ConsultarAfiliadoResponse>> => {
-  try {
-    const resp = await axiosClient.post(GECROS_API_URL, consultarUsuario(username, password), {
-      headers: { SOAPAction: ACTION_NAME },
-    });
-    const parsedResp = parseSOAPResponse<ConsultarAfiliadoResponse>(ACTION_NAME, RESULT_NAME, resp.data);
-
-    return { data: parsedResp, message: '' };
-  } catch (err) {
-    console.error(err);
-    return { data: null, message: 'Error interno del servidor' };
-  }
-};

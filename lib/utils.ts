@@ -2,7 +2,7 @@ import { InputChangeHandler } from '@appTypes/reactCommon';
 import { NEXT_URL } from 'config';
 import { XMLParser } from 'fast-xml-parser';
 import _ from 'lodash';
-import { GCROSSBaseResponse } from '@appTypes/grcoss';
+import { GECROSBaseResponse } from '@appTypes/gecros';
 import { NETWORK_ERROR } from './constants';
 
 export function jsonResponse(status: number, data: any, init?: ResponseInit) {
@@ -16,10 +16,15 @@ export function jsonResponse(status: number, data: any, init?: ResponseInit) {
   });
 }
 
-export const parseSOAPResponse = <T extends GCROSSBaseResponse>(
-  actionName: string,
-  resultName: string,
-  xml: string
+export type ParseSOAPOptions = {
+  actionName: string;
+  resultName: string;
+  rootResultName?: string;
+};
+
+export const parseSOAPResponse = <T extends GECROSBaseResponse>(
+  xml: string,
+  { actionName, resultName, rootResultName = 'DocumentElement' }: ParseSOAPOptions
 ): T => {
   // TODO better types for xml parser
   const parser = new XMLParser();
@@ -29,14 +34,18 @@ export const parseSOAPResponse = <T extends GCROSSBaseResponse>(
     throw new Error(`Malformed XML for ${actionName}\n ${xml}`);
   }
   const resultObj = parser.parse(result);
-  const finalObj = resultObj?.DocumentElement?.[resultName];
+  const finalObj = resultObj?.[rootResultName]?.[resultName];
   if (!finalObj) {
     throw new Error(`Malformed XML for ${resultName}\n ${xml}`);
   }
   return finalObj;
 };
 
-export const parseJSONResponse = (actionName: string, xml: string) => {
+export type OSAPResponse<T> = {
+  [k: string]: T[];
+};
+
+export const parseJSONResponse = <T>(xml: string, { actionName }: { actionName: string }): OSAPResponse<T> => {
   const parser = new XMLParser();
   const jsonObj = parser.parse(xml);
   const result = jsonObj?.['s:Envelope']?.['s:Body']?.[`${actionName}Response`]?.[`${actionName}Result`];

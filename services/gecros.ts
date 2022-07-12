@@ -1,11 +1,9 @@
 import OSAPUser from '@appTypes/user';
-import { getUser, getAfiliado } from '@services/user';
-import { GCROSSBasePayload, ServiceResponse } from '@appTypes/grcoss';
-import { AuthUserRoles } from '@appTypes/enums';
+import { getUser } from '@services/user';
+import { ServiceResponse } from '@appTypes/gecros';
 import { Credentials } from 'pages/api/auth/[...nextauth]';
 
-export const GCROSSService = {
-  // check name
+export const GECROSService = {
   async login(credentials: Credentials): Promise<ServiceResponse<OSAPUser>> {
     const response: ServiceResponse<OSAPUser> = { data: null, message: '' };
 
@@ -16,18 +14,11 @@ export const GCROSSService = {
       return response;
     }
 
-    const { data: afiliado, message: afiliadoMsg } = await getAfiliado(credentials);
-
-    if (!afiliado) {
-      response.message = afiliadoMsg;
-      return response;
-    }
-
     response.data = {
       name: usuario.Nombre,
       agentId: usuario.agecta_id,
       role: credentials.role,
-      plan: afiliado.Convenio,
+      dni: credentials.username,
     };
 
     return response;

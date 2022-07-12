@@ -1,11 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { AuthUserRoles } from 'types/enums';
 import OSAPUser from '@appTypes/user';
-import { JWT_SECRET_KEY, SERVER_ERROR } from '@lib/constants';
-import { getAfiliado } from '@services/user';
+import { JWT_SECRET_KEY } from '@lib/constants';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { GCROSSService } from '@services/gcross';
+import { GECROSService } from '@services/gecros';
 
 export type Credentials = { username: string; password: string; role: AuthUserRoles };
 
@@ -24,7 +23,7 @@ export default NextAuth({
           return null;
         }
 
-        const loginResult = await GCROSSService.login(credentials as Credentials);
+        const loginResult = await GECROSService.login(credentials as Credentials);
 
         if (loginResult.message) {
           throw new Error(loginResult.message);
