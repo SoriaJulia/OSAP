@@ -1,7 +1,8 @@
 import { InputChangeHandler } from '@appTypes/reactCommon';
 import { NEXT_URL } from 'config';
-import { XMLParser, XMLValidator } from 'fast-xml-parser';
+import { XMLParser } from 'fast-xml-parser';
 import _ from 'lodash';
+import { GECROSBaseResponse } from '@appTypes/gecros';
 import { NETWORK_ERROR } from './constants';
 
 export function jsonResponse(status: number, data: any, init?: ResponseInit) {
@@ -14,29 +15,55 @@ export function jsonResponse(status: number, data: any, init?: ResponseInit) {
     },
   });
 }
+
 export type ParseSOAPOptions = {
   actionName: string;
   resultName: string;
   rootResultName?: string;
 };
-export const parseSOAPResponse = (xml: string, options: ParseSOAPOptions) => {
-  const { actionName, resultName, rootResultName } = options;
-  if (XMLValidator.validate(xml)) {
-    const parser = new XMLParser();
-    const jsonObj = parser.parse(xml);
-    const result = jsonObj['soap:Envelope']['soap:Body'][`${actionName}Response`][`${actionName}Result`];
-    const resultObj = parser.parse(result);
-    return resultObj[rootResultName || 'DocumentElement'][resultName];
+
+/**
+ * @description Parses GECROS service from SOAP/XML format to JSON.
+ * @param {string} xml xml text with service response. It contains another XML string with the actual data.
+ * @param {ParseSOAPOptions} options
+ * @param {string} options.actionName - Required.
+ * XML response always contains actionName + Response, and actionName + Result
+ * @param {string} options.rootResultName - Optional. Most responses use DocumentElement as the rootResultName
+ * @param {string} options.resultName - Optional.
+ * Index on service response object which contains an entry for the data and 'Mensaje'
+ * IMPORTANT: this option must be the empty string for some enpoints where the node for the resultName is missing
+ */
+export const parseSOAPResponse = <T extends GECROSBaseResponse>(
+  xml: string,
+  { actionName, resultName, rootResultName = 'DocumentElement' }: ParseSOAPOptions
+): T => {
+  // TODO better types for xml parser
+  const parser = new XMLParser();
+  const jsonObj = parser.parse(xml);
+  const result = jsonObj?.['soap:Envelope']?.['soap:Body']?.[`${actionName}Response`]?.[`${actionName}Result`];
+  if (!result) {
+    throw new Error(`Malformed XML for ${actionName}\n ${xml}`);
   }
+  const resultObj = parser.parse(result);
+  const finalObj = resultObj?.[rootResultName]?.[resultName] || resultObj?.[rootResultName];
+  if (!finalObj) {
+    throw new Error(`Malformed XML for ${resultName}\n ${xml}`);
+  }
+  return finalObj;
 };
 
-export const parseJSONResponse = (actionName: string, xml: string) => {
-  if (XMLValidator.validate(xml)) {
-    const parser = new XMLParser();
-    const jsonObj = parser.parse(xml);
-    const result = jsonObj['s:Envelope']['s:Body'][`${actionName}Response`][`${actionName}Result`];
-    return JSON.parse(result);
+export type OSAPResponse<T> = {
+  [k: string]: T[];
+};
+
+export const parseJSONResponse = <T>(xml: string, { actionName }: { actionName: string }): OSAPResponse<T> => {
+  const parser = new XMLParser();
+  const jsonObj = parser.parse(xml);
+  const result = jsonObj?.['s:Envelope']?.['s:Body']?.[`${actionName}Response`]?.[`${actionName}Result`];
+  if (!result) {
+    throw new Error(`Malformed XML for ${actionName}\n ${xml}`);
   }
+  return JSON.parse(result);
 };
 
 export const nextFetch = async (url: string, options?: RequestInit) => {

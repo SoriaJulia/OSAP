@@ -155,7 +155,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     console.error(err);
   }
   return {
-    props: { facturas, credenciales, autorizaciones, agentId, coseguros, agente },
+    props: { facturas, credenciales, autorizaciones, coseguros, agente },
   };
 };
 

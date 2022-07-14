@@ -10,9 +10,10 @@ const formatPeriodo = (periodo: string) => {
 };
 
 const getFile = async (userId: string, compId: number) => {
-  const data = (await nextFetch(`afiliado/${userId}/factura/${compId}`)) as { data: string };
+  const { data, error } = await nextFetch(`afiliado/${userId}/factura/${compId}`);
+  if (error) return;
   const name = `Factura-${compId}-OSAP.pdf`;
-  downloadBase64File('application/pdf', data.data, name);
+  downloadBase64File('application/pdf', data.file, name);
 };
 const FacturasXPeriodo: React.FC<{ facturas: Factura[]; periodo: string }> = ({ facturas, periodo }) => {
   const { data: session } = useSession();

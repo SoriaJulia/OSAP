@@ -8,7 +8,7 @@ import NavbarMenuItem from './NavbarMenuItem';
 
 const LoginMenu = () => {
   const [showModal, setShowModal] = useState(false);
-  const [userRole, setUserRole] = useState(UserRoles.PUBLICO);
+  const [userRole, setUserRole] = useState<UserRoles>(UserRoles.PUBLICO);
 
   const handleClick = (role: UserRoles) => () => {
     setShowModal(true);
