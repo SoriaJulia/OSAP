@@ -11,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     if (message) {
       return res.status(200).send(message);
     }
-    return res.status(200).json({ data: file });
+    return res.status(200).json({ file });
   }
 
   return res.status(401).end();

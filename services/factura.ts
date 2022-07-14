@@ -29,7 +29,7 @@ export const getFacturaById = async (id: string): Promise<ServiceResponse<string
     });
     const options: ParseSOAPOptions = {
       actionName: 'ReporteCuentaCorriente',
-      resultName: 'Reporte',
+      resultName: '',
       rootResultName: 'ReporteCuentaCorriente',
     };
     const parsedResp = parseSOAPResponse<ReporteCuentaCorrienteResponse>(resp.data, options);

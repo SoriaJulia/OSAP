@@ -22,6 +22,17 @@ export type ParseSOAPOptions = {
   rootResultName?: string;
 };
 
+/**
+ * @description Parses GECROS service from SOAP/XML format to JSON.
+ * @param {string} xml xml text with service response. It contains another XML string with the actual data.
+ * @param {ParseSOAPOptions} options
+ * @param {string} options.actionName - Required.
+ * XML response always contains actionName + Response, and actionName + Result
+ * @param {string} options.rootResultName - Optional. Most responses use DocumentElement as the rootResultName
+ * @param {string} options.resultName - Optional.
+ * Index on service response object which contains an entry for the data and 'Mensaje'
+ * IMPORTANT: this option must be the empty string for some enpoints where the node for the resultName is missing
+ */
 export const parseSOAPResponse = <T extends GECROSBaseResponse>(
   xml: string,
   { actionName, resultName, rootResultName = 'DocumentElement' }: ParseSOAPOptions
@@ -34,7 +45,7 @@ export const parseSOAPResponse = <T extends GECROSBaseResponse>(
     throw new Error(`Malformed XML for ${actionName}\n ${xml}`);
   }
   const resultObj = parser.parse(result);
-  const finalObj = resultObj?.[rootResultName]?.[resultName];
+  const finalObj = resultObj?.[rootResultName]?.[resultName] || resultObj?.[rootResultName];
   if (!finalObj) {
     throw new Error(`Malformed XML for ${resultName}\n ${xml}`);
   }
