@@ -23,7 +23,7 @@ interface ConsultarUsuarioResponse extends GECROSBaseResponse {
   Nombre: string;
   agecta_id: string;
 }
-
+// TODO should return Promise<ServiceResponse<OSAPUser>>
 export const getUser = async ({
   username,
   password,
