@@ -1,9 +1,10 @@
+/* eslint-disable camelcase */
 import { GetServerSideProps, NextPage } from 'next';
 import { Bank, CreditCard, CurrencyCircleDollar, Download } from 'phosphor-react';
-import { getSession } from 'next-auth/react';
+import { getSession, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import { Factura } from '@appTypes/factura';
-import { nextFetch } from '@lib/utils';
+import { nextFetch, queryService } from '@lib/utils';
 import { Credencial } from '@appTypes/credencial';
 import { Autorizacion } from '@appTypes/autorizacion';
 import Credenciales from 'components/Credencial/List';
@@ -12,35 +13,40 @@ import { useRouter } from 'next/router';
 import { getLinkPago } from '@lib/facturacion';
 import { Coseguro } from '@appTypes/coseguro';
 import { AgenteCta } from '@appTypes/agenteCta';
-import Button from '../../components/Base/Button';
-import AfiliadosSectionsNav from '../../components/AfiliadosSectionsNav';
-import UltimasFacturas from '../../components/Facturacion/UltimasFacturas';
-import UltimosCoseguros from '../../components/Facturacion/UltimosCoseguros';
+import { dehydrate, QueryClient, QueryFunctionContext, useQuery } from 'react-query';
+import Button from '@components/Base/Button';
+import AfiliadosSectionsNav from '@components/AfiliadosSectionsNav';
+import UltimasFacturas from '@components/Facturacion/UltimasFacturas';
+import UltimosCoseguros from '@components/Facturacion/UltimosCoseguros';
+import {
+  getAgente,
+  getAutorizacionesAfiliado,
+  getCosegurosAfiliado,
+  getCredencialesGrupo,
+  getFacturasAfiliado,
+  ServiceFunction,
+} from '@services/agente';
+import { unstable_getServerSession } from 'next-auth';
+import { nextAuthOptions } from 'pages/api/auth/[...nextauth]';
+import User from '@appTypes/user';
+
+// TODO rename
 
 type AfiliadosPageProps = {
-  facturas: Array<Factura>;
-  credenciales: Array<Credencial>;
-  autorizaciones: Array<Autorizacion>;
-  coseguros: Array<Coseguro>;
-  agente: AgenteCta;
+  user: User;
 };
 
-export const Afiliados: NextPage<AfiliadosPageProps> = ({
-  facturas,
-  credenciales,
-  autorizaciones,
-  coseguros,
-  agente,
-}) => {
+export const Afiliados = ({ user }: AfiliadosPageProps) => {
   const router = useRouter();
-  const linkPago = getLinkPago(agente);
+  const linkPago = getLinkPago(user.agentId, user.convenio);
+
   return (
     <div className="flex flex-col items-center gap-3 divide-y-2 divide-white text-left">
       <Head>
         <title>OSAP - Tramites y consultas online</title>
       </Head>
       <AfiliadosSectionsNav />
-      <Credenciales credenciales={credenciales} agentId={agente.id} />
+      <Credenciales agentId={user.agentId} />
 
       <section className="flex w-full flex-col items-start pt-8">
         <h3 className="mb-6 text-3xl text-blue-800 md:mb-0">Pagos y facturación</h3>
@@ -64,9 +70,9 @@ export const Afiliados: NextPage<AfiliadosPageProps> = ({
             onClick={() => router.push('/afiliados/informarPago')}
           />
         </div>
-        <UltimasFacturas facturas={facturas} />
-        <UltimasAutorizaciones autorizaciones={autorizaciones} />
-        <UltimosCoseguros coseguros={coseguros} />
+        <UltimasFacturas agentId={user.agentId} />
+        <UltimasAutorizaciones agentId={user.agentId} />
+        <UltimosCoseguros agentId={user.agentId} />
 
         <article className="mt-2 w-full px-4 text-left md:px-8 lg:w-3/4 lg:px-0">
           <a
@@ -89,10 +95,10 @@ export const Afiliados: NextPage<AfiliadosPageProps> = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await unstable_getServerSession(req, res, nextAuthOptions);
 
-  if (!session || session.status === 'unauthenicated') {
+  if (!session || session.status === 'unauthenicated' || !session.user) {
     return {
       redirect: {
         destination: '/',
@@ -101,61 +107,25 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     };
   }
 
-  const agentId = session.user?.agentId;
-  let credenciales;
-  let facturas;
-  let autorizaciones;
-  let coseguros;
-  let agente;
+  const { agentId } = session.user;
 
-  try {
-    coseguros =
-      (
-        await nextFetch(`afiliado/${agentId}/coseguro`, {
-          headers: { Cookie: req.headers.cookie || '' },
-        })
-      ).data || [];
-  } catch (err) {
-    console.error(err);
-  }
-  try {
-    facturas =
-      (
-        await nextFetch(`afiliado/${agentId}/factura`, {
-          headers: { Cookie: req.headers.cookie || '' },
-        })
-      ).data || [];
-  } catch (err) {
-    console.error(err);
-  }
-  try {
-    credenciales =
-      (
-        await nextFetch(`afiliado/${agentId}/credencial`, {
-          headers: { Cookie: req.headers.cookie || '' },
-        })
-      ).data || [];
-  } catch (err) {
-    console.error(err);
-  }
-  try {
-    autorizaciones =
-      (
-        await nextFetch(`afiliado/${agentId}/autorizacion`, {
-          headers: { Cookie: req.headers.cookie || '' },
-        })
-      ).data || [];
-  } catch (err) {
-    console.error(err);
-  }
+  const queryClient = new QueryClient();
 
-  try {
-    agente = (await nextFetch('afiliado', { headers: { Cookie: req.headers.cookie || '' } })).data || {};
-  } catch (err) {
-    console.error(err);
-  }
+  // transform react-query keys into constants. create time constants(1 week, 3 days, etc)
+
+  // TODO test what happens when one query takes too long.
+  await queryClient.prefetchQuery('credenciales', queryService(getCredencialesGrupo, agentId), { staleTime: 6.048e8 });
+  await queryClient.prefetchQuery('coseguros', queryService(getCosegurosAfiliado, agentId), { staleTime: 2.592e8 });
+  await queryClient.prefetchQuery('facturas', queryService(getFacturasAfiliado, agentId), { staleTime: 2.592e8 });
+  await queryClient.prefetchQuery('autorizacion', queryService(getAutorizacionesAfiliado, agentId), {
+    staleTime: 2.592e8,
+  });
+
   return {
-    props: { facturas, credenciales, autorizaciones, coseguros, agente },
+    props: {
+      user: session.user,
+      dehydratedState: dehydrate(queryClient),
+    },
   };
 };
 

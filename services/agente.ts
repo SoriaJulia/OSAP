@@ -116,6 +116,9 @@ export const getCredencialesGrupo = async (agectaId: string): Promise<ServiceRes
   }
 };
 
+// TODO move this to better place
+export type ServiceFunction<T, U> = (...params: U[]) => Promise<ServiceResponse<T>>;
+
 const getFacturas = (agectaId: string) => {
   return `<?xml version="1.0" encoding="utf-8"?>
   <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">

@@ -5,6 +5,7 @@ type User = {
   agentId: string;
   dni: string;
   role: UserRoles;
+  convenio: string;
 };
 
 export default User;

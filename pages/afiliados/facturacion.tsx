@@ -1,10 +1,11 @@
 /* eslint-disable react/destructuring-assignment */
+// eslint-disable-next-line camelcase
+import { unstable_getServerSession } from 'next-auth';
 import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import React, { useState } from 'react';
 import { Bank, CreditCard, CurrencyCircleDollar, Download, Note, Receipt, Scroll } from 'phosphor-react';
 import { nextFetch } from '@lib/utils';
-import { getSession } from 'next-auth/react';
 import { Factura } from '@appTypes/factura';
 import AutorizacionesTab from 'components/Facturacion/AutorizacionesTab';
 import { Autorizacion } from '@appTypes/autorizacion';
@@ -12,6 +13,8 @@ import { useRouter } from 'next/router';
 import { getLinkPago } from '@lib/facturacion';
 import { Coseguro } from '@appTypes/coseguro';
 import { AgenteCta } from '@appTypes/agenteCta';
+import User from '@appTypes/user';
+import { nextAuthOptions } from 'pages/api/auth/[...nextauth]';
 import Button from '../../components/Base/Button';
 import PageTitle from '../../components/Base/PageTitle';
 import Tabs, { TabsType } from '../../components/Base/Tabs';
@@ -47,13 +50,14 @@ type FacturacionProps = {
   coseguros: Array<Coseguro>;
   autorizaciones: Array<Autorizacion>;
   agente: AgenteCta;
+  user: User;
 };
 
-const Facturacion: NextPage<FacturacionProps> = (props) => {
+const Facturacion: NextPage<FacturacionProps> = ({ user, ...props }) => {
   const [selectedTab, setSelectedTab] = useState<number>(tabs[0].index);
   const tab = tabs[selectedTab];
   const router = useRouter();
-  const linkPago = getLinkPago(props.agente);
+  const linkPago = getLinkPago(user.agentId, user.convenio);
   return (
     <div>
       <Head>
@@ -106,8 +110,8 @@ const Facturacion: NextPage<FacturacionProps> = (props) => {
     </div>
   );
 };
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const session = await getSession({ req });
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await unstable_getServerSession(req, res, nextAuthOptions);
 
   if (!session || session.status === 'unauthenicated') {
     return {
@@ -117,6 +121,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
       },
     };
   }
+  res.setHeader('Cache-Control', 'public, s-maxage=300');
   const agentId = session.user?.agentId;
   let facturas;
   let autorizaciones;
@@ -160,7 +165,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     console.error(err);
   }
   return {
-    props: { facturas, autorizaciones, coseguros, agente },
+    props: { facturas, autorizaciones, coseguros, agente, user: session.user },
   };
 };
 

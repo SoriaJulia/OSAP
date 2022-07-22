@@ -2,13 +2,13 @@
 import { AuthUserRoles } from 'types/enums';
 import OSAPUser from '@appTypes/user';
 import { JWT_SECRET_KEY } from '@lib/constants';
-import NextAuth from 'next-auth';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { GECROSService } from '@services/gecros';
 
 export type Credentials = { username: string; password: string; role: AuthUserRoles };
 
-export default NextAuth({
+export const nextAuthOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
     CredentialsProvider({
@@ -58,4 +58,6 @@ export default NextAuth({
     signOut: '/',
     error: '/', // Error code passed in query string as ?error=
   },
-});
+};
+
+export default NextAuth(nextAuthOptions);

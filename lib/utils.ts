@@ -4,6 +4,7 @@ import { XMLParser } from 'fast-xml-parser';
 import _ from 'lodash';
 import { GECROSBaseResponse } from '@appTypes/gecros';
 import { NETWORK_ERROR } from './constants';
+import { ServiceFunction } from '@services/agente';
 
 export function jsonResponse(status: number, data: any, init?: ResponseInit) {
   return new Response(JSON.stringify(data), {
@@ -114,5 +115,16 @@ export const capitalizeText = (text: string) => {
     })
     .join(' ');
 };
+
+// TODO better place?
+export function queryService<T, U>(serviceFn: ServiceFunction<T, U>, ...params: U[]) {
+  return async () => {
+    const { data, message } = await serviceFn(...params);
+    if (message) {
+      throw message;
+    }
+    return data;
+  };
+}
 
 export const currentYear = new Date().getFullYear();
