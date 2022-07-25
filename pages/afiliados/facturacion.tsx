@@ -14,7 +14,7 @@ import { Coseguro } from '@appTypes/coseguro';
 import { AgenteCta } from '@appTypes/agenteCta';
 import Button from '../../components/Base/Button';
 import PageTitle from '../../components/Base/PageTitle';
-import Tabs, { TabsType } from '../../components/Base/Tabs';
+import Tabs, { TabsType } from '../../components/Facturacion/Tabs';
 import FacturasTab from '../../components/Facturacion/FacturasTab';
 import CosegurosTab from '../../components/Facturacion/CosegurosTab';
 

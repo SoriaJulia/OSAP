@@ -16,7 +16,6 @@ type TabsProps = {
   tabs: TabsType;
   selectedTab: number;
   onClick: (index: number) => void;
-  orientation?: 'horizontal' | 'vertical';
   payload: Array<Factura> | Array<Autorizacion> | Array<Coseguro>;
 };
 
@@ -26,9 +25,8 @@ type TabsProps = {
  * @param tab Array of object
  * @param selectedTab number
  * @param onClick Function to set the active tab
- * @param orientation Tab orientation Vertical | Horizontal
  */
-const Tabs: FC<TabsProps> = ({ tabs = [], selectedTab = 0, onClick, orientation = 'horizontal', payload }) => {
+const Tabs: FC<TabsProps> = ({ tabs = [], selectedTab = 0, onClick, payload }) => {
   const Panel = tabs && tabs.find((tab) => tab.index === selectedTab);
 
   return (
@@ -36,7 +34,7 @@ const Tabs: FC<TabsProps> = ({ tabs = [], selectedTab = 0, onClick, orientation 
       <div
         role="tablist"
         className="hiddenScrollbar z-10 flex gap-2 overflow-x-scroll md:overflow-x-visible"
-        aria-orientation={orientation}
+        aria-orientation="horizontal"
       >
         {tabs.map((tab) => (
           <button

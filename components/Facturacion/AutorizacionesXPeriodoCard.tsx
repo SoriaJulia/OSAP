@@ -8,7 +8,7 @@ const AutorizacionesXPeriodoCard: React.FC<{ autorizaciones: Autorizacion[]; per
   periodo,
 }) => {
   return (
-    <div className="flex flex-col gap-2 rounded py-2 px-3 text-left ring-1 ring-orange-100/50 ring-offset-2 ring-offset-yellow-50/80 sm:w-[48%]">
+    <div className="card flex flex-col gap-2 text-left sm:w-[48%]">
       <h3 className="font-display text-xl font-semibold tracking-wide text-blue-600">
         Periodo: <span className="font-2xl">{formatPeriodo(periodo)}</span>
       </h3>

@@ -1,6 +1,6 @@
 import { InputChangeHandler } from '@appTypes/reactCommon';
 import { NEXT_URL } from 'config';
-import { XMLParser } from 'fast-xml-parser';
+import { X2jOptionsOptional, XMLParser } from 'fast-xml-parser';
 import _ from 'lodash';
 import { GECROSBaseResponse } from '@appTypes/gecros';
 import { NETWORK_ERROR } from './constants';
@@ -20,6 +20,7 @@ export type ParseSOAPOptions = {
   actionName: string;
   resultName: string;
   rootResultName?: string;
+  parserOptions?: X2jOptionsOptional;
 };
 
 /**
@@ -46,9 +47,10 @@ export const parseSOAPResponse = <T extends GECROSBaseResponse>(
   }
   const resultObj = parser.parse(result);
   const finalObj = resultObj?.[rootResultName]?.[resultName] || resultObj?.[rootResultName];
-  if (!finalObj) {
-    throw new Error(`Malformed XML for ${resultName}\n ${xml}`);
-  }
+  // if (!finalObj) {
+  //   throw new Error(`Malformed XML for ${resultName}\n ${xml}`);
+
+  // }
   return finalObj;
 };
 

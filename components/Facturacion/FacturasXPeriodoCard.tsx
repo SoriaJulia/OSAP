@@ -19,7 +19,7 @@ const FacturasXPeriodo: React.FC<{ facturas: Factura[]; periodo: string }> = ({ 
   const { data: session } = useSession();
   const userId = session?.user?.agentId || '';
   return (
-    <div className="flex w-96 flex-col gap-2 rounded py-2 px-3 text-left ring-1 ring-orange-100/50 ring-offset-2 ring-offset-yellow-50/80">
+    <div className="card flex w-96 flex-col gap-2 text-left">
       <h3 className="font-display text-xl font-semibold tracking-wide text-blue-600">
         Periodo: <span className="font-2xl">{formatPeriodo(periodo)}</span>
       </h3>
