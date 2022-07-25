@@ -62,7 +62,15 @@ export default Cartilla;
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const especialidadesResult = await getEspecialidades();
   const localidades = [{ todas: '0' }];
-  const instituciones = await SanityClient.fetch<Institucion[]>('*[_type == "institucion"]');
+  const instituciones = await SanityClient.fetch<Institucion[]>(`*[_type == "institucion"]{
+    _id,
+    name,
+    pageUrl,
+    address,
+    phone,
+    cartillaUrl,
+    "fileUrl":file.asset->url
+  }`);
   return {
     props: { especialidadesResult, localidades, instituciones },
   };

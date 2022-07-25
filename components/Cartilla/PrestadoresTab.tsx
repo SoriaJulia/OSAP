@@ -156,7 +156,7 @@ const PrestadoresTab: React.FC<PrestadoresTabProps> = ({ payload }) => {
               </div>
             ))}
           </div>
-        ) : !isLoading ? (
+        ) : isLoading ? (
           <div>
             <p>Buscando prestadores... </p>
           </div>
