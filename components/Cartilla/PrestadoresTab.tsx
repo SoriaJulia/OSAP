@@ -63,7 +63,6 @@ const PrestadoresTab: React.FC<PrestadoresTabProps> = ({ payload }) => {
     });
     const { data, message } = result.data;
     if (message) toast.error(message, { position: 'bottom-right', duration: 6000 });
-    console.log(result.data);
     if (data) {
       const prestadores: Prestador[] = _.isArray(data) ? data : [data];
       setListaPrestadores(prestadores || []);
