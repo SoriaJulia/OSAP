@@ -1,8 +1,11 @@
+import { Localidad } from './localidad';
+
 export type Institucion = {
   _id: string;
-  name: string;
-  address: string;
-  phone: string;
+  nombre: string;
+  domicilio: string;
+  localidad: Localidad;
+  telefono: string;
   cartillaUrl: string;
   pageUrl: string;
   fileUrl: string;

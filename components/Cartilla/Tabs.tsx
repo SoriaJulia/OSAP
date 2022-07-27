@@ -42,7 +42,9 @@ const Tabs: FC<TabsProps> = ({ tabs = [], selectedTab = 0, onClick, payload }) =
           <button
             className={`-mb-0.5 mt-2 flex items-end gap-1 whitespace-nowrap rounded-t-lg border-x-2 border-t-2 py-2 px-7 text-lg text-orange-600 md:py-4  md:text-xl
           ${
-            selectedTab === tab.index ? ' border-b-2  border-orange-600 border-b-white bg-white' : 'mb-0 bg-white/50'
+            selectedTab === tab.index
+              ? ' border-b-2  border-orange-600 border-b-white bg-white font-semibold'
+              : 'mb-0 bg-white/50'
           } `}
             onClick={() => onClick(tab.index)}
             key={tab.index}
@@ -53,7 +55,7 @@ const Tabs: FC<TabsProps> = ({ tabs = [], selectedTab = 0, onClick, payload }) =
             tabIndex={selectedTab === tab.index ? 0 : -1}
             id={`btn-${tab.index}`}
           >
-            <tab.Icon weight={selectedTab === tab.index ? 'fill' : 'regular'} size="1.2em" />
+            <tab.Icon weight={selectedTab === tab.index ? 'bold' : 'light'} size="1.2em" />
             {tab.label}
           </button>
         ))}

@@ -1,6 +1,6 @@
 import { Localidad } from '@appTypes/localidad';
 import { Institucion } from '@appTypes/institucion';
-import { Buildings, Download, GlobeSimple, MapPin, Phone } from 'phosphor-react';
+import { Buildings, Download, GlobeSimple, HouseLine, MapPin, Phone } from 'phosphor-react';
 import { useState } from 'react';
 import Select from 'components/Base/Select';
 
@@ -14,31 +14,38 @@ type InstitucionesTabProps = {
 const InstitucionesTab: React.FC<InstitucionesTabProps> = ({ payload }) => {
   const { localidades, instituciones } = payload;
   const [localidad, setLocalidad] = useState('0');
-
+  console.log(localidades);
   return (
     <div>
-      <Select label="Localidad" value={localidad} onChange={(e) => setLocalidad(e.target.value)}>
-        <option value="0">Todas</option>
-      </Select>
+      <div className="mb-4">
+        <Select label="Localidad" value={localidad} labelPosition="left" onChange={(e) => setLocalidad(e.target.value)}>
+          <option value="0">Todas</option>
+          {localidades.map((loc) => (
+            <option value={loc.gecrosID} key={loc.gecrosID}>
+              {loc.nombre}
+            </option>
+          ))}
+        </Select>
+      </div>
       <div className="flex gap-4">
         {instituciones &&
           instituciones.map((institucion) => (
-            <div className="card flex flex-col gap-2 text-left text-gray-600" key={institucion.name}>
-              <span className="mb-1 flex items-center gap-2 text-2xl text-blue-500">
-                <Buildings />
+            <div className="card flex w-96 flex-col gap-2 text-left text-gray-600" key={institucion.nombre}>
+              <div className="mb-1 flex items-start gap-2 text-xl text-blue-500">
+                <HouseLine className="shrink-0" size={28} />
                 {institucion.pageUrl ? (
                   <a href={institucion.pageUrl} target="_blank">
-                    {institucion.name}
+                    {institucion.nombre}
                   </a>
                 ) : (
-                  institucion.name
+                  institucion.nombre
                 )}
+              </div>
+              <span className="flex items-center gap-1">
+                <MapPin /> {institucion.domicilio}, {institucion.localidad.nombre}, {institucion.localidad.provincia}
               </span>
               <span className="flex items-center gap-1">
-                <MapPin /> {institucion.address}
-              </span>
-              <span className="flex items-center gap-1">
-                <Phone /> Teléfono: {institucion.phone}
+                <Phone /> Teléfono: {institucion.telefono}
               </span>
               <span className="flex flex-col gap-1">
                 {institucion.fileUrl && (

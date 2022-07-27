@@ -4,18 +4,17 @@ import { ServiceResponse } from '@appTypes/gecros';
 import { Localidad } from '@appTypes/localidad';
 import { Prestador, TipoPrestador, TiposPrestador } from '@appTypes/prestador';
 import { ButtonMouseEventHandler } from '@appTypes/reactCommon';
-import axiosClient, { nextAxiosClient } from '@lib/axios';
-import { capitalizeText, changeTextInput, nextFetch } from '@lib/utils';
-import { getCartilla } from '@services/cartilla';
-import axios from 'axios';
+import { nextAxiosClient } from '@lib/axios';
+import { capitalizeText, changeTextInput } from '@lib/utils';
 import Button from 'components/Base/Button';
 import Field from 'components/Base/Field';
+import { Lottie } from 'components/Base/Lottie';
 import Select from 'components/Base/Select';
 import _ from 'lodash';
-import Image from 'next/image';
-import { Info, MagnifyingGlass, MapPin, Phone, UserSquare } from 'phosphor-react';
+import { Info, MagnifyingGlass, MapPin, Phone, SpinnerGap, UserSquare } from 'phosphor-react';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import searchGif from 'public/animations/search-doctor.json';
 
 const tiposPrestadores: TipoPrestador[] = [
   {
@@ -76,6 +75,11 @@ const PrestadoresTab: React.FC<PrestadoresTabProps> = ({ payload }) => {
       <form className="flex flex-col px-2">
         <Select label="Localidad" value={localidad} onChange={(e) => setLocalidad(e.target.value)}>
           <option value="0">Todas</option>
+          {payload.localidades.map((loc) => (
+            <option value={loc.gecrosID} key={loc.gecrosID}>
+              {loc.nombre}
+            </option>
+          ))}
         </Select>
 
         <Select
@@ -117,14 +121,14 @@ const PrestadoresTab: React.FC<PrestadoresTabProps> = ({ payload }) => {
           onChange={changeTextInput(setNombre)}
         />
         <Button
-          label="Buscar"
+          label={` ${isLoading ? 'Buscando...' : 'Buscar'} `}
           className="mr-4 mt-3 self-end"
-          trailingIcon={<MagnifyingGlass />}
+          trailingIcon={isLoading ? <SpinnerGap className="animate-spin" /> : <MagnifyingGlass />}
           disabled={!especialidad}
           onClick={searchPrestadores}
         />
       </form>
-      <div className="flex w-auto justify-center">
+      <div className="flex grow justify-center">
         {listaPrestadores ? (
           <div className="mt-7 flex flex-wrap gap-4">
             <p
@@ -134,7 +138,7 @@ const PrestadoresTab: React.FC<PrestadoresTabProps> = ({ payload }) => {
               No se encontraron resultados
             </p>
             {listaPrestadores.map((prestador) => (
-              <div className=" card flex max-h-24 flex-wrap items-start text-left">
+              <div className="card flex max-h-24 flex-wrap items-start text-left">
                 <span className="flex w-72 items-center gap-1 p-2 text-lg text-blue-700">
                   <UserSquare size={26} />
                   {capitalizeText(prestador.Nombre)}
@@ -157,9 +161,7 @@ const PrestadoresTab: React.FC<PrestadoresTabProps> = ({ payload }) => {
             ))}
           </div>
         ) : isLoading ? (
-          <div>
-            <p>Buscando prestadores... </p>
-          </div>
+          <Lottie animationData={searchGif} className="hidden self-center md:block" />
         ) : (
           <img
             className="hidden w-3/5 p-2 pl-8 md:block"

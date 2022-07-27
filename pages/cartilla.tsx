@@ -7,7 +7,7 @@ import Tabs, { TabsType } from 'components/Cartilla/Tabs';
 import PrestadoresTab from 'components/Cartilla/PrestadoresTab';
 import { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
-import { Plus, UsersThree } from 'phosphor-react';
+import { Buildings, Plus, UsersThree } from 'phosphor-react';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import InstitucionesTab from 'components/Cartilla/InstitucionesTab';
@@ -26,7 +26,7 @@ const tabs: TabsType = [
     label: 'Instituciones',
     index: 1,
     Component: InstitucionesTab,
-    Icon: Plus,
+    Icon: Buildings,
     significantProp: 'instituciones',
   },
 ];
@@ -61,16 +61,18 @@ const Cartilla: NextPage<CartillaProps> = (props) => {
 export default Cartilla;
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const especialidadesResult = await getEspecialidades();
-  const localidades = [{ todas: '0' }];
+  const localidades = await SanityClient.fetch<Localidad[]>(`*[_type == "localidad"]`);
   const instituciones = await SanityClient.fetch<Institucion[]>(`*[_type == "institucion"]{
     _id,
-    name,
+    nombre,
     pageUrl,
-    address,
-    phone,
+    domicilio,
+    "localidad": localidad->{nombre, gecrosID, provincia},
+    telefono,
     cartillaUrl,
-    "fileUrl":file.asset->url
+    "fileUrl":archivo.asset->url
   }`);
+
   return {
     props: { especialidadesResult, localidades, instituciones },
   };
