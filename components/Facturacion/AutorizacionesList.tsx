@@ -1,4 +1,5 @@
 import { AutXPeriodo } from '@appTypes/autorizacion';
+import EmptyListMessage from 'components/Base/EmptyListMessage';
 import { isEmpty } from 'lodash';
 import { Info } from 'phosphor-react';
 import React from 'react';
@@ -15,10 +16,7 @@ const AutorizacionesList = ({ periodos, periodosToShow }: { periodos: AutXPeriod
           .reverse()
           .slice(0, periodosToShow)
       ) : (
-        <div className="mb-3 mt-1 flex grow items-center justify-center gap-1 text-xl text-teal-700">
-          <Info size={24} weight="fill" />
-          No se encontraron autorizaciónes...
-        </div>
+        <EmptyListMessage text="No se encontraron autorizaciónes..." />
       )}
     </div>
   );

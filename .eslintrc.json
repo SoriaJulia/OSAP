@@ -65,7 +65,8 @@
     "react/prop-types": "off",
     "react/function-component-definition": "off",
     "quote-props": ["error", "consistent-as-needed"],
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "no-underscore-dangle": "off"
   },
   "settings": {
     "import/resolver": {

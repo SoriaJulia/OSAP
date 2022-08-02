@@ -1,7 +1,7 @@
 import { getFilteredCosegurosXPeriodo } from '@lib/facturacion';
 import { changeNumberInput, currentYear } from '@lib/utils';
+import EmptyListMessage from 'components/Base/EmptyListMessage';
 import { isEmpty } from 'lodash';
-import { Info } from 'phosphor-react';
 import React, { useState } from 'react';
 import { Coseguro } from '../../types/coseguro';
 import Field from '../Base/Field';
@@ -30,10 +30,7 @@ const CosegurosTab: React.FC<{ payload: Array<Coseguro> }> = ({ payload }) => {
               return <CosegurosXPeriodoCard key={coseg[0].periodo} coseguros={coseg} />;
             })
         ) : (
-          <div className="mb-3 mt-1 flex grow items-center justify-center gap-1 text-xl text-teal-700">
-            <Info size={24} weight="fill" />
-            No se encontraron coseguros...
-          </div>
+          <EmptyListMessage text="No se encontraron coseguros..." />
         )}
       </div>
     </div>
